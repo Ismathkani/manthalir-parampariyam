@@ -1,0 +1,240 @@
+@use '../../../styles.scss' as *;
+
+.about-page {
+  background-color: $color-cream-light;
+  padding-bottom: 5rem;
+}
+
+.about-hero {
+  background: linear-gradient(180deg, $color-cream 0%, $color-cream-light 100%);
+  padding: 4.5rem 0 3rem 0;
+  border-bottom: 1px solid $color-border;
+  text-align: center;
+
+  .subtitle {
+    color: $color-gold-dark;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    color: $color-dark-green;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+
+  .tamil-title {
+    font-size: 1.25rem;
+    color: $color-forest-green;
+    font-weight: 600;
+  }
+}
+
+.story-section {
+  padding: 5rem 0;
+  background-color: $color-white;
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 4rem;
+    align-items: center;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  .story-text {
+    .section-title {
+      font-size: 2.2rem;
+      color: $color-dark-green;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-p {
+      font-size: 1.05rem;
+      color: $color-text-muted;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+
+      &.quote-highlight {
+        color: $color-forest-green;
+        font-size: 1.15rem;
+        font-weight: 600;
+        border-left: 3px solid $color-gold;
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+      }
+    }
+
+    .story-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+  }
+
+  .story-visual {
+    display: flex;
+    justify-content: center;
+
+    .logo-heritage-card {
+      background: $color-cream;
+      border: 2px solid $color-gold;
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 16px 36px rgba(2, 56, 32, 0.08);
+
+      .about-logo {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 1.5rem auto;
+        border: 3px solid $color-gold;
+      }
+
+      .card-title {
+        font-size: 1.4rem;
+        color: $color-dark-green;
+        margin-bottom: 0.35rem;
+      }
+
+      .card-subtitle {
+        font-size: 0.85rem;
+        color: $color-text-muted;
+        margin-bottom: 1.25rem;
+      }
+
+      .heritage-badge {
+        display: inline-block;
+        background: $color-forest-green;
+        color: $color-white;
+        padding: 0.35rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.pillars-section {
+  padding: 5rem 0;
+  background-color: $color-cream-light;
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pillar-box {
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: $color-gold;
+      box-shadow: 0 14px 30px rgba(2, 56, 32, 0.08);
+    }
+
+    .p-icon {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: $color-dark-green;
+      margin-bottom: 0.15rem;
+    }
+
+    .p-tamil {
+      font-size: 0.8rem;
+      color: $color-gold-dark;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: $color-text-muted;
+      line-height: 1.6;
+    }
+  }
+}
+
+.founder-section {
+  padding: 4rem 0;
+
+  .founder-card {
+    background: linear-gradient(135deg, $color-dark-green 0%, $color-forest-green 100%);
+    color: $color-white;
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: 0 16px 40px rgba(2, 56, 32, 0.15);
+    border: 2px solid rgba($color-gold, 0.4);
+
+    @media (max-width: 768px) {
+      padding: 2rem 1.5rem;
+    }
+
+    .founder-name {
+      font-size: 2.2rem;
+      color: $color-gold;
+      margin: 0.75rem 0 0.25rem 0;
+    }
+
+    .founder-role {
+      font-size: 1rem;
+      color: rgba($color-cream, 0.8);
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba($color-cream, 0.95);
+      font-style: italic;
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+
+    .founder-contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      font-size: 0.95rem;
+      color: $color-gold-light;
+      border-top: 1px solid rgba($color-cream, 0.2);
+      padding-top: 1.5rem;
+    }
+  }
+}

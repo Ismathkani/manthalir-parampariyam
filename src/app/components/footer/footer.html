@@ -1,0 +1,91 @@
+<footer class="site-footer">
+  <!-- Tamil Quote Banner from poster -->
+  <div class="footer-banner">
+    <div class="container footer-banner-content">
+      <span class="leaf-icon">🌿</span>
+      <p class="tamil-quote">"இயற்கையும் நம் அழகும்... அழகை வாழ்நாள் முழுவதும் பேணுங்கள்..."</p>
+      <span class="leaf-icon">🌿</span>
+    </div>
+  </div>
+
+  <div class="container footer-main">
+    <div class="footer-grid">
+      <!-- Column 1: Brand Info -->
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="images/manthalir-logo.jpeg" alt="Manthalir Parampariyam Logo" class="footer-logo" loading="lazy" decoding="async">
+          <div>
+            <h3 class="brand-title">Manthalir <span class="gold-text">Parampariyam</span></h3>
+            <p class="brand-tamil">மாந்தளிர் பாரம்பரியம்</p>
+          </div>
+        </div>
+        <p class="brand-desc">
+          இயற்கை அழகின் நம்பிக்கையான பெயர். Dedicated to pure herbal wellness, authentic traditional formulas, and chemical-free personal care.
+        </p>
+        <div class="trust-pills">
+          <span class="pill">100% Herbal</span>
+          <span class="pill">No Chemicals</span>
+          <span class="pill">Cruelty Free</span>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h4 class="col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/products">All 16 Products</a></li>
+          <li><a routerLink="/wishlist">My Wishlist</a></li>
+          <li><a routerLink="/cart">Shopping Cart</a></li>
+          <li><a routerLink="/about">About Us & Heritage</a></li>
+          <li><a routerLink="/contact">Contact & Enquiry</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Product Categories -->
+      <div class="footer-col">
+        <h4 class="col-title">Categories</h4>
+        <ul class="footer-links">
+          <li><a routerLink="/products" [queryParams]="{category: 'skin-and-face'}">Skin & Face Care</a></li>
+          <li><a routerLink="/products" [queryParams]="{category: 'hair-care'}">Herbal Hair Care</a></li>
+          <li><a routerLink="/products" [queryParams]="{category: 'traditional-soaps'}">Handmade Soaps</a></li>
+          <li><a routerLink="/products" [queryParams]="{category: 'wellness-and-hygiene'}">Wellness & Hygiene</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact info from poster -->
+      <div class="footer-col contact-col">
+        <h4 class="col-title">Contact Us</h4>
+        <div class="contact-card">
+          <div class="contact-item">
+            <span class="contact-label">Founder:</span>
+            <span class="contact-val">M. முத்துமணி MBA.</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Address:</span>
+            <span class="contact-val">Morais City, Trichy - 620 007, Tamil Nadu.</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Phone:</span>
+            <a href="tel:7010136599" class="contact-val phone-link">70101 36599</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">WhatsApp:</span>
+            <a href="https://wa.me/917010136599" target="_blank" rel="noopener noreferrer" class="contact-val whatsapp-link">
+              +91 70101 36599
+            </a>
+          </div>
+        </div>
+        <a href="https://wa.me/917010136599" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm mt-3">
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear }} Manthalir Parampariyam (மாந்தளிர் பாரம்பரியம்). All Rights Reserved.</p>
+      <p class="tamil-sub">Trichy, Tamil Nadu • Authentic Traditional Care</p>
+    </div>
+  </div>
+</footer>

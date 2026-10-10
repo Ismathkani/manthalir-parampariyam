@@ -1,0 +1,146 @@
+<div class="contact-page">
+  <!-- Page Header -->
+  <section class="contact-header">
+    <div class="container text-center">
+      <span class="subtitle">Direct Communication</span>
+      <h1 class="page-title">Contact Us</h1>
+      <p class="page-desc">Connect with the founder & team of Manthalir Parampariyam directly in Trichy.</p>
+    </div>
+  </section>
+
+  <div class="container contact-body">
+    <div class="contact-grid">
+      <!-- Contact Details Card -->
+      <div class="details-col">
+        <div class="info-card">
+          <h2 class="card-title">Brand & Workshop Details</h2>
+
+          <div class="info-item">
+            <div class="icon-circle">👤</div>
+            <div>
+              <span class="info-label">Founder & Proprietor</span>
+              <p class="info-val"><strong>M. முத்துமணி MBA.</strong> (M. Muthumani MBA.)</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon-circle">📍</div>
+            <div>
+              <span class="info-label">Workshop & Address</span>
+              <p class="info-val">Morais City, Trichy - 620 007, Tamil Nadu, India.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon-circle">📞</div>
+            <div>
+              <span class="info-label">Phone Hotline</span>
+              <a href="tel:7010136599" class="info-val phone-link">70101 36599</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon-circle">💬</div>
+            <div>
+              <span class="info-label">Official WhatsApp Order Line</span>
+              <a href="https://wa.me/917010136599" target="_blank" rel="noopener noreferrer" class="info-val whatsapp-link">
+                +91 70101 36599 (Tap to Chat)
+              </a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon-circle">⏰</div>
+            <div>
+              <span class="info-label">Support Hours</span>
+              <p class="info-val">Monday – Saturday: 9:00 AM – 8:00 PM</p>
+            </div>
+          </div>
+
+          <!-- Direct WhatsApp Button -->
+          <div class="quick-wa-btn-wrap">
+            <a href="https://wa.me/917010136599?text=Vanakkam!%20I%20would%20like%20to%20enquire%20about%20Manthalir%20Parampariyam%20herbal%20products." 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn btn-whatsapp" style="width: 100%;">
+              <span>Instant Chat on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Message Form -->
+      <div class="form-col">
+        <div class="form-card">
+          <h2 class="card-title">Send a Message</h2>
+          <p class="form-desc">Fill this quick inquiry form and it will prepare your WhatsApp message to send directly to 70101 36599.</p>
+
+          <form (submit)="sendWhatsAppMessage(); $event.preventDefault()" class="contact-form">
+            <div class="form-group">
+              <label for="c-name" class="form-label">Your Name</label>
+              <input 
+                id="c-name"
+                type="text" 
+                [ngModel]="name()" 
+                (ngModelChange)="name.set($event)" 
+                name="name" 
+                placeholder="Enter your full name" 
+                class="form-input"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="c-phone" class="form-label">Phone / WhatsApp Number</label>
+              <input 
+                id="c-phone"
+                type="tel" 
+                [ngModel]="phone()" 
+                (ngModelChange)="phone.set($event)" 
+                name="phone" 
+                placeholder="Enter your phone number" 
+                class="form-input"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="c-topic" class="form-label">Product / Topic of Interest</label>
+              <select 
+                id="c-topic"
+                [ngModel]="productInterest()" 
+                (ngModelChange)="productInterest.set($event)" 
+                name="topic" 
+                class="form-select"
+              >
+                <option value="General Enquiry">General Enquiry</option>
+                <option value="Hair Care Products (Rabbit / Regular Hair Oil, Semparuthi Shampoo)">Hair Care Products</option>
+                <option value="Skin & Face Care (Kumkumadi Serum, Avarampoo Face Wash)">Skin & Face Care</option>
+                <option value="Traditional Soaps (Goat Milk, Sandalwood, Kuppaimeni)">Traditional Handmade Soaps</option>
+                <option value="Herbal Sanitary Napkins">Herbal Sanitary Napkins</option>
+                <option value="Bulk / Wholesale Enquiry">Bulk / Wholesale Orders</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="c-msg" class="form-label">Your Message or Question</label>
+              <textarea 
+                id="c-msg"
+                [ngModel]="message()" 
+                (ngModelChange)="message.set($event)" 
+                name="msg" 
+                placeholder="Tell us what you are looking for..." 
+                class="form-textarea"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-secondary w-full">
+              <span>Send Enquiry via WhatsApp &rarr;</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

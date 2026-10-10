@@ -1,0 +1,109 @@
+<div class="cart-page">
+  <div class="container">
+    <div class="cart-header">
+      <h1 class="page-title">Your Shopping Cart</h1>
+      <p class="page-desc">Review your selected items and send your order directly to the owner on WhatsApp.</p>
+    </div>
+
+    @if (cartService.cartItems().length > 0) {
+      <div class="cart-layout">
+        <!-- Items List -->
+        <div class="cart-items-col">
+          <div class="items-table-card">
+            <div class="table-header">
+              <span>Product</span>
+              <span class="text-center">Quantity</span>
+              <span class="text-right">Action</span>
+            </div>
+
+            <div class="items-list">
+              @for (item of cartService.cartItems(); track item.product.id) {
+                <div class="cart-item-row">
+                  <div class="item-info">
+                    <div class="item-leaf-badge">🌿</div>
+                    <div>
+                      <h3 class="item-name">
+                        <a [routerLink]="['/products', item.product.id]">{{ item.product.name }}</a>
+                      </h3>
+                      <p class="item-tamil">{{ item.product.tamilName }}</p>
+                      <span class="item-placeholder-price">{{ item.product.pricePlaceholder }}</span>
+                    </div>
+                  </div>
+
+                  <div class="item-qty-control">
+                    <button type="button" class="qty-btn" (click)="updateQty(item.product.id, item.quantity - 1)">-</button>
+                    <span class="qty-num">{{ item.quantity }}</span>
+                    <button type="button" class="qty-btn" (click)="updateQty(item.product.id, item.quantity + 1)">+</button>
+                  </div>
+
+                  <div class="item-actions">
+                    <button type="button" class="remove-btn" (click)="removeItem(item.product.id)" aria-label="Remove item">
+                      <svg class="trash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <div class="table-footer">
+              <button type="button" class="clear-cart-btn" (click)="clearCart()">Clear Cart</button>
+              <a routerLink="/products" class="continue-shopping">&larr; Add More Products</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary & WhatsApp Dispatch -->
+        <div class="cart-summary-col">
+          <div class="summary-card">
+            <h2 class="summary-title">Order Summary</h2>
+
+            <div class="summary-row">
+              <span>Total Selected Items:</span>
+              <strong class="gold-text">{{ cartService.totalItems() }} items</strong>
+            </div>
+
+            <div class="summary-notice">
+              <span class="notice-icon">📋</span>
+              <p>Official pricing & delivery charge will be quoted directly by the owner (M. முத்துமணி MBA.) via WhatsApp before payment.</p>
+            </div>
+
+            <div class="customer-notes-section">
+              <label for="cust-notes" class="notes-label">Delivery Note / Address (Optional):</label>
+              <textarea 
+                id="cust-notes"
+                [ngModel]="customerNotes()" 
+                (ngModelChange)="customerNotes.set($event)"
+                placeholder="E.g. Delivery in Trichy / Chennai, preferred contact time..."
+                class="notes-textarea"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <button type="button" class="btn btn-whatsapp w-full" (click)="checkoutViaWhatsApp()">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 2C6.5 2 2 6.5 2 12.031c0 1.906.531 3.703 1.5 5.25L2 22l4.875-1.453A9.96 9.96 0 0 0 12.03 22C17.562 22 22 17.531 22 12.031 22 6.5 17.562 2 12.031 2zm5.782 14.281c-.25.703-1.235 1.344-1.985 1.5-.515.11-1.187.188-3.437-.75-2.875-1.203-4.734-4.109-4.875-4.312-.141-.188-1.172-1.547-1.172-2.953 0-1.407.734-2.11 1-2.391.265-.281.578-.344.781-.344.203 0 .39.016.562.016.188 0 .438-.078.688.515.265.625.89 2.188.968 2.344.079.156.126.344.032.531-.094.203-.14.313-.281.484-.141.172-.297.39-.422.516-.14.156-.297.328-.125.625.172.297.766 1.25 1.641 2.031 1.125 1 2.078 1.312 2.375 1.453.297.141.469.125.64-.078.173-.203.735-.859.938-1.156.203-.297.39-.25.656-.156.266.094 1.688.797 1.984.938.297.14.485.218.563.343.078.125.078.719-.172 1.422z"/>
+              </svg>
+              <span>Order via WhatsApp Now</span>
+            </button>
+
+            <div class="direct-contact-note">
+              <span>Direct Hotline:</span>
+              <a href="tel:7010136599" class="phone-link">70101 36599</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <!-- Empty Cart State -->
+      <div class="empty-cart-card">
+        <span class="empty-icon">🛒</span>
+        <h2>Your Cart is Currently Empty</h2>
+        <p>Explore our 16 handcrafted herbal formulas and add your desired products.</p>
+        <a routerLink="/products" class="btn btn-primary mt-3">Shop All 16 Products</a>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,242 @@
+// Brand Color Variables
+$color-forest-green: #064B2F;
+$color-dark-green: #023820;
+$color-gold: #D8A62E;
+$color-gold-light: #F3DC8F;
+$color-gold-dark: #A97C19;
+$color-cream: #FFF8E7;
+$color-cream-light: #FCFAF3;
+$color-cream-dark: #EDE5D1;
+$color-white: #FFFFFF;
+$color-text-dark: #022616;
+$color-text-muted: #4F6358;
+$color-border: #E8E0CE;
+$color-danger: #C53030;
+
+:root {
+  --forest-green: #{$color-forest-green};
+  --dark-green: #{$color-dark-green};
+  --gold: #{$color-gold};
+  --gold-light: #{$color-gold-light};
+  --gold-dark: #{$color-gold-dark};
+  --cream: #{$color-cream};
+  --cream-light: #{$color-cream-light};
+  --cream-dark: #{$color-cream-dark};
+  --white: #{$color-white};
+  --text-dark: #{$color-text-dark};
+  --text-muted: #{$color-text-muted};
+  --border-color: #{$color-border};
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: $color-text-dark;
+  background-color: $color-cream-light;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, .serif-font {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.25s ease-in-out;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Container utilities
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+// Button styles
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &-primary {
+    background: linear-gradient(135deg, $color-gold 0%, $color-gold-dark 100%);
+    color: $color-dark-green;
+    box-shadow: 0 4px 14px rgba(216, 166, 46, 0.35);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(216, 166, 46, 0.5);
+      background: linear-gradient(135deg, $color-gold-light 0%, $color-gold 100%);
+    }
+  }
+
+  &-secondary {
+    background: $color-forest-green;
+    color: $color-white;
+    border: 1px solid rgba($color-gold, 0.4);
+
+    &:hover {
+      background: $color-dark-green;
+      border-color: $color-gold;
+      transform: translateY(-2px);
+    }
+  }
+
+  &-outline {
+    background: transparent;
+    color: $color-forest-green;
+    border: 1.5px solid $color-forest-green;
+
+    &:hover {
+      background: $color-forest-green;
+      color: $color-white;
+    }
+  }
+
+  &-gold-outline {
+    background: transparent;
+    color: $color-gold;
+    border: 1.5px solid $color-gold;
+
+    &:hover {
+      background: $color-gold;
+      color: $color-dark-green;
+    }
+  }
+
+  &-whatsapp {
+    background: #25D366;
+    color: #FFFFFF;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+
+    &:hover {
+      background: #1EBE5D;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+    }
+  }
+
+  &-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+// Badge styles
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &-gold {
+    background: rgba($color-gold, 0.18);
+    color: $color-gold-dark;
+    border: 1px solid rgba($color-gold, 0.4);
+  }
+
+  &-green {
+    background: rgba($color-forest-green, 0.12);
+    color: $color-forest-green;
+    border: 1px solid rgba($color-forest-green, 0.3);
+  }
+
+  &-placeholder {
+    background: #F3F4F6;
+    color: #4B5563;
+    border: 1px dashed #9CA3AF;
+    font-size: 0.7rem;
+  }
+}
+
+// Card styles
+.card {
+  background: $color-white;
+  border-radius: 1rem;
+  border: 1px solid $color-border;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(2, 56, 32, 0.08);
+    border-color: rgba($color-gold, 0.5);
+  }
+}
+
+// Section title helper
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem auto;
+
+  .subtitle {
+    color: $color-gold-dark;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    color: $color-dark-green;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  .description {
+    color: $color-text-muted;
+    font-size: 1.05rem;
+  }
+}

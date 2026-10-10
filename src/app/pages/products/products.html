@@ -1,0 +1,145 @@
+<div class="catalog-page">
+  <!-- Page Header -->
+  <div class="catalog-header">
+    <div class="container">
+      <span class="subtitle">Complete Natural Care</span>
+      <h1 class="title">All 16 Traditional Products</h1>
+      <p class="description">
+        Authentic formulas crafted from natural forest herbs, floral distillates, and traditional oils in Trichy.
+      </p>
+
+      <!-- Owner Placeholder Notice Banner -->
+      <div class="owner-notice-box">
+        <span class="notice-icon">ℹ️</span>
+        <div class="notice-text">
+          <strong>Product Details Note:</strong> Official prices and exact ingredient percentages will be updated directly by the brand owner. Placeholders are clearly indicated below. For orders and stock enquiry, please contact via WhatsApp.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container catalog-body">
+    <!-- Filter and Search Toolbar -->
+    <div class="filter-toolbar">
+      <!-- Search Input -->
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          [ngModel]="searchQuery()" 
+          (ngModelChange)="searchQuery.set($event)" 
+          placeholder="Search by name, Tamil name, or category..."
+          class="catalog-search-input"
+        >
+        @if (searchQuery()) {
+          <button type="button" class="clear-search-btn" (click)="searchQuery.set('')">&times;</button>
+        }
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills">
+        <button 
+          type="button" 
+          class="pill-btn" 
+          [class.active]="selectedCategory() === 'all'"
+          (click)="setCategory('all')"
+        >
+          All (16)
+        </button>
+        @for (cat of categories; track cat.slug) {
+          <button 
+            type="button" 
+            class="pill-btn" 
+            [class.active]="selectedCategory() === cat.slug"
+            (click)="setCategory(cat.slug)"
+          >
+            {{ cat.name }} ({{ cat.count }})
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Active Filters Summary -->
+    <div class="results-meta">
+      <span class="count-text">Showing <strong>{{ filteredProducts().length }}</strong> of 16 products</span>
+      @if (selectedCategory() !== 'all' || searchQuery()) {
+        <button type="button" class="reset-btn" (click)="clearFilters()">Reset Filters</button>
+      }
+    </div>
+
+    <!-- Products Grid -->
+    @if (filteredProducts().length > 0) {
+      <div class="products-grid">
+        @for (product of filteredProducts(); track product.id) {
+          <div class="product-card">
+            <div class="product-card-top">
+              <span class="badge badge-gold">{{ product.badge }}</span>
+              <button 
+                type="button" 
+                class="wishlist-toggle-btn" 
+                (click)="toggleWishlist(product)" 
+                [class.active]="isInWishlist(product.id)"
+                aria-label="Toggle wishlist"
+              >
+                <svg class="heart-icon" viewBox="0 0 24 24" [attr.fill]="isInWishlist(product.id) ? '#D8A62E' : 'none'" stroke="#D8A62E" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="product-icon-wrap">
+              <div class="product-avatar">
+                <span class="avatar-leaf">🌿</span>
+              </div>
+            </div>
+
+            <div class="product-card-body">
+              <span class="product-category-tag">{{ product.category }}</span>
+              <h3 class="product-title">
+                <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+              </h3>
+              <p class="product-tamil-name">{{ product.tamilName }}</p>
+
+              <!-- Clearly marked placeholders as requested -->
+              <div class="placeholder-box">
+                <div class="placeholder-row">
+                  <span class="placeholder-label">Price:</span>
+                  <span class="placeholder-val">{{ product.pricePlaceholder }}</span>
+                </div>
+                <div class="placeholder-row">
+                  <span class="placeholder-label">Key Formulation:</span>
+                  <span class="placeholder-val">{{ product.ingredientsPlaceholder }}</span>
+                </div>
+              </div>
+
+              <p class="product-short-desc">{{ product.descriptionPlaceholder }}</p>
+            </div>
+
+            <div class="product-card-footer">
+              <button type="button" (click)="addToCart(product)" class="btn btn-secondary btn-sm" style="flex: 1;">
+                <span>Add to Cart</span>
+              </button>
+              <a [href]="getWhatsAppInquiry(product)" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm" aria-label="Enquire on WhatsApp">
+                <span>WhatsApp</span>
+              </a>
+              <a [routerLink]="['/products', product.id]" class="btn btn-outline btn-sm">
+                <span>Details</span>
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <!-- Empty State -->
+      <div class="empty-state">
+        <span class="empty-emoji">🔍</span>
+        <h3>No products found</h3>
+        <p>No products match your search or selected filter.</p>
+        <button type="button" (click)="clearFilters()" class="btn btn-primary mt-3">View All 16 Products</button>
+      </div>
+    }
+  </div>
+</div>

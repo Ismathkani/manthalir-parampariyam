@@ -1,0 +1,314 @@
+@use '../../../styles.scss' as *;
+
+.cart-page {
+  padding: 3.5rem 0 5rem 0;
+  background-color: $color-cream-light;
+  min-height: 80vh;
+}
+
+.cart-header {
+  margin-bottom: 2.5rem;
+
+  .page-title {
+    font-size: 2.4rem;
+    color: $color-dark-green;
+    margin-bottom: 0.35rem;
+  }
+
+  .page-desc {
+    color: $color-text-muted;
+    font-size: 1rem;
+  }
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.items-table-card {
+  background: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+
+  .table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 60px;
+    padding: 1rem 1.5rem;
+    background: $color-cream;
+    border-bottom: 1px solid $color-border;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: $color-dark-green;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1.5fr 1fr 40px;
+      padding: 0.75rem 1rem;
+    }
+  }
+
+  .items-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-item-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 60px;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba($color-border, 0.6);
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1.5fr 1fr 40px;
+      padding: 1rem;
+    }
+
+    .item-info {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+
+      .item-leaf-badge {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba($color-forest-green, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+
+      .item-name {
+        font-size: 1.05rem;
+        color: $color-dark-green;
+
+        a:hover {
+          color: $color-gold-dark;
+        }
+      }
+
+      .item-tamil {
+        font-size: 0.8rem;
+        color: $color-text-muted;
+      }
+
+      .item-placeholder-price {
+        font-size: 0.75rem;
+        color: #6B7280;
+        font-style: italic;
+        display: block;
+        margin-top: 0.15rem;
+      }
+    }
+
+    .item-qty-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      .qty-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: $color-cream;
+        border: 1px solid $color-border;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+
+        &:hover {
+          background: $color-cream-dark;
+        }
+      }
+
+      .qty-num {
+        font-weight: 700;
+        min-width: 20px;
+        text-align: center;
+        font-size: 0.95rem;
+      }
+    }
+
+    .item-actions {
+      display: flex;
+      justify-content: flex-end;
+
+      .remove-btn {
+        color: #9CA3AF;
+        padding: 0.35rem;
+
+        &:hover {
+          color: $color-danger;
+        }
+
+        .trash-icon {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+
+  .table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: $color-cream;
+
+    .clear-cart-btn {
+      color: $color-danger;
+      font-size: 0.85rem;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .continue-shopping {
+      color: $color-forest-green;
+      font-size: 0.85rem;
+      font-weight: 700;
+
+      &:hover {
+        color: $color-gold-dark;
+      }
+    }
+  }
+}
+
+.summary-card {
+  background: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+
+  .summary-title {
+    font-size: 1.4rem;
+    color: $color-dark-green;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid $color-border;
+    padding-bottom: 0.75rem;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+
+    .gold-text {
+      color: $color-gold-dark;
+    }
+  }
+
+  .summary-notice {
+    background: #FFFBEB;
+    border: 1px dashed #F59E0B;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    gap: 0.65rem;
+    font-size: 0.82rem;
+    color: #92400E;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
+  }
+
+  .customer-notes-section {
+    margin-bottom: 1.5rem;
+
+    .notes-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $color-dark-green;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .notes-textarea {
+      width: 100%;
+      background: $color-cream;
+      border: 1px solid $color-border;
+      border-radius: 0.5rem;
+      padding: 0.65rem;
+      font-size: 0.85rem;
+      outline: none;
+      resize: vertical;
+
+      &:focus {
+        border-color: $color-gold;
+        background: $color-white;
+      }
+    }
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .direct-contact-note {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.82rem;
+    color: $color-text-muted;
+
+    .phone-link {
+      color: $color-forest-green;
+      font-weight: 700;
+      margin-left: 0.25rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.empty-cart-card {
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  background: $color-white;
+  border-radius: 1.25rem;
+  border: 1px dashed $color-border;
+  max-width: 540px;
+  margin: 0 auto;
+
+  .empty-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    color: $color-dark-green;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: $color-text-muted;
+    font-size: 0.95rem;
+  }
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.mt-3 { margin-top: 1rem; }

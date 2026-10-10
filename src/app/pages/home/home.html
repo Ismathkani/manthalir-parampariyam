@@ -1,0 +1,287 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="leaf-dot">🌿</span>
+        <span>100% Traditional Herbal Formulations</span>
+      </div>
+
+      <h1 class="hero-title">
+        Natural Care.<br>
+        Traditional Wisdom.<br>
+        <span class="gold-gradient">Timeless Beauty.</span>
+      </h1>
+
+      <p class="hero-tamil-tagline">
+        இயற்கை அழகின் நம்பிக்கையான பெயர்... மாந்தளிர் பாரம்பரியம்
+      </p>
+
+      <p class="hero-subtitle">
+        Rooted in the timeless medicinal heritage of Tamil Nadu. Handcrafted in Morais City, Trichy, our chemical-free herbal formulations bring you the purest gifts of nature.
+      </p>
+
+      <div class="hero-buttons">
+        <a routerLink="/products" class="btn btn-primary">
+          <span>Shop All 16 Products</span>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="https://wa.me/917010136599?text=Vanakkam!%20I%20would%20like%20to%20know%20more%20about%20Manthalir%20Parampariyam%20products." 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn btn-whatsapp">
+          <span>Enquire on WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- Trust Mini Pillars -->
+      <div class="hero-trust-bar">
+        <div class="trust-item">
+          <span class="check">✓</span>
+          <span>100% Herbal</span>
+        </div>
+        <div class="trust-item">
+          <span class="check">✓</span>
+          <span>Chemical Free</span>
+        </div>
+        <div class="trust-item">
+          <span class="check">✓</span>
+          <span>Cruelty Free</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Image Showcase featuring Original Logo in authentic luxury presentation -->
+    <div class="hero-visual">
+      <div class="logo-display-card">
+        <div class="logo-halo"></div>
+        <img src="images/manthalir-logo.jpeg" alt="Manthalir Parampariyam Original Logo" class="hero-logo-img" decoding="async" fetchpriority="high">
+        <div class="logo-card-footer">
+          <h2 class="card-brand-title">Manthalir Parampariyam</h2>
+          <p class="card-brand-tamil">மாந்தளிர் பாரம்பரியம்</p>
+          <div class="gold-line"></div>
+          <p class="card-location">Trichy • Tamil Nadu</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Categories Section -->
+<section class="categories-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="subtitle">Curated Botanical Collections</span>
+      <h2 class="title">Product Categories</h2>
+      <p class="description">Explore our four traditional wellness categories formulated for skin radiance, hair vitality, and gentle care.</p>
+    </div>
+
+    <div class="categories-grid">
+      @for (cat of categories; track cat.slug) {
+        <a [routerLink]="['/products']" [queryParams]="{category: cat.slug}" class="category-card">
+          <div class="category-icon-box">
+            @switch (cat.slug) {
+              @case ('hair-care') {
+                <span class="cat-emoji">🌿</span>
+              }
+              @case ('skin-and-face') {
+                <span class="cat-emoji">✨</span>
+              }
+              @case ('traditional-soaps') {
+                <span class="cat-emoji">🧼</span>
+              }
+              @default {
+                <span class="cat-emoji">🌸</span>
+              }
+            }
+          </div>
+          <h3 class="category-name">{{ cat.name }}</h3>
+          <p class="category-desc">{{ cat.description }}</p>
+          <span class="category-count">{{ cat.count }} Products Available</span>
+          <span class="category-link-text">Browse Collection &rarr;</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products Showcase (Selection of the 16) -->
+<section class="featured-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="subtitle">Handcrafted Formulations</span>
+      <h2 class="title">Featured Products</h2>
+      <p class="description">A highlight of our authentic herbal products. View individual details and enquire directly with the brand.</p>
+    </div>
+
+    <div class="products-grid">
+      @for (product of featuredProducts; track product.id) {
+        <div class="product-card">
+          <div class="product-card-top">
+            <span class="badge badge-gold">{{ product.badge }}</span>
+            <button 
+              type="button" 
+              class="wishlist-toggle-btn" 
+              (click)="toggleWishlist(product)" 
+              [class.active]="isInWishlist(product.id)"
+              aria-label="Toggle wishlist"
+            >
+              <svg class="heart-icon" viewBox="0 0 24 24" [attr.fill]="isInWishlist(product.id) ? '#D8A62E' : 'none'" stroke="#D8A62E" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="product-icon-wrap">
+            <div class="product-avatar">
+              <span class="avatar-leaf">🌿</span>
+            </div>
+          </div>
+
+          <div class="product-card-body">
+            <span class="product-category-tag">{{ product.category }}</span>
+            <h3 class="product-title">
+              <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+            </h3>
+            <p class="product-tamil-name">{{ product.tamilName }}</p>
+            
+            <!-- Clearly marked placeholders as requested -->
+            <div class="placeholder-box">
+              <div class="placeholder-row">
+                <span class="placeholder-label">Price:</span>
+                <span class="placeholder-val">{{ product.pricePlaceholder }}</span>
+              </div>
+              <div class="placeholder-row">
+                <span class="placeholder-label">Ingredients:</span>
+                <span class="placeholder-val">{{ product.ingredientsPlaceholder }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card-footer">
+            <button type="button" (click)="addToCart(product)" class="btn btn-secondary btn-sm" style="flex: 1;">
+              <span>Add to Cart</span>
+            </button>
+            <a [routerLink]="['/products', product.id]" class="btn btn-outline btn-sm">
+              <span>Details</span>
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="view-all-cta">
+      <a routerLink="/products" class="btn btn-primary">
+        <span>View All 16 Products</span>
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Official Poster Visual Reference Section (as requested) -->
+<section class="poster-reference-section">
+  <div class="container poster-container">
+    <div class="poster-text-col">
+      <span class="subtitle">Official Brand Showcase</span>
+      <h2 class="title">Our 16 Authentic Products & Quality Guarantee</h2>
+      <p class="poster-intro">
+        From Kumkumadi Night Serum to Avarampoo Face Wash, Semparuthi Shampoo, and handcrafted Kuppaimeni & Sandalwood Soaps — each formula represents centuries of traditional Tamil Siddha and Ayurvedic knowledge.
+      </p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <span class="pillar-icon">🌿</span>
+          <div>
+            <h4>Herbal Ingredients</h4>
+            <p>100% natural botanical extracts sourced responsibly</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-icon">🧪</span>
+          <div>
+            <h4>No Harmful Chemicals</h4>
+            <p>Free from sulphates, parabens, and synthetic bleaches</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-icon">🐇</span>
+          <div>
+            <h4>Cruelty Free</h4>
+            <p>Ethically developed with zero animal testing</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-icon">🛡️</span>
+          <div>
+            <h4>Safe for All Skin Types</h4>
+            <p>Gentle, time-honored recipes for everyday use</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-icon">💇</span>
+          <div>
+            <h4>Healthy Hair & Skin</h4>
+            <p>Promotes authentic vitality from scalp to skin</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-icon">🏺</span>
+          <div>
+            <h4>Traditional Formula</h4>
+            <p>Crafted following classical herbal wisdom</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-actions">
+        <a routerLink="/about" class="btn btn-secondary">Learn Our Story</a>
+        <a href="https://wa.me/917010136599" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+          WhatsApp Founder: 70101 36599
+        </a>
+      </div>
+    </div>
+
+    <!-- Poster Frame Reference (without making it the full background) -->
+    <div class="poster-image-col">
+      <div class="poster-frame">
+        <div class="poster-tag">Official Brand Poster Reference</div>
+        <img src="images/manthalir-products-poster.png" alt="Manthalir Parampariyam 16 Products Poster Reference" class="poster-img" loading="lazy" decoding="async">
+        <div class="poster-caption">
+          <p class="founder-name"><strong>M. முத்துமணி MBA.</strong></p>
+          <p class="founder-addr">Morais City, Trichy - 620 007</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Banner -->
+<section class="cta-banner">
+  <div class="container cta-content">
+    <h2 class="cta-title">Ready to Experience Pure Herbal Wellness?</h2>
+    <p class="cta-desc">
+      Contact our team in Trichy directly on WhatsApp to place orders, check stock availability, or ask about custom herbal routines.
+    </p>
+    <div class="cta-buttons">
+      <a routerLink="/products" class="btn btn-primary">Browse All 16 Products</a>
+      <a href="https://wa.me/917010136599?text=Vanakkam!%20I%20am%20interested%20in%20ordering%20Manthalir%20Parampariyam%20herbal%20products." 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn btn-whatsapp">
+        <span>Order on WhatsApp (70101 36599)</span>
+      </a>
+    </div>
+  </div>
+</section>

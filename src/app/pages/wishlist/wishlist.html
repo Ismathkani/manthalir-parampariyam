@@ -1,0 +1,46 @@
+<div class="wishlist-page">
+  <div class="container">
+    <div class="wishlist-header">
+      <h1 class="page-title">My Wishlist</h1>
+      <p class="page-desc">Save your favorite herbal essentials and move them to cart whenever you're ready.</p>
+    </div>
+
+    @if (wishlistService.wishlist().length > 0) {
+      <div class="wishlist-grid">
+        @for (product of wishlistService.wishlist(); track product.id) {
+          <div class="wishlist-card">
+            <div class="card-icon-area">
+              <span class="leaf-avatar">🌿</span>
+            </div>
+
+            <div class="card-body">
+              <span class="category-tag">{{ product.category }}</span>
+              <h3 class="product-title">
+                <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+              </h3>
+              <p class="product-tamil">{{ product.tamilName }}</p>
+              <span class="price-placeholder">{{ product.pricePlaceholder }}</span>
+            </div>
+
+            <div class="card-footer">
+              <button type="button" class="btn btn-secondary btn-sm" (click)="moveToCart(product)" style="flex: 1;">
+                <span>Move to Cart</span>
+              </button>
+              <button type="button" class="btn btn-outline btn-sm remove-btn" (click)="removeFromWishlist(product.id)">
+                <span>Remove</span>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <!-- Empty Wishlist -->
+      <div class="empty-wishlist-card">
+        <span class="empty-icon">❤️</span>
+        <h2>Your Wishlist is Empty</h2>
+        <p>Save traditional products you love by tapping the heart icon on any product.</p>
+        <a routerLink="/products" class="btn btn-primary mt-3">Browse 16 Products</a>
+      </div>
+    }
+  </div>
+</div>
