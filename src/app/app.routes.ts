@@ -37,6 +37,22 @@ export const routes: Routes = [
     title: 'Contact Us | Manthalir Parampariyam'
   },
   {
+    path: 'admin/login',
+    loadComponent: () => import('./pages/admin/login/login').then(m => m.AdminLoginComponent),
+    title: 'Admin Login | Manthalir Parampariyam'
+  },
+  {
+    path: 'admin/dashboard',
+    loadComponent: () => import('./pages/admin/dashboard/dashboard').then(m => m.AdminDashboardComponent),
+    canActivate: [() => import('./guards/auth.guard').then(m => m.authGuard)],
+    title: 'Admin Dashboard | Manthalir Parampariyam'
+  },
+  {
+    path: 'admin',
+    redirectTo: 'admin/dashboard',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

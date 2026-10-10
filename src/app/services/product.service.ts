@@ -1,10 +1,12 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Product, Category } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  private http = inject(HttpClient);
   // All 16 products of Manthalir Parampariyam
   // Note: Placeholders are explicitly indicated for prices and ingredients until owner provides final values.
   private readonly productsData: Product[] = [
@@ -316,16 +318,34 @@ export class ProductService {
 
   readonly products = signal<Product[]>(this.productsData);
 
+  constructor() {
+    this.loadProducts();
+  }
+
+  loadProducts(): void {
+    this.http.get<{ success: boolean; data: Product[] }>('/api/products').subscribe({
+      next: (res) => {
+        if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
+          this.products.set(res.data);
+        }
+      },
+      error: (err) => {
+        // Fallback gracefully to default in-memory 16 products
+        console.warn('Could not load products from API, using default products', err);
+      }
+    });
+  }
+
   getProducts(): Product[] {
-    return this.productsData;
+    return this.products();
   }
 
   getProductById(id: number): Product | undefined {
-    return this.productsData.find(p => p.id === id);
+    return this.products().find(p => p.id === Number(id));
   }
 
   getFeaturedProducts(): Product[] {
-    return this.productsData.filter(p => p.featured);
+    return this.products().filter(p => p.featured);
   }
 
   getCategories(): Category[] {
@@ -356,9 +376,17 @@ export class ProductService {
       }
     };
 
-    for (const prod of this.productsData) {
+    const currentProds = this.products();
+    for (const prod of currentProds) {
       if (cats[prod.categorySlug]) {
-        cats[prod.categorySlug].count++;
+        cats[prod.categorySlug].count = (cats[prod.categorySlug].count || 0) + 1;
+      } else if (prod.categorySlug) {
+        cats[prod.categorySlug] = {
+          name: prod.category,
+          slug: prod.categorySlug,
+          description: `Authentic ${prod.category} heritage products`,
+          count: 1
+        };
       }
     }
 
@@ -366,7 +394,7 @@ export class ProductService {
   }
 
   filterProducts(categorySlug?: string, searchQuery?: string): Product[] {
-    return this.productsData.filter(product => {
+    return this.products().filter(product => {
       const matchesCategory = !categorySlug || categorySlug === 'all' || product.categorySlug === categorySlug;
       const matchesQuery = !searchQuery || 
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||

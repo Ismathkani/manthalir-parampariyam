@@ -7,22 +7,36 @@ import {
 import express from 'express';
 import { join } from 'node:path';
 
+import cookieParser from 'cookie-parser';
+import { handleLogin, handleLogout, handleMe, handleChangePassword } from './server/auth.js';
+import apiRouter from './server/api.js';
+
 const browserDistFolder = join(import.meta.dirname, '../browser');
+const uploadsFolder = join(process.cwd(), 'public', 'uploads');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+// Body and Cookie Parsers
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(cookieParser());
+
+// Static file serving for user uploaded images
+app.use('/uploads', express.static(uploadsFolder));
+
+// Admin Authentication Endpoints
+app.post('/api/auth/login', handleLogin);
+app.post('/api/auth/logout', handleLogout);
+app.get('/api/auth/me', handleMe);
+app.post('/api/auth/change-password', handleChangePassword);
+
+// Products, Categories, Uploads, Settings API
+app.use('/api', apiRouter);
+
+app.get('/api/test', (req, res) => {
+  res.json({ ok: true, message: 'Server is working' });
+});
 
 /**
  * Serve static files from /browser

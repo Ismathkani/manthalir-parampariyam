@@ -2,10 +2,19 @@ export interface Product {
   id: number;
   name: string;
   tamilName?: string;
-  category: 'Hair Care' | 'Skin & Face' | 'Traditional Soaps' | 'Wellness & Hygiene';
+  slug?: string;
+  category: string;
   categorySlug: string;
   badge?: string;
   featured: boolean;
+  price?: number;
+  salePrice?: number | null;
+  images?: string[];
+  mainImage?: string;
+  sku?: string;
+  stock?: number;
+  isAvailable?: boolean;
+  status?: 'Published' | 'Draft';
   
   // Clearly marked placeholders as requested by owner
   pricePlaceholder: string;
@@ -14,11 +23,15 @@ export interface Product {
   descriptionPlaceholder: string;
   benefitsPlaceholder: string[];
   usagePlaceholder: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface Category {
+  id?: number;
   name: string;
   slug: string;
-  count: number;
+  count?: number;
   description: string;
 }
+

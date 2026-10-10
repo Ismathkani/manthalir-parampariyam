@@ -39,6 +39,7 @@
           <li><a routerLink="/cart">Shopping Cart</a></li>
           <li><a routerLink="/about">About Us & Heritage</a></li>
           <li><a routerLink="/contact">Contact & Enquiry</a></li>
+          <li><a routerLink="/admin/login" class="admin-quick-link">Admin Login</a></li>
         </ul>
       </div>
 
@@ -85,7 +86,17 @@
     <!-- Copyright -->
     <div class="footer-bottom">
       <p>&copy; {{ currentYear }} Manthalir Parampariyam (மாந்தளிர் பாரம்பரியம்). All Rights Reserved.</p>
-      <p class="tamil-sub">Trichy, Tamil Nadu • Authentic Traditional Care</p>
+      <div class="footer-bottom-meta">
+        <span class="tamil-sub">Trichy, Tamil Nadu • Authentic Traditional Care</span>
+        <span class="dot-sep">•</span>
+        <a routerLink="/admin/login" class="footer-admin-link">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -1px; margin-right: 3px;">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Admin Login
+        </a>
+      </div>
     </div>
   </div>
 </footer>

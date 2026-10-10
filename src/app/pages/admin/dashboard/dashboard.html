@@ -1,0 +1,1022 @@
+<div class="admin-dashboard-container">
+  <!-- Top Navigation Bar -->
+  <header class="admin-header">
+    <div class="header-left">
+      <button class="mobile-toggle-btn" (click)="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="brand-badge">
+        <img src="images/manthalir-logo.jpeg" alt="Logo" class="header-logo" />
+        <div class="header-title-box">
+          <span class="heritage-tag">மாந்தளிர் பாரம்பரியம்</span>
+          <span class="portal-badge">Admin Portal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <a routerLink="/" target="_blank" class="view-store-btn" title="View Customer Website">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <span>View Live Store</span>
+      </a>
+
+      <div class="user-pill">
+        <div class="user-avatar">M</div>
+        <div class="user-meta">
+          <span class="user-name">Manthalir</span>
+          <span class="user-role">Administrator</span>
+        </div>
+      </div>
+
+      <button (click)="logout()" class="header-logout-btn" title="Logout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Global Feedback Notification Banner -->
+  <div *ngIf="notification.message" class="notification-banner" [ngClass]="notification.type">
+    <div class="notification-content">
+      <svg *ngIf="notification.type === 'success'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <svg *ngIf="notification.type === 'error'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <span>{{ notification.message }}</span>
+    </div>
+    <button class="close-notif-btn" (click)="notification.message = ''">×</button>
+  </div>
+
+  <div class="dashboard-body">
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar" [class.mobile-open]="mobileMenuOpen">
+      <nav class="sidebar-nav">
+        <button
+          class="nav-item"
+          [class.active]="activeSection === 'overview'"
+          (click)="setSection('overview')"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9"></rect>
+            <rect x="14" y="3" width="7" height="5"></rect>
+            <rect x="14" y="12" width="7" height="9"></rect>
+            <rect x="3" y="16" width="7" height="5"></rect>
+          </svg>
+          <span>Overview</span>
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeSection === 'products'"
+          (click)="setSection('products')"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span>Products ({{ products.length }})</span>
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeSection === 'add-product'"
+          (click)="setSection('add-product')"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+          <span>Add New Product</span>
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeSection === 'categories'"
+          (click)="setSection('categories')"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          <span>Categories ({{ categories.length }})</span>
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeSection === 'inventory'"
+          (click)="setSection('inventory')"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+            <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+          </svg>
+          <span>Inventory & Stock</span>
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeSection === 'orders'"
+          (click)="setSection('orders')"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>WhatsApp Orders</span>
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeSection === 'settings'"
+          (click)="setSection('settings')"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>Store Settings</span>
+        </button>
+
+        <button
+          class="nav-item"
+          [class.active]="activeSection === 'change-password'"
+          (click)="setSection('change-password')"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Change Password</span>
+        </button>
+
+        <div class="sidebar-divider"></div>
+
+        <button class="nav-item logout-nav" (click)="logout()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Logout</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-main">
+
+      <!-- ============================================== -->
+      <!-- 1. OVERVIEW SECTION -->
+      <!-- ============================================== -->
+      <section *ngIf="activeSection === 'overview'" class="content-section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">Dashboard Overview</h1>
+            <p class="section-subtitle">Real-time statistics and catalog health</p>
+          </div>
+          <button class="btn btn-gold" (click)="setSection('add-product')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Add New Product</span>
+          </button>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-wrapper gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Total Products</span>
+              <span class="stat-value">{{ stats.totalProducts }}</span>
+              <span class="stat-meta">In catalog database</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Live on Store</span>
+              <span class="stat-value">{{ stats.publishedProducts }}</span>
+              <span class="stat-meta">Published & visible to customers</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Draft Products</span>
+              <span class="stat-value">{{ stats.draftProducts }}</span>
+              <span class="stat-meta">Hidden from customer catalog</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Low Stock Alert</span>
+              <span class="stat-value">{{ stats.lowStock }}</span>
+              <span class="stat-meta">Items with 10 units or less</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Products Quick Table -->
+        <div class="admin-panel mt-4">
+          <div class="panel-header">
+            <h2 class="panel-title">Quick Catalog Overview</h2>
+            <button class="btn btn-outline-sm" (click)="setSection('products')">View All Products →</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prod of products.slice(0, 6)">
+                  <td>
+                    <div class="product-cell">
+                      <img [src]="prod.mainImage || 'images/manthalir-logo.jpeg'" alt="" class="prod-thumb" />
+                      <div>
+                        <strong class="prod-name">{{ prod.name }}</strong>
+                        <div class="prod-tamil">{{ prod.tamilName }}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="category-badge">{{ prod.category }}</span></td>
+                  <td><strong>₹{{ prod.price }}</strong></td>
+                  <td>
+                    <span class="stock-pill" [class.low]="(prod.stock || 0) <= 10">
+                      {{ prod.stock || 0 }} in stock
+                    </span>
+                  </td>
+                  <td>
+                    <span class="status-pill" [ngClass]="prod.status?.toLowerCase()">
+                      {{ prod.status }}
+                    </span>
+                  </td>
+                  <td>
+                    <button class="action-btn" (click)="editProduct(prod)" title="Edit">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 2. PRODUCTS MANAGEMENT SECTION -->
+      <!-- ============================================== -->
+      <section *ngIf="activeSection === 'products'" class="content-section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">Product Catalog Management</h1>
+            <p class="section-subtitle">Manage all 16 original heritage products and newly added items</p>
+          </div>
+          <button class="btn btn-gold" (click)="setSection('add-product')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Add New Product</span>
+          </button>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="toolbar-box">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="text"
+              placeholder="Search product name, Tamil title, SKU..."
+              [(ngModel)]="searchQuery"
+              (ngModelChange)="onSearchChange()"
+            />
+          </div>
+
+          <div class="filter-group">
+            <label>Category:</label>
+            <select [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryFilterChange()">
+              <option value="all">All Categories</option>
+              <option *ngFor="let cat of categories" [value]="cat.name">{{ cat.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products List Table -->
+        <div class="admin-panel">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Image & Title</th>
+                  <th>Category</th>
+                  <th>SKU</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of filteredProducts">
+                  <td class="text-muted">#{{ p.id }}</td>
+                  <td>
+                    <div class="product-cell">
+                      <img [src]="p.mainImage || 'images/manthalir-logo.jpeg'" alt="" class="prod-thumb" />
+                      <div>
+                        <strong class="prod-name">{{ p.name }}</strong>
+                        <div class="prod-tamil">{{ p.tamilName }}</div>
+                        <span *ngIf="p.featured" class="featured-badge">★ Featured</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="category-badge">{{ p.category }}</span></td>
+                  <td><code>{{ p.sku || 'MP-' + p.id }}</code></td>
+                  <td>
+                    <div class="price-stack">
+                      <strong>₹{{ p.price }}</strong>
+                      <span *ngIf="p.salePrice" class="sale-strike">₹{{ p.salePrice }}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="stock-pill" [class.low]="(p.stock || 0) <= 10">
+                      {{ p.stock || 0 }}
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      class="toggle-status-btn"
+                      [ngClass]="p.status?.toLowerCase()"
+                      (click)="togglePublish(p)"
+                      title="Click to toggle Published/Draft"
+                    >
+                      {{ p.status }}
+                    </button>
+                  </td>
+                  <td>
+                    <div class="action-btn-group">
+                      <button class="action-btn edit" (click)="editProduct(p)" title="Edit Product">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                      </button>
+                      <button class="action-btn delete" (click)="confirmDelete(p)" title="Delete Product">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr *ngIf="filteredProducts.length === 0">
+                  <td colspan="8" class="text-center py-4">No products found matching your filter criteria.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 3. ADD / EDIT PRODUCT SECTION -->
+      <!-- ============================================== -->
+      <section *ngIf="activeSection === 'add-product'" class="content-section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">{{ isEditing ? 'Edit Product #' + editingId : 'Add New Product' }}</h1>
+            <p class="section-subtitle">Fill in details, upload images from your computer, and set pricing & stock</p>
+          </div>
+          <button class="btn btn-outline" (click)="setSection('products')">
+            ← Back to Products
+          </button>
+        </div>
+
+        <div class="admin-panel form-panel">
+          <form class="product-form-grid" (ngSubmit)="saveProduct(productForm.status)">
+            <!-- Left Column: Details -->
+            <div class="form-col-main">
+              <div class="form-row">
+                <div class="form-field flex-2">
+                  <label>Product Name (English) <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    [(ngModel)]="productForm.name"
+                    name="name"
+                    placeholder="e.g. Kumkumadi Night Serum"
+                    required
+                  />
+                </div>
+                <div class="form-field flex-2">
+                  <label>Tamil Heritage Title (தமிழ் பெயர்)</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="productForm.tamilName"
+                    name="tamilName"
+                    placeholder="எ.கா. குங்குமாதி நைட் சீரம்"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label>Category <span class="req">*</span></label>
+                  <select [(ngModel)]="productForm.category" name="category" required>
+                    <option *ngFor="let c of categories" [value]="c.name">{{ c.name }}</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label>SKU / Stock Keeping Unit</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="productForm.sku"
+                    name="sku"
+                    placeholder="e.g. MP-KNS-001"
+                  />
+                </div>
+                <div class="form-field">
+                  <label>Badge / Highlight Tag</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="productForm.badge"
+                    name="badge"
+                    placeholder="e.g. Signature Care / Siddha Remedy"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label>Price (₹) <span class="req">*</span></label>
+                  <input
+                    type="number"
+                    [(ngModel)]="productForm.price"
+                    name="price"
+                    min="0"
+                    step="1"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label>Sale Price (₹) (Optional)</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="productForm.salePrice"
+                    name="salePrice"
+                    min="0"
+                    placeholder="Leave empty if no discount"
+                  />
+                </div>
+                <div class="form-field">
+                  <label>Stock Quantity <span class="req">*</span></label>
+                  <input
+                    type="number"
+                    [(ngModel)]="productForm.stock"
+                    name="stock"
+                    min="0"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label>Product Description</label>
+                <textarea
+                  [(ngModel)]="productForm.descriptionPlaceholder"
+                  name="description"
+                  rows="3"
+                  placeholder="Describe the herbal qualities, traditional benefits, and natural ingredients..."
+                ></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field flex-1">
+                  <label>Ingredients Details</label>
+                  <textarea
+                    [(ngModel)]="productForm.ingredientsPlaceholder"
+                    name="ingredients"
+                    rows="2"
+                    placeholder="Pure saffron, herbal roots, organic oils..."
+                  ></textarea>
+                </div>
+                <div class="form-field flex-1">
+                  <label>Usage Instructions</label>
+                  <textarea
+                    [(ngModel)]="productForm.usagePlaceholder"
+                    name="usage"
+                    rows="2"
+                    placeholder="Apply 2-3 drops before bedtime..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field flex-1">
+                  <label>Volume / Size Specification</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="productForm.sizePlaceholder"
+                    name="size"
+                    placeholder="e.g. 30 ml, 100 g, Pack of 10"
+                  />
+                </div>
+                <div class="form-field flex-1 checkbox-field">
+                  <label class="toggle-checkbox">
+                    <input
+                      type="checkbox"
+                      [(ngModel)]="productForm.featured"
+                      name="featured"
+                    />
+                    <span>Feature this product on homepage</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Images & Publishing -->
+            <div class="form-col-side">
+              <!-- Image Upload Card -->
+              <div class="side-card">
+                <h3 class="side-card-title">Product Images</h3>
+                <p class="side-card-desc">Accepts JPEG, PNG, WebP up to 5MB. Files are saved securely on persistent server storage.</p>
+
+                <!-- File Picker Trigger -->
+                <div class="upload-dropzone">
+                  <input
+                    type="file"
+                    id="imageFileInput"
+                    (change)="onFileSelected($event)"
+                    multiple
+                    accept="image/jpeg,image/png,image/webp"
+                    class="file-input-hidden"
+                  />
+                  <label for="imageFileInput" class="upload-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                    <span>Select Images from Computer</span>
+                    <small>Multiple images supported</small>
+                  </label>
+                </div>
+
+                <div *ngIf="uploadStatusMessage" class="upload-status-pill" [class.success]="!isUploading">
+                  {{ uploadStatusMessage }}
+                </div>
+
+                <!-- Preview Grid -->
+                <div class="image-gallery-preview" *ngIf="productForm.images.length > 0">
+                  <div
+                    *ngFor="let img of productForm.images; let i = index"
+                    class="gallery-item"
+                    [class.is-main]="productForm.mainImage === img"
+                  >
+                    <img [src]="img" alt="Product Image" />
+                    <div class="gallery-overlay">
+                      <button
+                        type="button"
+                        class="thumb-action main-btn"
+                        (click)="setMainImage(img)"
+                        title="Set as Main Image"
+                      >
+                        {{ productForm.mainImage === img ? '★ Main' : 'Make Main' }}
+                      </button>
+                      <button
+                        type="button"
+                        class="thumb-action remove-btn"
+                        (click)="removeImage(i)"
+                        title="Remove Image"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Publishing Controls -->
+              <div class="side-card action-card">
+                <h3 class="side-card-title">Publication Status</h3>
+                <div class="status-selector">
+                  <label class="radio-label">
+                    <input
+                      type="radio"
+                      name="statusChoice"
+                      value="Published"
+                      [(ngModel)]="productForm.status"
+                    />
+                    <span><strong>Published</strong> (Live on store)</span>
+                  </label>
+                  <label class="radio-label">
+                    <input
+                      type="radio"
+                      name="statusChoice"
+                      value="Draft"
+                      [(ngModel)]="productForm.status"
+                    />
+                    <span><strong>Draft</strong> (Hidden from customers)</span>
+                  </label>
+                </div>
+
+                <div class="action-buttons-stack">
+                  <button
+                    type="button"
+                    class="btn btn-gold w-100"
+                    (click)="saveProduct('Published')"
+                    [disabled]="isUploading"
+                  >
+                    ✓ {{ isEditing ? 'Update & Publish' : 'Publish Product' }}
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-outline w-100"
+                    (click)="saveProduct('Draft')"
+                    [disabled]="isUploading"
+                  >
+                    Save as Draft
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-text w-100"
+                    (click)="setSection('products')"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 4. CATEGORIES SECTION -->
+      <!-- ============================================== -->
+      <section *ngIf="activeSection === 'categories'" class="content-section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">Category Management</h1>
+            <p class="section-subtitle">Organize herbal product collections and preserve taxonomy</p>
+          </div>
+        </div>
+
+        <div class="category-grid">
+          <!-- Add Category Form -->
+          <div class="admin-panel">
+            <h2 class="panel-title mb-3">Add New Category</h2>
+            <form (ngSubmit)="addCategory()">
+              <div class="form-field mb-3">
+                <label>Category Name <span class="req">*</span></label>
+                <input
+                  type="text"
+                  [(ngModel)]="newCategory.name"
+                  name="catName"
+                  placeholder="e.g. Baby Care / Herbal Teas"
+                  required
+                />
+              </div>
+              <div class="form-field mb-3">
+                <label>Description</label>
+                <textarea
+                  [(ngModel)]="newCategory.description"
+                  name="catDesc"
+                  rows="3"
+                  placeholder="Traditional botanical remedies..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-gold" [disabled]="categoryLoading">
+                + Create Category
+              </button>
+            </form>
+          </div>
+
+          <!-- Existing Categories List -->
+          <div class="admin-panel">
+            <h2 class="panel-title mb-3">Existing Categories ({{ categories.length }})</h2>
+            <div class="category-list">
+              <div *ngFor="let cat of categories" class="category-card-item">
+                <div class="cat-info">
+                  <h3 class="cat-name">{{ cat.name }}</h3>
+                  <p class="cat-desc">{{ cat.description }}</p>
+                  <span class="cat-count">
+                    {{ getCategoryProductCount(cat.name) }} product(s) assigned
+                  </span>
+                </div>
+                <div class="cat-actions">
+                  <button
+                    class="action-btn delete"
+                    (click)="deleteCategory(cat)"
+                    [title]="getCategoryProductCount(cat.name) > 0 ? 'Cannot delete: Products assigned' : 'Delete category'"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 5. INVENTORY SECTION -->
+      <!-- ============================================== -->
+      <section *ngIf="activeSection === 'inventory'" class="content-section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">Inventory & Stock Tracking</h1>
+            <p class="section-subtitle">Real-time product stock counts and quick quantity adjustment</p>
+          </div>
+        </div>
+
+        <div class="admin-panel">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Current Stock</th>
+                  <th>Stock Health</th>
+                  <th>Quick Adjust</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of products">
+                  <td>
+                    <div class="product-cell">
+                      <img [src]="p.mainImage || 'images/manthalir-logo.jpeg'" alt="" class="prod-thumb" />
+                      <div>
+                        <strong>{{ p.name }}</strong>
+                        <div class="text-muted text-sm">{{ p.category }}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><code>{{ p.sku || 'MP-' + p.id }}</code></td>
+                  <td>
+                    <span class="stock-pill" [class.low]="(p.stock || 0) <= 10">
+                      {{ p.stock || 0 }} units
+                    </span>
+                  </td>
+                  <td>
+                    <span *ngIf="(p.stock || 0) > 20" class="badge-healthy">In Stock</span>
+                    <span *ngIf="(p.stock || 0) <= 20 && (p.stock || 0) > 0" class="badge-warning">Low Stock</span>
+                    <span *ngIf="(p.stock || 0) === 0" class="badge-danger">Out of Stock</span>
+                  </td>
+                  <td>
+                    <div class="quick-adjust-group">
+                      <button class="adjust-btn" (click)="updateStock(p, -5)" title="Subtract 5">-5</button>
+                      <button class="adjust-btn" (click)="updateStock(p, -1)" title="Subtract 1">-1</button>
+                      <button class="adjust-btn add" (click)="updateStock(p, 1)" title="Add 1">+1</button>
+                      <button class="adjust-btn add" (click)="updateStock(p, 10)" title="Add 10">+10</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 6. ORDERS SECTION -->
+      <!-- ============================================== -->
+      <section *ngIf="activeSection === 'orders'" class="content-section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">Customer WhatsApp Orders</h1>
+            <p class="section-subtitle">Customers submit cart orders via direct WhatsApp checkout (+91 70101 36599)</p>
+          </div>
+          <a
+            href="https://wa.me/917010136599"
+            target="_blank"
+            class="btn btn-gold"
+          >
+            <span>Open WhatsApp Web</span>
+          </a>
+        </div>
+
+        <div class="admin-panel text-center py-5">
+          <div class="whatsapp-card-box">
+            <div class="whatsapp-logo-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </div>
+            <h2>WhatsApp Direct Store Order Channel</h2>
+            <p class="text-muted max-w-md mx-auto">
+              Manthalir Parampariyam integrates direct WhatsApp ordering (+91 70101 36599).
+              When customers click "Proceed to WhatsApp Order", their full product cart, addresses, and quantities are transmitted directly to your official business phone.
+            </p>
+            <div class="phone-display">Official Order Hotline: <strong>+91 70101 36599</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 7. STORE SETTINGS SECTION -->
+      <!-- ============================================== -->
+      <section *ngIf="activeSection === 'settings'" class="content-section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">Store & Brand Settings</h1>
+            <p class="section-subtitle">Configure contact details, official numbers, and brand info</p>
+          </div>
+        </div>
+
+        <div class="admin-panel max-w-2xl">
+          <form (ngSubmit)="saveSettings()">
+            <div class="form-field mb-3">
+              <label>Store Name (English)</label>
+              <input type="text" [(ngModel)]="settings.storeName" name="storeName" />
+            </div>
+
+            <div class="form-field mb-3">
+              <label>Tamil Heritage Brand Title</label>
+              <input type="text" [(ngModel)]="settings.tamilName" name="tamilName" />
+            </div>
+
+            <div class="form-field mb-3">
+              <label>Founder / Brand Tagline</label>
+              <input type="text" [(ngModel)]="settings.founder" name="founder" />
+            </div>
+
+            <div class="form-field mb-3">
+              <label>Store Address</label>
+              <input type="text" [(ngModel)]="settings.address" name="address" />
+            </div>
+
+            <div class="form-row mb-3">
+              <div class="form-field flex-1">
+                <label>Contact Phone</label>
+                <input type="text" [(ngModel)]="settings.phone" name="phone" />
+              </div>
+              <div class="form-field flex-1">
+                <label>Official WhatsApp Number</label>
+                <input type="text" [(ngModel)]="settings.whatsappNumber" name="whatsapp" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-gold">
+              Save Store Settings
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- 8. CHANGE PASSWORD SECTION -->
+      <!-- ============================================== -->
+      <section *ngIf="activeSection === 'change-password'" class="content-section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">Change Administrator Password</h1>
+            <p class="section-subtitle">Update credentials using server-side Bcrypt password hashing</p>
+          </div>
+        </div>
+
+        <div class="admin-panel max-w-lg">
+          <div *ngIf="passwordFeedback.success" class="alert-box success">
+            {{ passwordFeedback.success }}
+          </div>
+          <div *ngIf="passwordFeedback.error" class="alert-box error">
+            {{ passwordFeedback.error }}
+          </div>
+
+          <form (ngSubmit)="onChangePassword()">
+            <div class="form-field mb-3">
+              <label>Current Password <span class="req">*</span></label>
+              <input
+                type="password"
+                [(ngModel)]="passwordForm.currentPassword"
+                name="currPass"
+                required
+                autocomplete="current-password"
+              />
+            </div>
+
+            <div class="form-field mb-3">
+              <label>New Password (Min 8 characters) <span class="req">*</span></label>
+              <input
+                type="password"
+                [(ngModel)]="passwordForm.newPassword"
+                name="newPass"
+                required
+                minlength="8"
+                autocomplete="new-password"
+              />
+            </div>
+
+            <div class="form-field mb-4">
+              <label>Confirm New Password <span class="req">*</span></label>
+              <input
+                type="password"
+                [(ngModel)]="passwordForm.confirmPassword"
+                name="confPass"
+                required
+                autocomplete="new-password"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-gold w-100" [disabled]="passwordLoading">
+              {{ passwordLoading ? 'Updating Password...' : 'Update Password Securely' }}
+            </button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Delete Product Confirmation Modal -->
+  <div *ngIf="productToDelete" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-icon-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h3 class="modal-title">Delete Product?</h3>
+      <p class="modal-desc">
+        Are you sure you want to permanently delete <strong>"{{ productToDelete.name }}"</strong>? This action cannot be undone.
+      </p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" (click)="cancelDelete()">Cancel</button>
+        <button class="btn btn-danger" (click)="executeDelete()">Yes, Delete Product</button>
+      </div>
+    </div>
+  </div>
+</div>

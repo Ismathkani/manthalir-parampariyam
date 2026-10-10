@@ -1,0 +1,77 @@
+import { Component, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+
+@Component({
+  selector: 'app-admin-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink],
+  templateUrl: './login.html',
+  styleUrl: './login.scss'
+})
+export class AdminLoginComponent {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
+  username = '';
+  password = '';
+  showPassword = false;
+  isLoading = false;
+  errorMessage = '';
+  successMessage = '';
+
+  constructor() {
+    // If already logged in, redirect to dashboard
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/admin/dashboard']);
+    }
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  onSubmit(): void {
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    const trimmedUser = this.username.trim();
+    if (!trimmedUser) {
+      this.errorMessage = 'Please enter your administrator username.';
+      return;
+    }
+
+    if (!this.password) {
+      this.errorMessage = 'Please enter your password.';
+      return;
+    }
+
+    this.isLoading = true;
+
+    this.authService.login({ username: trimmedUser, password: this.password }).subscribe({
+      next: (res) => {
+        this.isLoading = false;
+        if (res.success) {
+          this.successMessage = 'Authentication successful. Redirecting to Admin Dashboard...';
+          setTimeout(() => {
+            this.router.navigate(['/admin/dashboard']);
+          }, 400);
+        } else {
+          this.errorMessage = res.error || 'Authentication failed. Please check your credentials.';
+        }
+      },
+      error: (err) => {
+        this.isLoading = false;
+        if (err.status === 429) {
+          this.errorMessage = err.error?.error || 'Too many failed login attempts. Please wait 15 minutes before trying again.';
+        } else if (err.status === 401) {
+          this.errorMessage = err.error?.error || 'Invalid administrator username or password.';
+        } else {
+          this.errorMessage = err.error?.error || 'An unexpected connection error occurred. Please try again.';
+        }
+      }
+    });
+  }
+}
