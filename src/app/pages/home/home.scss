@@ -407,7 +407,8 @@
           height: 16px;
         }
 
-        &:hover, &.active {
+        &:hover,
+        &.active {
           background: #FFFFFF;
         }
       }
@@ -703,7 +704,7 @@
     display: grid;
     grid-template-columns: 3.2fr 1fr;
     gap: 1.5rem;
-    align-items: stretch;
+    align-items: start;
 
     @media (max-width: 1024px) {
       grid-template-columns: 1fr;
@@ -833,9 +834,12 @@
     color: #FFFFFF;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1.25rem;
     box-shadow: 0 16px 36px rgba(11, 56, 40, 0.15);
     border: 2px solid rgba(198, 163, 74, 0.35);
+    align-self: start;
+    position: sticky;
+    top: 96px;
 
     .promo-text-wrap {
       display: flex;
@@ -1066,6 +1070,7 @@
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-8px);
   }
