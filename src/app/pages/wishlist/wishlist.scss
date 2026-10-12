@@ -2,7 +2,7 @@
 
 .wishlist-page {
   padding: 3.5rem 0 5rem 0;
-  background-color: $color-cream-light;
+  background-color: var(--cream-light);
   min-height: 80vh;
 }
 
@@ -10,14 +10,15 @@
   margin-bottom: 2.5rem;
 
   .page-title {
-    font-size: 2.4rem;
-    color: $color-dark-green;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--forest-green);
     margin-bottom: 0.35rem;
   }
 
   .page-desc {
-    color: $color-text-muted;
-    font-size: 1rem;
+    color: var(--text-muted);
+    font-size: 1.05rem;
   }
 }
 
@@ -40,8 +41,8 @@
 }
 
 .wishlist-card {
-  background: $color-white;
-  border: 1px solid $color-border;
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
   border-radius: 1rem;
   padding: 1.25rem;
   display: flex;
@@ -50,23 +51,29 @@
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(2, 56, 32, 0.08);
+    box-shadow: 0 12px 28px rgba(11, 56, 40, 0.08);
+    border-color: rgba(198, 163, 74, 0.6);
   }
 
-  .card-icon-area {
+  .card-thumb-area {
     display: flex;
     justify-content: center;
+    align-items: center;
+    background: #FAF6ED;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    height: 160px;
     margin-bottom: 1rem;
 
-    .leaf-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba($color-gold, 0.25) 0%, rgba($color-forest-green, 0.1) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
+    .wishlist-img {
+      max-height: 130px;
+      max-width: 100%;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -79,30 +86,33 @@
       font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
-      color: $color-forest-green;
+      color: var(--leaf-green);
       margin-bottom: 0.25rem;
     }
 
     .product-title {
-      font-size: 1.15rem;
-      color: $color-dark-green;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--dark-green);
       margin-bottom: 0.25rem;
 
       a:hover {
-        color: $color-gold-dark;
+        color: var(--forest-green);
       }
     }
 
     .product-tamil {
+      font-family: 'Noto Sans Tamil', sans-serif;
       font-size: 0.8rem;
-      color: $color-text-muted;
-      margin-bottom: 0.65rem;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
     }
 
-    .price-placeholder {
-      font-size: 0.78rem;
-      color: #6B7280;
-      font-style: italic;
+    .price-val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark-green);
+      margin-top: auto;
       margin-bottom: 1rem;
     }
   }
@@ -110,15 +120,22 @@
   .card-footer {
     display: flex;
     gap: 0.5rem;
-    margin-top: auto;
+    align-items: center;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 0.85rem;
+
+    .flex-1 {
+      flex: 1;
+    }
 
     .remove-btn {
-      color: $color-danger;
-      border-color: rgba($color-danger, 0.3);
+      color: #9CA3AF;
+      border-color: #E5E7EB;
 
       &:hover {
-        background: rgba($color-danger, 0.08);
-        color: $color-danger;
+        background: #FEE2E2;
+        border-color: #F87171;
+        color: #DC2626;
       }
     }
   }
@@ -126,29 +143,25 @@
 
 .empty-wishlist-card {
   text-align: center;
-  padding: 4.5rem 1.5rem;
-  background: $color-white;
+  padding: 5rem 1rem;
+  background: #FFFFFF;
   border-radius: 1.25rem;
-  border: 1px dashed $color-border;
-  max-width: 520px;
-  margin: 0 auto;
+  border: 1px dashed var(--border-color);
 
   .empty-icon {
-    font-size: 3.5rem;
-    display: block;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    display: block;
   }
 
   h2 {
-    font-size: 1.6rem;
-    color: $color-dark-green;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--forest-green);
     margin-bottom: 0.5rem;
   }
 
   p {
-    color: $color-text-muted;
-    font-size: 0.95rem;
+    color: var(--text-muted);
   }
 }
-
-.mt-3 { margin-top: 1rem; }

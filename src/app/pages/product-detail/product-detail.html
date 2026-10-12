@@ -16,13 +16,21 @@
         <!-- Visual Column -->
         <div class="visual-col">
           <div class="detail-image-card">
-            <span class="detail-badge badge badge-gold">{{ prod.badge }}</span>
-            <div class="detail-avatar">
-              <span class="avatar-icon">🌿</span>
+            <span class="detail-badge badge badge-gold">{{ prod.badge || prod.category }}</span>
+            
+            <div class="main-image-container">
+              <img 
+                [src]="prod.mainImage || 'images/products/' + prod.slug + '.jpg'" 
+                [alt]="prod.name" 
+                class="detail-product-img"
+                fetchpriority="high"
+                decoding="async"
+              >
             </div>
+
             <div class="brand-authenticity-tag">
               <img src="images/manthalir-logo.jpeg" alt="Logo" class="mini-logo">
-              <span>Manthalir Parampariyam • 100% Herbal</span>
+              <span>Manthalir Parampariyam • 100% Herbal Authentic Care</span>
             </div>
           </div>
         </div>
@@ -31,7 +39,30 @@
         <div class="info-col">
           <span class="category-badge">{{ prod.category }}</span>
           <h1 class="product-title">{{ prod.name }}</h1>
-          <p class="product-tamil-title">{{ prod.tamilName }}</p>
+          @if (prod.tamilName) {
+            <p class="product-tamil-title">{{ prod.tamilName }}</p>
+          }
+
+          <!-- Rating -->
+          <div class="detail-rating-row">
+            <div class="stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <span class="rating-count">(5.0 Traditional Rating)</span>
+          </div>
+
+          <!-- Price Row -->
+          <div class="detail-price-box">
+            <span class="price-val">₹ {{ prod.price }}</span>
+            @if (prod.sizePlaceholder) {
+              <span class="size-val">/ {{ prod.sizePlaceholder }}</span>
+            }
+          </div>
+
+          <!-- Description -->
+          <p class="product-desc-text">
+            {{ prod.descriptionPlaceholder }}
+          </p>
 
           <!-- Notification upon adding to cart -->
           @if (addedToCartAlert()) {
@@ -41,33 +72,6 @@
             </div>
           }
 
-          <!-- Clearly Marked Placeholder Card for Owner Details -->
-          <div class="owner-placeholder-card">
-            <div class="placeholder-card-header">
-              <span class="shield-icon">🛡️</span>
-              <span class="header-text">Official Product Information (TBA by Owner)</span>
-            </div>
-            
-            <div class="placeholder-table">
-              <div class="p-row">
-                <span class="p-label">Price:</span>
-                <span class="p-value highlight-val">{{ prod.pricePlaceholder }}</span>
-              </div>
-              <div class="p-row">
-                <span class="p-label">Key Formulation:</span>
-                <span class="p-value">{{ prod.ingredientsPlaceholder }}</span>
-              </div>
-              <div class="p-row">
-                <span class="p-label">Net Size / Volume:</span>
-                <span class="p-value">{{ prod.sizePlaceholder }}</span>
-              </div>
-              <div class="p-row">
-                <span class="p-label">Description Note:</span>
-                <span class="p-value">{{ prod.descriptionPlaceholder }}</span>
-              </div>
-            </div>
-          </div>
-
           <!-- Quantity and Action Buttons -->
           <div class="actions-group">
             <div class="quantity-controller">
@@ -76,22 +80,22 @@
               <button type="button" class="qty-btn" (click)="incrementQty()">+</button>
             </div>
 
-            <button type="button" class="btn btn-secondary" (click)="addToCart()">
+            <button type="button" class="btn btn-primary add-cart-btn" (click)="addToCart()">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-2z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
               <span>Add to Cart</span>
             </button>
 
             <button 
               type="button" 
-              class="btn btn-outline wishlist-btn" 
+              class="btn btn-secondary wishlist-btn" 
               (click)="toggleWishlist()"
               [class.active]="isInWishlist()"
             >
-              <svg class="icon-sm" viewBox="0 0 24 24" [attr.fill]="isInWishlist() ? '#D8A62E' : 'none'" stroke="currentColor" stroke-width="2">
+              <svg class="icon-sm" viewBox="0 0 24 24" [attr.fill]="isInWishlist() ? '#C6A34A' : 'none'" stroke="#C6A34A" stroke-width="2">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
               </svg>
               <span>{{ isInWishlist() ? 'Wishlisted' : 'Wishlist' }}</span>
@@ -100,26 +104,33 @@
 
           <!-- WhatsApp Direct Enquiry Link -->
           <div class="whatsapp-direct-box">
-            <p class="wa-box-title">Order or Enquire Directly via WhatsApp</p>
-            <p class="wa-box-desc">Get current price quote, stock status, and delivery confirmation directly from the brand founder.</p>
+            <p class="wa-box-title">Order Directly on WhatsApp</p>
+            <p class="wa-box-desc">Connect with our Trichy customer care for instant order confirmation, guidance, and doorstep delivery.</p>
             <a [href]="getWhatsAppLink()" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%;">
-              <span>Enquire {{ prod.name }} on WhatsApp (70101 36599)</span>
+              <span>WhatsApp Order (70101 36599)</span>
             </a>
           </div>
 
-          <!-- Tabbed / Section Info -->
+          <!-- Ingredients & Usage Details -->
           <div class="tabs-container">
             <div class="info-section">
-              <h3 class="section-heading">Key Benefits (Placeholder)</h3>
-              <ul class="benefits-list">
-                @for (benefit of prod.benefitsPlaceholder; track benefit) {
-                  <li><span class="check-bullet">✓</span> {{ benefit }}</li>
-                }
-              </ul>
+              <h3 class="section-heading">Key Herbal Formulation</h3>
+              <p class="info-p">{{ prod.ingredientsPlaceholder }}</p>
             </div>
 
+            @if (prod.benefitsPlaceholder && prod.benefitsPlaceholder.length > 0) {
+              <div class="info-section">
+                <h3 class="section-heading">Benefits &amp; Highlights</h3>
+                <ul class="benefits-list">
+                  @for (benefit of prod.benefitsPlaceholder; track benefit) {
+                    <li><span class="check-bullet">✓</span> {{ benefit }}</li>
+                  }
+                </ul>
+              </div>
+            }
+
             <div class="info-section">
-              <h3 class="section-heading">Suggested Usage (Placeholder)</h3>
+              <h3 class="section-heading">Suggested Usage</h3>
               <p class="usage-text">{{ prod.usagePlaceholder }}</p>
             </div>
           </div>
@@ -129,14 +140,22 @@
       <!-- Related Products Section -->
       @if (relatedProducts().length > 0) {
         <div class="related-section">
-          <h2 class="related-heading">More Products in {{ prod.category }}</h2>
+          <h2 class="related-heading">More in {{ prod.category }}</h2>
           <div class="related-grid">
             @for (rel of relatedProducts(); track rel.id) {
               <div class="related-card">
+                <a [routerLink]="['/products', rel.id]" class="rel-thumb-wrap">
+                  <img 
+                    [src]="rel.mainImage || 'images/products/' + rel.slug + '.jpg'" 
+                    [alt]="rel.name" 
+                    class="rel-img"
+                    loading="lazy"
+                  >
+                </a>
                 <h4 class="rel-title"><a [routerLink]="['/products', rel.id]">{{ rel.name }}</a></h4>
                 <p class="rel-tamil">{{ rel.tamilName }}</p>
-                <span class="rel-price">{{ rel.pricePlaceholder }}</span>
-                <a [routerLink]="['/products', rel.id]" class="btn btn-outline btn-sm mt-2">View Product</a>
+                <span class="rel-price">₹ {{ rel.price }}</span>
+                <a [routerLink]="['/products', rel.id]" class="btn btn-secondary btn-sm mt-2">View Product</a>
               </div>
             }
           </div>
@@ -147,7 +166,7 @@
       <div class="not-found-box">
         <h2>Product not found</h2>
         <p>The requested product could not be found in our catalog.</p>
-        <a routerLink="/products" class="btn btn-primary mt-3">Back to All 16 Products</a>
+        <a routerLink="/products" class="btn btn-primary mt-3">Back to All Products</a>
       </div>
     }
   </div>

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="cart-header">
       <h1 class="page-title">Your Shopping Cart</h1>
-      <p class="page-desc">Review your selected items and send your order directly to the owner on WhatsApp.</p>
+      <p class="page-desc">Review your selected items and place your order directly via WhatsApp or inquiry.</p>
     </div>
 
     @if (cartService.cartItems().length > 0) {
@@ -13,30 +13,39 @@
             <div class="table-header">
               <span>Product</span>
               <span class="text-center">Quantity</span>
-              <span class="text-right">Action</span>
+              <span class="text-right">Total</span>
             </div>
 
             <div class="items-list">
               @for (item of cartService.cartItems(); track item.product.id) {
                 <div class="cart-item-row">
                   <div class="item-info">
-                    <div class="item-leaf-badge">🌿</div>
-                    <div>
+                    <a [routerLink]="['/products', item.product.id]" class="cart-thumb-wrap">
+                      <img 
+                        [src]="item.product.mainImage || 'images/products/' + item.product.slug + '.jpg'" 
+                        [alt]="item.product.name" 
+                        class="cart-thumb-img"
+                      >
+                    </a>
+                    <div class="cart-item-meta">
                       <h3 class="item-name">
                         <a [routerLink]="['/products', item.product.id]">{{ item.product.name }}</a>
                       </h3>
-                      <p class="item-tamil">{{ item.product.tamilName }}</p>
-                      <span class="item-placeholder-price">{{ item.product.pricePlaceholder }}</span>
+                      @if (item.product.tamilName) {
+                        <p class="item-tamil">{{ item.product.tamilName }}</p>
+                      }
+                      <span class="item-price">₹ {{ item.product.price }}</span>
                     </div>
                   </div>
 
                   <div class="item-qty-control">
-                    <button type="button" class="qty-btn" (click)="updateQty(item.product.id, item.quantity - 1)">-</button>
+                    <button type="button" class="qty-btn" (click)="updateQty(item.product.id, item.quantity - 1)" aria-label="Decrease quantity">-</button>
                     <span class="qty-num">{{ item.quantity }}</span>
-                    <button type="button" class="qty-btn" (click)="updateQty(item.product.id, item.quantity + 1)">+</button>
+                    <button type="button" class="qty-btn" (click)="updateQty(item.product.id, item.quantity + 1)" aria-label="Increase quantity">+</button>
                   </div>
 
-                  <div class="item-actions">
+                  <div class="item-row-total">
+                    <span class="row-total-val">₹ {{ (item.product.price || 0) * item.quantity }}</span>
                     <button type="button" class="remove-btn" (click)="removeItem(item.product.id)" aria-label="Remove item">
                       <svg class="trash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="3 6 5 6 21 6"></polyline>
@@ -50,7 +59,7 @@
 
             <div class="table-footer">
               <button type="button" class="clear-cart-btn" (click)="clearCart()">Clear Cart</button>
-              <a routerLink="/products" class="continue-shopping">&larr; Add More Products</a>
+              <a routerLink="/products" class="continue-shopping">&larr; Continue Shopping</a>
             </div>
           </div>
         </div>
@@ -62,21 +71,26 @@
 
             <div class="summary-row">
               <span>Total Selected Items:</span>
-              <strong class="gold-text">{{ cartService.totalItems() }} items</strong>
+              <strong>{{ cartService.totalItems() }} items</strong>
+            </div>
+
+            <div class="summary-row subtotal-row">
+              <span>Estimated Subtotal:</span>
+              <strong class="gold-price">₹ {{ cartService.totalSubtotal() }}</strong>
             </div>
 
             <div class="summary-notice">
               <span class="notice-icon">📋</span>
-              <p>Official pricing & delivery charge will be quoted directly by the owner (M. முத்துமணி MBA.) via WhatsApp before payment.</p>
+              <p>Direct doorstep delivery confirmation will be shared on WhatsApp by <strong>M. முத்துமணி MBA.</strong></p>
             </div>
 
             <div class="customer-notes-section">
-              <label for="cust-notes" class="notes-label">Delivery Note / Address (Optional):</label>
+              <label for="cust-notes" class="notes-label">Delivery Address / Notes (Optional):</label>
               <textarea 
                 id="cust-notes"
                 [ngModel]="customerNotes()" 
                 (ngModelChange)="customerNotes.set($event)"
-                placeholder="E.g. Delivery in Trichy / Chennai, preferred contact time..."
+                placeholder="E.g. Delivery in Trichy / Madurai / Chennai, landmark, preferred time..."
                 class="notes-textarea"
                 rows="3"
               ></textarea>
@@ -99,10 +113,10 @@
     } @else {
       <!-- Empty Cart State -->
       <div class="empty-cart-card">
-        <span class="empty-icon">🛒</span>
-        <h2>Your Cart is Currently Empty</h2>
-        <p>Explore our 16 handcrafted herbal formulas and add your desired products.</p>
-        <a routerLink="/products" class="btn btn-primary mt-3">Shop All 16 Products</a>
+        <span class="empty-icon">🌿</span>
+        <h2 class="empty-title">Your Cart is Empty</h2>
+        <p class="empty-desc">Explore our authentic Tamil herbal formulations and add products to start your order.</p>
+        <a routerLink="/products" class="btn btn-primary">Browse All Products</a>
       </div>
     }
   </div>

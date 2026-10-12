@@ -1,609 +1,1072 @@
-@use '../../../styles.scss' as *;
+// ==========================================
+// Manthalir Parampariyam Homepage Styles
+// Inspired by official homepage & poster reference
+// ==========================================
 
-// Hero Section
+// Section C: Hero Banner
 .hero-section {
-  background: radial-gradient(circle at 80% 20%, rgba($color-forest-green, 0.08) 0%, transparent 60%),
-              linear-gradient(180deg, $color-cream 0%, $color-cream-light 100%);
-  padding: 5.5rem 0 6.5rem 0;
-  border-bottom: 1px solid $color-border;
-
-  @media (max-width: 768px) {
-    padding: 3rem 0 4rem 0;
-  }
+  background: linear-gradient(180deg, #FFFDF9 0%, #FBF6EB 100%);
+  padding: 3.5rem 0 4.5rem 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
 
   .hero-container {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
     align-items: center;
-    gap: 4.5rem;
 
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
       grid-template-columns: 1fr;
+      gap: 2.5rem;
       text-align: center;
-      gap: 3rem;
     }
   }
 
-  .hero-content {
+  .hero-left {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
 
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
       align-items: center;
     }
   }
 
-  .hero-badge {
+  .hero-tamil-tag {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    background: rgba($color-forest-green, 0.1);
-    color: $color-forest-green;
-    border: 1px solid rgba($color-forest-green, 0.25);
-    padding: 0.5rem 1.25rem;
-    border-radius: 9999px;
+    gap: 0.65rem;
+    font-family: 'Noto Sans Tamil', sans-serif;
     font-size: 0.95rem;
-    font-weight: 700;
-    width: fit-content;
+    font-weight: 600;
+    color: var(--forest-green);
+
+    .diamond-dot {
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
   }
 
   .hero-title {
-    font-size: 4.2rem;
-    line-height: 1.12;
-    color: $color-dark-green;
-    font-weight: 800;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.75rem;
+    font-weight: 700;
+    color: var(--forest-green);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
 
-    @media (max-width: 1200px) {
-      font-size: 3.5rem;
+    .hero-title-accent {
+      color: var(--dark-green);
+      font-style: italic;
+      font-weight: 600;
     }
 
     @media (max-width: 768px) {
-      font-size: 2.6rem;
+      font-size: 2.75rem;
     }
 
-    .gold-gradient {
-      background: linear-gradient(135deg, $color-gold 0%, $color-gold-dark 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
+    @media (max-width: 480px) {
+      font-size: 2.2rem;
     }
   }
 
-  .hero-tamil-tagline {
-    font-size: 1.45rem;
-    font-weight: 600;
-    color: $color-forest-green;
-    letter-spacing: 0.02em;
+  .hero-description {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 540px;
 
     @media (max-width: 768px) {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
   }
 
-  .hero-subtitle {
-    font-size: 1.2rem;
-    color: $color-text-muted;
-    max-width: 660px;
-    line-height: 1.7;
-  }
-
-  .hero-buttons {
+  .hero-cta-group {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
+    align-items: center;
+    gap: 1rem;
     margin-top: 0.75rem;
+    flex-wrap: wrap;
 
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
       justify-content: center;
     }
-  }
 
-  .hero-trust-bar {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1.25rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: $color-forest-green;
+    .hero-btn-primary {
+      padding: 0.9rem 2.2rem;
+      font-size: 1rem;
+      background: var(--forest-green);
+      color: #FFFFFF;
 
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
+      .btn-arrow {
+        width: 18px;
+        height: 18px;
+        transition: transform 0.2s ease;
+      }
 
-      .check {
-        color: $color-gold-dark;
-        font-weight: 800;
+      &:hover .btn-arrow {
+        transform: translateX(4px);
+      }
+    }
+
+    .hero-btn-secondary {
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      background: #FFFDF9;
+      color: var(--dark-green);
+      border: 1.5px solid var(--gold);
+
+      &:hover {
+        background: #FFFFFF;
+        box-shadow: 0 4px 14px rgba(198, 163, 74, 0.25);
       }
     }
   }
 
-  // Hero Logo Display
-  .hero-visual {
+  .hero-right {
+    position: relative;
     display: flex;
     justify-content: center;
-  }
 
-  .logo-display-card {
-    position: relative;
-    background: $color-white;
-    border-radius: 2rem;
-    padding: 3rem 2.5rem;
-    border: 2px solid rgba($color-gold, 0.4);
-    box-shadow: 0 25px 55px rgba(2, 56, 32, 0.12);
-    text-align: center;
-    max-width: 480px;
-    width: 100%;
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(11, 56, 40, 0.16);
+      border: 3px solid rgba(198, 163, 74, 0.35);
 
-    .hero-logo-img {
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 1.75rem auto;
-      border: 4px solid $color-gold;
-      box-shadow: 0 10px 30px rgba(2, 56, 32, 0.2);
-    }
+      .hero-lifestyle-img {
+        width: 100%;
+        height: auto;
+        max-height: 520px;
+        object-fit: cover;
+        display: block;
+      }
 
-    .card-brand-title {
-      font-size: 1.85rem;
-      color: $color-dark-green;
-      margin-bottom: 0.35rem;
-    }
+      // Floating Circular Pure Herbal Care Badge matching reference
+      .floating-badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 96px;
+        height: 96px;
+        background: var(--dark-green);
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        color: #FFFFFF;
+        text-align: center;
+        z-index: 10;
+        animation: subtleFloat 3.5s ease-in-out infinite alternate;
 
-    .card-brand-tamil {
-      font-size: 1.05rem;
-      color: $color-forest-green;
-      font-weight: 600;
-    }
+        .badge-inner {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          line-height: 1.1;
 
-    .gold-line {
-      width: 80px;
-      height: 2px;
-      background: $color-gold;
-      margin: 1rem auto;
-    }
+          .badge-leaf {
+            font-size: 0.75rem;
+            margin-bottom: 2px;
+          }
 
-    .card-location {
-      font-size: 0.9rem;
-      color: $color-text-muted;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
+          .badge-text-primary {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gold-light);
+          }
+
+          .badge-text-secondary {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #FFFFFF;
+          }
+
+          .badge-text-tertiary {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gold-light);
+          }
+
+          .badge-flourish {
+            font-size: 0.65rem;
+            color: var(--gold);
+          }
+        }
+      }
     }
   }
 }
 
-// Categories Section
+// Section D: Shop By Category
 .categories-section {
-  padding: 6rem 0;
-  background-color: $color-white;
+  padding: 4.5rem 0;
+  background-color: #FAF6ED;
 
-  @media (max-width: 768px) {
-    padding: 4rem 0;
+  .section-title-wrap {
+    text-align: center;
+    margin-bottom: 2.75rem;
+
+    .section-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.35rem;
+      font-weight: 700;
+      color: var(--forest-green);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
   }
 
-  .categories-grid {
+  .category-cards-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
 
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 640px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 580px) {
+    @media (max-width: 420px) {
       grid-template-columns: 1fr;
     }
-  }
 
-  .category-card {
-    background: $color-cream;
-    border: 1px solid $color-border;
-    border-radius: 1.5rem;
-    padding: 2.75rem 2rem;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(2, 56, 32, 0.1);
-      border-color: $color-gold;
-      background: $color-white;
-
-      .category-icon-box {
-        background: $color-gold;
-        transform: scale(1.12);
-      }
-
-      .category-link-text {
-        color: $color-gold-dark;
-      }
-    }
-
-    .category-icon-box {
-      width: 84px;
-      height: 84px;
-      border-radius: 50%;
-      background: rgba($color-forest-green, 0.12);
+    .cat-card {
+      background: #FFFDF9;
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2rem 1.25rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      transition: all 0.3s ease;
+      text-align: center;
+      gap: 0.85rem;
+      transition: all 0.28s ease;
 
-      .cat-emoji {
-        font-size: 2.4rem;
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(11, 56, 40, 0.09);
+        border-color: var(--gold);
+
+        .cat-icon-badge {
+          background-color: var(--forest-green);
+          transform: scale(1.05);
+        }
+
+        .cat-card-link {
+          color: var(--forest-green);
+          font-weight: 600;
+        }
       }
-    }
 
-    .category-name {
-      font-size: 1.45rem;
-      color: $color-dark-green;
-      margin-bottom: 0.65rem;
-    }
+      .cat-icon-badge {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background-color: var(--dark-green);
+        border: 2px solid var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-light);
+        transition: all 0.25s ease;
 
-    .category-desc {
-      font-size: 0.95rem;
-      color: $color-text-muted;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
+        .cat-svg {
+          width: 32px;
+          height: 32px;
+        }
+      }
 
-    .category-count {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: $color-forest-green;
-      background: rgba($color-forest-green, 0.08);
-      padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      margin-bottom: 1rem;
-    }
+      .cat-card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--dark-green);
+      }
 
-    .category-link-text {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: $color-forest-green;
-      transition: color 0.2s ease;
+      .cat-card-link {
+        font-size: 0.825rem;
+        color: var(--text-muted);
+        transition: color 0.2s ease;
+      }
     }
   }
 }
 
-// Featured Products Section
+// Section E: Featured Products Grid matching reference
 .featured-section {
-  padding: 6rem 0;
-  background-color: $color-cream-light;
+  padding: 4.5rem 0;
+  background-color: #FFFDF9;
 
-  .products-grid {
+  .featured-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+
+    .featured-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.35rem;
+      font-weight: 700;
+      color: var(--forest-green);
+      margin-bottom: 0.35rem;
+    }
+
+    .featured-sub-title {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .view-all-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--forest-green);
+
+      &:hover {
+        color: var(--gold-dark);
+      }
+    }
+  }
+
+  .featured-products-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.25rem;
 
     @media (max-width: 1200px) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 480px) {
       grid-template-columns: 1fr;
     }
   }
 
-  .product-card {
-    background: $color-white;
-    border: 1px solid $color-border;
-    border-radius: 1.25rem;
-    padding: 1.6rem;
+  .product-item-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 0.85rem;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    transition: all 0.28s ease;
 
     &:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(2, 56, 32, 0.1);
-      border-color: rgba($color-gold, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(11, 56, 40, 0.08);
+      border-color: rgba(198, 163, 74, 0.6);
     }
 
-    .product-card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.25rem;
-    }
-
-    .wishlist-toggle-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: $color-cream;
+    .card-img-wrap {
+      position: relative;
+      background: #FAF6ED;
+      padding: 1.5rem 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: 180px;
 
-      &:hover {
-        background: $color-cream-dark;
-      }
-
-      .heart-icon {
-        width: 18px;
-        height: 18px;
-      }
-    }
-
-    .product-icon-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1.25rem;
-
-      .product-avatar {
-        width: 86px;
-        height: 86px;
+      .wishlist-btn {
+        position: absolute;
+        top: 0.65rem;
+        right: 0.65rem;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba($color-gold, 0.22) 0%, rgba($color-forest-green, 0.1) 100%);
+        background: rgba(255, 255, 255, 0.9);
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px dashed rgba($color-gold, 0.5);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        z-index: 5;
 
-        .avatar-leaf {
-          font-size: 2.4rem;
+        .wishlist-svg {
+          width: 16px;
+          height: 16px;
+        }
+
+        &:hover, &.active {
+          background: #FFFFFF;
+        }
+      }
+
+      .product-img-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .product-thumb-img {
+        max-height: 140px;
+        max-width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
         }
       }
     }
 
-    .product-card-body {
-      flex: 1;
+    .card-info {
+      padding: 1.15rem 1rem;
       display: flex;
       flex-direction: column;
+      flex: 1;
 
-      .product-category-tag {
-        font-size: 0.78rem;
+      .prod-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
         font-weight: 700;
-        text-transform: uppercase;
-        color: $color-forest-green;
-        letter-spacing: 0.05em;
-        margin-bottom: 0.35rem;
-      }
-
-      .product-title {
-        font-size: 1.3rem;
+        color: var(--dark-green);
+        margin-bottom: 0.25rem;
         line-height: 1.3;
-        color: $color-dark-green;
-        margin-bottom: 0.35rem;
+        min-height: 2.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
 
         a:hover {
-          color: $color-gold-dark;
+          color: var(--forest-green);
         }
       }
 
-      .product-tamil-name {
-        font-size: 0.92rem;
-        color: $color-text-muted;
-        margin-bottom: 1rem;
-      }
-
-      .placeholder-box {
-        background: #F9FAFB;
-        border: 1px dashed #D1D5DB;
-        border-radius: 0.5rem;
-        padding: 0.65rem;
+      .prod-cat {
         font-size: 0.75rem;
-        margin-bottom: 1rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+
+      .prod-rating {
         display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
+        gap: 2px;
+        margin-bottom: 0.65rem;
 
-        .placeholder-row {
-          display: flex;
-          flex-direction: column;
-
-          .placeholder-label {
-            font-weight: 700;
-            color: #4B5563;
-          }
-
-          .placeholder-val {
-            color: #6B7280;
-            font-style: italic;
-          }
+        .star-icon {
+          color: var(--gold);
+          font-size: 0.85rem;
         }
       }
-    }
 
-    .product-card-footer {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: auto;
-    }
-  }
+      .prod-price-row {
+        margin-top: auto;
+        margin-bottom: 0.85rem;
 
-  .view-all-cta {
-    margin-top: 3rem;
-    text-align: center;
+        .price-val {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: var(--dark-green);
+        }
+      }
+
+      .add-to-cart-btn {
+        width: 100%;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 9999px;
+      }
+    }
   }
 }
 
-// Poster Reference Section
-.poster-reference-section {
-  padding: 5.5rem 0;
-  background-color: $color-white;
-  border-top: 1px solid $color-border;
-  border-bottom: 1px solid $color-border;
+// Section F & G: Our Brand Story & Why Choose Us (Split Section)
+.story-and-why-section {
+  padding: 4.5rem 0;
+  background-color: #FAF6ED;
 
-  @media (max-width: 768px) {
-    padding: 3.5rem 0;
+  .story-why-container {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
   }
 
-  .poster-container {
+  // Left side: Our Brand Story Dark Green Panel
+  .story-panel {
+    background: var(--forest-green);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    color: #FFFFFF;
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 3.5rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 36px rgba(6, 69, 47, 0.15);
 
-    @media (max-width: 992px) {
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      padding: 2rem 1.5rem;
+    }
+
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+
+      .story-subtitle {
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold-light);
+      }
+
+      .story-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.2;
+        color: #FFFFFF;
+      }
+
+      .story-body {
+        font-size: 0.95rem;
+        color: #E2ECE6;
+        line-height: 1.6;
+      }
+
+      .story-btn {
+        align-self: flex-start;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .story-image-wrap {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      border: 2px solid rgba(198, 163, 74, 0.4);
+
+      .story-img {
+        width: 100%;
+        height: 100%;
+        max-height: 240px;
+        object-fit: cover;
+        display: block;
+      }
+    }
+  }
+
+  // Right side: Why Choose Us?
+  .why-choose-panel {
+    background: #FFFDF9;
+    border: 1px solid var(--border-color);
+    border-radius: 1.25rem;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .why-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--forest-green);
+      margin-bottom: 2rem;
+    }
+
+    .why-pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+
+      .why-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+
+        .why-icon-badge {
+          width: 54px;
+          height: 54px;
+          border-radius: 50%;
+          background: var(--dark-green);
+          border: 2px solid var(--gold);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--gold-light);
+
+          .why-svg {
+            width: 26px;
+            height: 26px;
+          }
+        }
+
+        .why-text {
+          .why-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 0.2rem;
+          }
+
+          .why-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Section H: Complete Product Collection matching reference
+.collection-section {
+  padding: 4.5rem 0;
+  background-color: #FFFDF9;
+
+  .collection-header-row {
+    margin-bottom: 2.5rem;
+
+    .collection-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.35rem;
+      font-weight: 700;
+      color: var(--forest-green);
+      margin-bottom: 0.35rem;
+    }
+
+    .collection-sub-title {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .collection-filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      .filter-pill {
+        padding: 0.45rem 1rem;
+        border-radius: 9999px;
+        background: #FAF6ED;
+        border: 1px solid var(--border-color);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: var(--soft-cream);
+          border-color: var(--gold);
+        }
+
+        &.active {
+          background: var(--forest-green);
+          color: #FFFFFF;
+          border-color: var(--forest-green);
+        }
+      }
+    }
+  }
+
+  .collection-layout {
+    display: grid;
+    grid-template-columns: 3.2fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+
+    @media (max-width: 1024px) {
       grid-template-columns: 1fr;
     }
   }
 
-  .poster-text-col {
-    .subtitle {
-      color: $color-gold-dark;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.5rem;
-      display: inline-block;
+  // Left: Products Grid
+  .collection-products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .title {
-      font-size: 2.3rem;
-      color: $color-dark-green;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-
-      @media (max-width: 768px) {
-        font-size: 1.8rem;
-      }
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .poster-intro {
-      font-size: 1rem;
-      color: $color-text-muted;
-      line-height: 1.6;
-      margin-bottom: 1.75rem;
+    @media (max-width: 420px) {
+      grid-template-columns: 1fr;
     }
 
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-bottom: 2rem;
-
-      @media (max-width: 580px) {
-        grid-template-columns: 1fr;
-      }
-
-      .pillar-card {
-        display: flex;
-        gap: 0.75rem;
-        background: $color-cream;
-        border: 1px solid $color-border;
-        padding: 0.85rem 1rem;
-        border-radius: 0.75rem;
-
-        .pillar-icon {
-          font-size: 1.5rem;
-          line-height: 1;
-        }
-
-        h4 {
-          font-size: 0.9rem;
-          color: $color-dark-green;
-          margin-bottom: 0.15rem;
-        }
-
-        p {
-          font-size: 0.78rem;
-          color: $color-text-muted;
-          line-height: 1.4;
-        }
-      }
-    }
-
-    .poster-actions {
+    .compact-prod-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.85rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 0.65rem;
+      transition: all 0.25s ease;
+
+      &:hover {
+        border-color: var(--gold);
+        box-shadow: 0 8px 20px rgba(11, 56, 40, 0.08);
+      }
+
+      .compact-thumb-wrap {
+        background: #FAF6ED;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 120px;
+
+        .compact-img {
+          max-height: 100px;
+          max-width: 100%;
+          object-fit: contain;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.06);
+          }
+        }
+      }
+
+      .compact-info {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .compact-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: var(--dark-green);
+          line-height: 1.25;
+          margin-bottom: 0.2rem;
+          min-height: 2.25rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+
+          a:hover {
+            color: var(--forest-green);
+          }
+        }
+
+        .compact-cat {
+          font-size: 0.72rem;
+          color: var(--text-muted);
+          margin-bottom: 0.5rem;
+        }
+
+        .compact-bottom-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: auto;
+
+          .compact-price {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark-green);
+          }
+
+          .compact-add-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--forest-green);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+
+            &:hover {
+              background: var(--dark-green);
+            }
+          }
+        }
+      }
     }
   }
 
-  // Frame for poster image
-  .poster-image-col {
+  // Right: Side Promo Banner Card matching reference
+  .promo-banner-card {
+    background: var(--dark-green);
+    border-radius: 1.25rem;
+    padding: 2rem 1.5rem;
+    color: #FFFFFF;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 36px rgba(11, 56, 40, 0.15);
+    border: 2px solid rgba(198, 163, 74, 0.35);
 
-    .poster-frame {
-      background: $color-cream;
-      border: 3px solid $color-gold;
-      border-radius: 1.25rem;
-      padding: 1rem;
-      box-shadow: 0 16px 40px rgba(2, 56, 32, 0.12);
-      max-width: 420px;
-      width: 100%;
-      text-align: center;
+    .promo-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
 
-      .poster-tag {
-        font-size: 0.75rem;
+      .promo-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.75rem;
         font-weight: 700;
-        text-transform: uppercase;
-        color: $color-gold-dark;
-        letter-spacing: 0.08em;
+        color: #FFFFFF;
+        line-height: 1.2;
+      }
+
+      .promo-sub {
+        font-size: 0.9rem;
+        color: #E2ECE6;
+        line-height: 1.5;
         margin-bottom: 0.75rem;
       }
 
-      .poster-img {
+      .promo-btn {
+        align-self: flex-start;
+        padding: 0.6rem 1.25rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .promo-image-wrap {
+      margin-top: 1.5rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid rgba(198, 163, 74, 0.3);
+
+      .promo-img {
         width: 100%;
-        max-height: 520px;
-        object-fit: contain;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        max-height: 220px;
+        object-fit: cover;
+        display: block;
+      }
+    }
+  }
+}
+
+// Section I: Customer Testimonials matching reference
+.testimonial-section {
+  padding: 4rem 0;
+  background-color: #FAF6ED;
+
+  .testi-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--forest-green);
+    text-align: center;
+    margin-bottom: 2.25rem;
+  }
+
+  .testimonial-card-single {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #FFFDF9;
+    border: 1px solid var(--border-color);
+    border-radius: 1.25rem;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 12px 28px rgba(11, 56, 40, 0.06);
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.75rem 1.5rem;
+    }
+
+    .testi-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+      flex-shrink: 0;
+    }
+
+    .testi-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+
+      .quote-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.35rem;
+
+        .quote-mark {
+          font-family: 'Playfair Display', serif;
+          font-size: 2rem;
+          color: var(--gold);
+          line-height: 0.8;
+        }
+
+        .testi-quote-text {
+          font-size: 1rem;
+          color: var(--text-dark);
+          line-height: 1.55;
+          font-style: italic;
+        }
       }
 
-      .poster-caption {
-        margin-top: 0.85rem;
-        font-size: 0.85rem;
-        color: $color-dark-green;
-        line-height: 1.4;
+      .testi-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        flex-wrap: wrap;
 
-        .founder-name {
-          color: $color-forest-green;
+        @media (max-width: 640px) {
+          justify-content: center;
+        }
+
+        .testi-name {
+          font-weight: 700;
+          color: var(--dark-green);
+          font-size: 0.95rem;
+        }
+
+        .testi-stars {
+          color: var(--gold);
+          font-size: 0.85rem;
+          display: flex;
+          gap: 2px;
+        }
+
+        .testi-badge {
+          font-size: 0.72rem;
+          font-weight: 600;
+          color: var(--leaf-green);
+          background: rgba(108, 139, 69, 0.12);
+          padding: 0.2rem 0.5rem;
+          border-radius: 9999px;
         }
       }
     }
   }
 }
 
-// CTA Banner
-.cta-banner {
-  background: linear-gradient(135deg, $color-dark-green 0%, $color-forest-green 100%);
-  color: $color-white;
-  padding: 4.5rem 0;
-  text-align: center;
+// Section J: Have Questions? WhatsApp Banner matching reference
+.whatsapp-banner-section {
+  padding: 2.5rem 0;
+  background-color: #FFFDF9;
 
-  .cta-content {
-    max-width: 720px;
-  }
-
-  .cta-title {
-    font-size: 2.4rem;
-    color: $color-white;
-    margin-bottom: 1rem;
+  .whatsapp-banner-bar {
+    background: var(--forest-green);
+    border-radius: 1rem;
+    padding: 1.75rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 12px 28px rgba(6, 69, 47, 0.15);
 
     @media (max-width: 768px) {
-      font-size: 1.9rem;
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+    }
+
+    .wa-text-col {
+      .wa-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.65rem;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 0.25rem;
+      }
+
+      .wa-sub {
+        font-size: 0.95rem;
+        color: #E2ECE6;
+      }
+    }
+
+    .wa-action-col {
+      .wa-chat-btn {
+        padding: 0.75rem 1.75rem;
+        font-size: 0.95rem;
+      }
     }
   }
+}
 
-  .cta-desc {
-    font-size: 1.05rem;
-    color: rgba($color-cream, 0.9);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
+// Section K: Trust and Service Features Row matching reference
+.trust-features-section {
+  padding: 3rem 0;
+  background-color: #FFFDF9;
+  border-top: 1px solid var(--border-color);
 
-  .cta-buttons {
+  .trust-features-row {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    gap: 1rem;
+
+    .trust-feat-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: var(--forest-green);
+
+      .trust-feat-icon {
+        width: 24px;
+        height: 24px;
+        color: var(--gold-dark);
+      }
+
+      .trust-feat-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--dark-green);
+        letter-spacing: 0.02em;
+      }
+    }
+  }
+}
+
+@keyframes subtleFloat {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-8px);
   }
 }

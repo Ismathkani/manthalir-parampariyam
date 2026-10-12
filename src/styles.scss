@@ -1,31 +1,37 @@
-// Brand Color Variables
-$color-forest-green: #064B2F;
-$color-dark-green: #023820;
-$color-gold: #D8A62E;
-$color-gold-light: #F3DC8F;
-$color-gold-dark: #A97C19;
-$color-cream: #FFF8E7;
-$color-cream-light: #FCFAF3;
-$color-cream-dark: #EDE5D1;
+// Manthalir Parampariyam Brand Design System
+$color-forest-green: #06452F;
+$color-dark-green: #0B3828;
+$color-warm-ivory: #FFF8E8;
+$color-gold: #C6A34A;
+$color-gold-light: #DFBF6C;
+$color-gold-dark: #A6832D;
+$color-leaf-green: #6C8B45;
+$color-soft-cream: #F4EBD5;
+$color-cream: #FFF8E8;
+$color-cream-dark: #F4EBD5;
+$color-cream-light: #FAF6ED;
 $color-white: #FFFFFF;
-$color-text-dark: #022616;
-$color-text-muted: #4F6358;
-$color-border: #E8E0CE;
+$color-text-dark: #09281C;
+$color-text-muted: #4B6356;
+$color-border: #E8DECA;
+$color-border-subtle: #F0E8D7;
 $color-danger: #C53030;
 
 :root {
   --forest-green: #{$color-forest-green};
   --dark-green: #{$color-dark-green};
+  --warm-ivory: #{$color-warm-ivory};
   --gold: #{$color-gold};
   --gold-light: #{$color-gold-light};
   --gold-dark: #{$color-gold-dark};
-  --cream: #{$color-cream};
+  --leaf-green: #{$color-leaf-green};
+  --soft-cream: #{$color-soft-cream};
   --cream-light: #{$color-cream-light};
-  --cream-dark: #{$color-cream-dark};
   --white: #{$color-white};
   --text-dark: #{$color-text-dark};
   --text-muted: #{$color-text-muted};
   --border-color: #{$color-border};
+  --border-subtle: #{$color-border-subtle};
 }
 
 * {
@@ -53,6 +59,10 @@ h1, h2, h3, h4, .serif-font {
   font-family: 'Playfair Display', Georgia, serif;
 }
 
+.tamil-font {
+  font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -76,49 +86,64 @@ img {
 // Container utilities
 .container {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 2.5rem;
+  padding: 0 2rem;
 
   @media (max-width: 768px) {
     padding: 0 1.25rem;
   }
 }
 
-// Button styles
+// Button styles matching reference
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
-  padding: 0.95rem 2.25rem;
-  font-size: 1.05rem;
-  font-weight: 700;
+  gap: 0.5rem;
+  padding: 0.85rem 1.85rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   border-radius: 9999px;
-  letter-spacing: 0.02em;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.01em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 
+  // Reference primary button: dark forest green pill
   &-primary {
-    background: linear-gradient(135deg, $color-gold 0%, $color-gold-dark 100%);
-    color: $color-dark-green;
-    box-shadow: 0 4px 14px rgba(216, 166, 46, 0.35);
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(216, 166, 46, 0.5);
-      background: linear-gradient(135deg, $color-gold-light 0%, $color-gold 100%);
-    }
-  }
-
-  &-secondary {
     background: $color-forest-green;
     color: $color-white;
-    border: 1px solid rgba($color-gold, 0.4);
+    box-shadow: 0 4px 14px rgba(6, 69, 47, 0.25);
 
     &:hover {
       background: $color-dark-green;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(6, 69, 47, 0.35);
+    }
+  }
+
+  // Reference secondary button: creamy outlined pill
+  &-secondary {
+    background: $color-warm-ivory;
+    color: $color-dark-green;
+    border: 1.5px solid rgba($color-gold, 0.6);
+
+    &:hover {
+      background: #FFFFFF;
       border-color: $color-gold;
       transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(198, 163, 74, 0.2);
+    }
+  }
+
+  &-gold {
+    background: linear-gradient(135deg, $color-gold 0%, $color-gold-dark 100%);
+    color: $color-white;
+    box-shadow: 0 4px 14px rgba(198, 163, 74, 0.3);
+
+    &:hover {
+      background: linear-gradient(135deg, $color-gold-light 0%, $color-gold 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(198, 163, 74, 0.45);
     }
   }
 
@@ -135,7 +160,7 @@ img {
 
   &-gold-outline {
     background: transparent;
-    color: $color-gold;
+    color: $color-gold-light;
     border: 1.5px solid $color-gold;
 
     &:hover {
@@ -147,19 +172,19 @@ img {
   &-whatsapp {
     background: #25D366;
     color: #FFFFFF;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
 
     &:hover {
       background: #1EBE5D;
       transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
     }
   }
 
   &-sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.825rem;
   }
 }
 
@@ -168,29 +193,31 @@ img {
   display: inline-block;
   padding: 0.25rem 0.65rem;
   border-radius: 9999px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 
   &-gold {
-    background: rgba($color-gold, 0.18);
+    background: rgba($color-gold, 0.16);
     color: $color-gold-dark;
-    border: 1px solid rgba($color-gold, 0.4);
+    border: 1px solid rgba($color-gold, 0.35);
   }
 
   &-green {
-    background: rgba($color-forest-green, 0.12);
+    background: rgba($color-forest-green, 0.1);
     color: $color-forest-green;
-    border: 1px solid rgba($color-forest-green, 0.3);
+    border: 1px solid rgba($color-forest-green, 0.25);
   }
+}
 
-  &-placeholder {
-    background: #F3F4F6;
-    color: #4B5563;
-    border: 1px dashed #9CA3AF;
-    font-size: 0.7rem;
-  }
+// Star rating component styles
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: $color-gold;
+  font-size: 0.85rem;
 }
 
 // Card styles
@@ -203,7 +230,7 @@ img {
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(2, 56, 32, 0.08);
+    box-shadow: 0 16px 32px rgba(11, 56, 40, 0.08);
     border-color: rgba($color-gold, 0.5);
   }
 }
@@ -211,33 +238,40 @@ img {
 // Section title helper
 .section-header {
   text-align: center;
-  max-width: 820px;
-  margin: 0 auto 3.5rem auto;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
 
   .subtitle {
-    color: $color-gold-dark;
-    font-size: 1rem;
+    color: $color-leaf-green;
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 0.65rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.5rem;
     display: inline-block;
   }
 
   .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: $color-dark-green;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
 
     @media (max-width: 768px) {
-      font-size: 2.3rem;
+      font-size: 2rem;
     }
   }
 
   .description {
     color: $color-text-muted;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     line-height: 1.6;
   }
+}
+
+// Gold gradient text helper
+.gold-gradient {
+  background: linear-gradient(135deg, $color-gold-dark 0%, $color-gold 50%, $color-gold-light 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

@@ -1,100 +1,130 @@
+<!-- Section L: Deep Green Heritage Footer matching reference -->
 <footer class="site-footer">
-  <!-- Tamil Quote Banner from poster -->
-  <div class="footer-banner">
-    <div class="container footer-banner-content">
-      <span class="leaf-icon">🌿</span>
-      <p class="tamil-quote">"இயற்கையும் நம் அழகும்... அழகை வாழ்நாள் முழுவதும் பேணுங்கள்..."</p>
-      <span class="leaf-icon">🌿</span>
-    </div>
-  </div>
-
   <div class="container footer-main">
-    <div class="footer-grid">
+    <div class="footer-top-grid">
       <!-- Column 1: Brand Info -->
       <div class="footer-col brand-col">
         <div class="footer-brand">
-          <img src="images/manthalir-logo.jpeg" alt="Manthalir Parampariyam Logo" class="footer-logo" loading="lazy" decoding="async">
-          <div>
-            <h3 class="brand-title">Manthalir <span class="gold-text">Parampariyam</span></h3>
-            <p class="brand-tamil">மாந்தளிர் பாரம்பரியம்</p>
+          <img src="images/manthalir-logo.jpeg" alt="Manthalir Parampariyam Logo" class="footer-logo-img" loading="lazy">
+          <div class="brand-headings">
+            <h3 class="footer-brand-title">Manthalir <span class="gold-text">Parampariyam</span></h3>
+            <p class="footer-tamil-title">மாந்தளிர் பாரம்பரியம்</p>
           </div>
         </div>
-        <p class="brand-desc">
-          இயற்கை அழகின் நம்பிக்கையான பெயர். Dedicated to pure herbal wellness, authentic traditional formulas, and chemical-free personal care.
+        <p class="footer-motto-tag">Pure • Natural • Traditional</p>
+        <p class="footer-about-text">
+          Dedicated to pure herbal wellness, handcrafted traditional personal care, and chemical-free recipes rooted in Tamil botanical heritage.
         </p>
-        <div class="trust-pills">
-          <span class="pill">100% Herbal</span>
-          <span class="pill">No Chemicals</span>
-          <span class="pill">Cruelty Free</span>
-        </div>
       </div>
 
-      <!-- Column 2: Quick Links -->
+      <!-- Column 2: Shop by Category -->
+      <div class="footer-col">
+        <h4 class="col-title">Shop by Category</h4>
+        <ul class="footer-links">
+          <li><a routerLink="/products" [queryParams]="{category: 'face-care'}">Face Care</a></li>
+          <li><a routerLink="/products" [queryParams]="{category: 'hair-care'}">Hair Care</a></li>
+          <li><a routerLink="/products" [queryParams]="{category: 'herbal-soaps'}">Herbal Soaps</a></li>
+          <li><a routerLink="/products" [queryParams]="{category: 'skin-care'}">Skin Care</a></li>
+          <li><a routerLink="/products" [queryParams]="{category: 'feminine-hygiene'}">Feminine Hygiene</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Quick Links -->
       <div class="footer-col">
         <h4 class="col-title">Quick Links</h4>
         <ul class="footer-links">
           <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/products">All 16 Products</a></li>
-          <li><a routerLink="/wishlist">My Wishlist</a></li>
-          <li><a routerLink="/cart">Shopping Cart</a></li>
-          <li><a routerLink="/about">About Us & Heritage</a></li>
-          <li><a routerLink="/contact">Contact & Enquiry</a></li>
-          <li><a routerLink="/admin/login" class="admin-quick-link">Admin Login</a></li>
+          <li><a routerLink="/products">Shop</a></li>
+          <li><a routerLink="/about">About Us</a></li>
+          <li><a routerLink="/contact">Contact Us</a></li>
+          <li><a routerLink="/cart">Track Order / Cart</a></li>
         </ul>
       </div>
 
-      <!-- Column 3: Product Categories -->
+      <!-- Column 4: Customer Care -->
       <div class="footer-col">
-        <h4 class="col-title">Categories</h4>
+        <h4 class="col-title">Customer Care</h4>
         <ul class="footer-links">
-          <li><a routerLink="/products" [queryParams]="{category: 'skin-and-face'}">Skin & Face Care</a></li>
-          <li><a routerLink="/products" [queryParams]="{category: 'hair-care'}">Herbal Hair Care</a></li>
-          <li><a routerLink="/products" [queryParams]="{category: 'traditional-soaps'}">Handmade Soaps</a></li>
-          <li><a routerLink="/products" [queryParams]="{category: 'wellness-and-hygiene'}">Wellness & Hygiene</a></li>
+          <li><a routerLink="/contact">Shipping Policy</a></li>
+          <li><a routerLink="/contact">Return &amp; Refund Policy</a></li>
+          <li><a routerLink="/contact">Terms &amp; Conditions</a></li>
+          <li><a routerLink="/contact">Privacy Policy</a></li>
+          <li><a routerLink="/contact">FAQ</a></li>
         </ul>
       </div>
 
-      <!-- Column 4: Contact info from poster -->
+      <!-- Column 5: Get in Touch & Botanical Calligraphy -->
       <div class="footer-col contact-col">
-        <h4 class="col-title">Contact Us</h4>
-        <div class="contact-card">
-          <div class="contact-item">
-            <span class="contact-label">Founder:</span>
-            <span class="contact-val">M. முத்துமணி MBA.</span>
-          </div>
-          <div class="contact-item">
-            <span class="contact-label">Address:</span>
-            <span class="contact-val">Morais City, Trichy - 620 007, Tamil Nadu.</span>
-          </div>
-          <div class="contact-item">
-            <span class="contact-label">Phone:</span>
-            <a href="tel:7010136599" class="contact-val phone-link">70101 36599</a>
-          </div>
-          <div class="contact-item">
-            <span class="contact-label">WhatsApp:</span>
-            <a href="https://wa.me/917010136599" target="_blank" rel="noopener noreferrer" class="contact-val whatsapp-link">
-              +91 70101 36599
-            </a>
+        <h4 class="col-title">Get in Touch</h4>
+        <div class="contact-list">
+          <a href="tel:7010136599" class="contact-link">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+91 70101 36599</span>
+          </a>
+
+          <a href="mailto:manthalir@parampariyam.in" class="contact-link">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>manthalir@parampariyam.in</span>
+          </a>
+
+          <div class="contact-address">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Morais City, Trichy - 620 007, Tamil Nadu</span>
           </div>
         </div>
-        <a href="https://wa.me/917010136599" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm mt-3">
-          <span>Chat on WhatsApp</span>
-        </a>
+
+        <!-- Social Links -->
+        <div class="social-row">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#06452F"></polygon>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Tamil Heritage Botanical Motif matching reference -->
+        <div class="tamil-heritage-motif">
+          <p class="motif-tamil-text">இயற்கையின் அழகு உங்கள் அருகில்</p>
+          <div class="motif-leaf-art">🌿 ✦ 🌿</div>
+        </div>
       </div>
     </div>
 
-    <!-- Copyright -->
-    <div class="footer-bottom">
-      <p>&copy; {{ currentYear }} Manthalir Parampariyam (மாந்தளிர் பாரம்பரியம்). All Rights Reserved.</p>
-      <div class="footer-bottom-meta">
-        <span class="tamil-sub">Trichy, Tamil Nadu • Authentic Traditional Care</span>
+    <!-- Bottom Copyright & Discreet Admin Access -->
+    <div class="footer-bottom-bar">
+      <p class="copyright-text">
+        &copy; {{ currentYear }} Manthalir Parampariyam. All rights reserved.
+      </p>
+      <div class="footer-bottom-right">
+        <span class="motto-tag">Made with ♥ for a healthier tomorrow</span>
         <span class="dot-sep">•</span>
-        <a routerLink="/admin/login" class="footer-admin-link">
+        <a routerLink="/admin/login" class="admin-discreet-link" title="Management Portal">
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -1px; margin-right: 3px;">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
-          Admin Login
+          Admin Portal
         </a>
       </div>
     </div>

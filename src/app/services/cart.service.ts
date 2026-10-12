@@ -14,6 +14,13 @@ export class CartService {
     return this.items().reduce((sum, item) => sum + item.quantity, 0);
   });
 
+  readonly totalSubtotal = computed(() => {
+    return this.items().reduce((sum, item) => {
+      const price = item.product.price || 0;
+      return sum + (price * item.quantity);
+    }, 0);
+  });
+
   addToCart(product: Product, quantity = 1): void {
     const current = this.items();
     const existingIndex = current.findIndex(i => i.product.id === product.id);
@@ -64,14 +71,20 @@ export class CartService {
     message += `I would like to order the following products:\n`;
 
     cart.forEach((item, index) => {
-      message += `${index + 1}. *${item.product.name}* (Qty: ${item.quantity})\n`;
+      const priceStr = item.product.price ? ` - ₹${item.product.price * item.quantity}` : '';
+      message += `${index + 1}. *${item.product.name}* (Qty: ${item.quantity}${priceStr})\n`;
     });
+
+    const subtotal = this.totalSubtotal();
+    if (subtotal > 0) {
+      message += `\n*Estimated Total:* ₹${subtotal}\n`;
+    }
 
     if (customerNotes) {
       message += `\n*Customer Note:* ${customerNotes}\n`;
     }
 
-    message += `\nPlease share the available stock, pricing and delivery details for Trichy / Tamil Nadu. Thank you!`;
+    message += `\nPlease confirm order and share delivery details for Trichy / Tamil Nadu. Thank you!`;
 
     return `https://wa.me/917010136599?text=${encodeURIComponent(message)}`;
   }

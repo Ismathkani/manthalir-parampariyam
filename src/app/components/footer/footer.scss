@@ -1,54 +1,32 @@
-@use '../../../styles.scss' as *;
-
 .site-footer {
-  background-color: $color-dark-green;
-  color: $color-cream;
+  background-color: var(--forest-green);
+  color: #E2ECE6;
   margin-top: auto;
-  border-top: 3px solid $color-gold;
-
-  .footer-banner {
-    background: rgba($color-forest-green, 0.6);
-    border-bottom: 1px solid rgba($color-gold, 0.25);
-    padding: 1rem 0;
-
-    .footer-banner-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      text-align: center;
-    }
-
-    .tamil-quote {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: $color-gold;
-      letter-spacing: 0.02em;
-    }
-
-    .leaf-icon {
-      font-size: 1.1rem;
-    }
-  }
+  border-top: 2px solid var(--gold);
 
   .footer-main {
-    padding-top: 3.5rem;
+    padding-top: 4rem;
     padding-bottom: 2rem;
   }
 
-  .footer-grid {
+  .footer-top-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
-    gap: 2.5rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.6fr;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
 
-    @media (max-width: 992px) {
-      grid-template-columns: 1fr 1fr;
+    @media (max-width: 1100px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 480px) {
       grid-template-columns: 1fr;
-      gap: 2rem;
     }
   }
 
@@ -57,190 +35,210 @@
       display: flex;
       align-items: center;
       gap: 0.85rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
 
-      .footer-logo {
-        width: 54px;
-        height: 54px;
+      .footer-logo-img {
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         object-fit: cover;
-        border: 2px solid $color-gold;
+        border: 2px solid var(--gold);
+        background: #FFFFFF;
       }
 
-      .brand-title {
-        font-size: 1.4rem;
-        color: $color-white;
-        line-height: 1.2;
+      .brand-headings {
+        .footer-brand-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.35rem;
+          color: #FFFFFF;
+          line-height: 1.2;
 
-        .gold-text {
-          color: $color-gold;
-          font-style: italic;
+          .gold-text {
+            color: var(--gold-light);
+          }
+        }
+
+        .footer-tamil-title {
+          font-family: 'Noto Sans Tamil', sans-serif;
+          color: var(--gold-light);
+          font-size: 0.82rem;
+          font-weight: 500;
         }
       }
-
-      .brand-tamil {
-        color: $color-gold-light;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
     }
 
-    .brand-desc {
-      color: rgba($color-cream, 0.8);
-      font-size: 0.9rem;
+    .footer-motto-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-about-text {
+      color: #CFDED6;
+      font-size: 0.88rem;
       line-height: 1.6;
-      margin-bottom: 1.25rem;
-    }
-
-    .trust-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-
-      .pill {
-        background: rgba($color-forest-green, 0.8);
-        border: 1px solid rgba($color-gold, 0.3);
-        color: $color-gold-light;
-        font-size: 0.75rem;
-        padding: 0.25rem 0.65rem;
-        border-radius: 9999px;
-        font-weight: 600;
-      }
+      max-width: 320px;
     }
   }
 
   .col-title {
-    color: $color-gold;
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
     font-size: 1.15rem;
     margin-bottom: 1.25rem;
     position: relative;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
 
     &::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 32px;
+      width: 28px;
       height: 2px;
-      background-color: $color-gold;
+      background-color: var(--gold);
     }
   }
 
   .footer-links {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
 
-    li {
-      margin-bottom: 0.65rem;
+    li a {
+      color: #D3E2DB;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
 
-      a {
-        color: rgba($color-cream, 0.85);
-        font-size: 0.9rem;
-
-        &:hover {
-          color: $color-gold;
-          padding-left: 4px;
-        }
+      &:hover {
+        color: var(--gold-light);
+        padding-left: 4px;
       }
     }
   }
 
   .contact-col {
-    .contact-card {
+    .contact-list {
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
-      font-size: 0.88rem;
-      margin-bottom: 1rem;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
 
-      .contact-item {
+      .contact-link, .contact-address {
         display: flex;
-        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.65rem;
+        color: #D3E2DB;
+        font-size: 0.88rem;
+        line-height: 1.4;
 
-        .contact-label {
-          color: $color-gold-light;
-          font-size: 0.75rem;
-          font-weight: 700;
-          text-transform: uppercase;
+        .contact-icon {
+          width: 16px;
+          height: 16px;
+          color: var(--gold);
+          flex-shrink: 0;
+          margin-top: 2px;
         }
 
-        .contact-val {
-          color: $color-white;
+        &:hover {
+          color: var(--gold-light);
         }
+      }
+    }
 
-        .phone-link, .whatsapp-link {
-          color: $color-gold;
-          font-weight: 600;
+    .social-row {
+      display: flex;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
 
-          &:hover {
-            text-decoration: underline;
-          }
+      .social-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(198, 163, 74, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-light);
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: var(--gold);
+          color: var(--dark-green);
+          transform: translateY(-2px);
         }
+      }
+    }
+
+    // Tamil Heritage Botanical Calligraphy Motif
+    .tamil-heritage-motif {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(198, 163, 74, 0.25);
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      text-align: center;
+
+      .motif-tamil-text {
+        font-family: 'Noto Sans Tamil', sans-serif;
+        color: var(--gold-light);
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.25rem;
+      }
+
+      .motif-leaf-art {
+        color: var(--gold);
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
       }
     }
   }
 
-  .mt-3 {
-    margin-top: 0.75rem;
-  }
-
-  .footer-bottom {
-    border-top: 1px solid rgba($color-cream, 0.15);
+  .footer-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
     padding-top: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.85rem;
-    color: rgba($color-cream, 0.7);
+    font-size: 0.825rem;
+    color: #A9C2B5;
+    flex-wrap: wrap;
+    gap: 0.75rem;
 
     @media (max-width: 768px) {
       flex-direction: column;
       text-align: center;
-      gap: 0.5rem;
     }
 
-    .footer-bottom-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      .dot-sep {
-        color: rgba($color-cream, 0.4);
-      }
-    }
-
-    .tamil-sub {
-      color: $color-gold-light;
-    }
-
-    .footer-admin-link {
-      color: $color-gold;
-      text-decoration: none;
-      font-size: 0.8rem;
+    .footer-bottom-right {
       display: inline-flex;
       align-items: center;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba($color-gold, 0.1);
-      border: 1px solid rgba($color-gold, 0.25);
-      transition: all 0.2s ease;
+      gap: 0.65rem;
 
-      &:hover {
-        background: $color-gold;
-        color: $color-dark-green;
+      .dot-sep {
+        color: rgba(255, 255, 255, 0.25);
       }
-    }
-  }
 
-  .admin-quick-link {
-    color: $color-gold-light !important;
-    font-weight: 500;
-    opacity: 0.9;
+      .admin-discreet-link {
+        color: var(--gold-light);
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: rgba(198, 163, 74, 0.12);
+        border: 1px solid rgba(198, 163, 74, 0.3);
 
-    &:hover {
-      color: #fff !important;
+        &:hover {
+          background: var(--gold);
+          color: var(--dark-green);
+        }
+      }
     }
   }
 }

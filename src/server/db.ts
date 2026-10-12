@@ -59,7 +59,9 @@ export interface DBData {
   };
 }
 
-const DB_FILE = path.join(process.cwd(), 'data', 'store.json');
+const isVercel = Boolean(process.env['VERCEL']);
+const SEED_FILE = path.join(process.cwd(), 'data', 'store.json');
+const DB_FILE = isVercel ? path.join('/tmp', 'store.json') : SEED_FILE;
 
 // 16 original products seeded with exact metadata from poster
 const INITIAL_PRODUCTS: Omit<DBProduct, 'id' | 'createdAt' | 'updatedAt'>[] = [
@@ -518,6 +520,14 @@ class Database {
         const raw = fs.readFileSync(DB_FILE, 'utf-8');
         return JSON.parse(raw);
       }
+      if (isVercel && fs.existsSync(SEED_FILE)) {
+        const raw = fs.readFileSync(SEED_FILE, 'utf-8');
+        const parsed = JSON.parse(raw);
+        try {
+          fs.writeFileSync(DB_FILE, raw, 'utf-8');
+        } catch {}
+        return parsed;
+      }
     } catch (e) {
       console.warn('Could not read existing store.json, re-initializing database.', e);
     }
@@ -566,7 +576,9 @@ class Database {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
-      fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+      fs.promises.writeFile(DB_FILE, JSON.stringify(data, null, 2), 'utf-8').catch(err => {
+        console.error('Failed to write database file asynchronously:', err);
+      });
     } catch (err) {
       console.error('Failed to write database file:', err);
     }

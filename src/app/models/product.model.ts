@@ -16,13 +16,12 @@ export interface Product {
   isAvailable?: boolean;
   status?: 'Published' | 'Draft';
   
-  // Clearly marked placeholders as requested by owner
-  pricePlaceholder: string;
-  ingredientsPlaceholder: string;
-  sizePlaceholder: string;
-  descriptionPlaceholder: string;
-  benefitsPlaceholder: string[];
-  usagePlaceholder: string;
+  pricePlaceholder?: string;
+  ingredientsPlaceholder?: string;
+  sizePlaceholder?: string;
+  descriptionPlaceholder?: string;
+  benefitsPlaceholder?: string[];
+  usagePlaceholder?: string;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -33,5 +32,6 @@ export interface Category {
   slug: string;
   count?: number;
   description: string;
+  subtitle?: string;
+  icon?: string;
 }
-

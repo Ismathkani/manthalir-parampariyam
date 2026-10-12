@@ -4,47 +4,48 @@
     "username": "Manthalir",
     "passwordHash": "$2b$10$Un1i49F6jUoJJLmP20qQMeQOQYSYZCgKc8N.Oc8bpl.VVeAF5GiaG",
     "mustChangePassword": true,
-    "lastLogin": "2026-10-10T11:52:37.833Z"
+    "lastLogin": "2026-10-12T12:02:47.865Z"
   },
   "categories": [
     {
       "id": 1,
       "name": "Face Care",
       "slug": "face-care",
-      "description": "Serums, face washes, toners & creams"
+      "description": "Gentle & Natural facial serums, cleansers and botanical care"
     },
     {
       "id": 2,
       "name": "Hair Care",
       "slug": "hair-care",
-      "description": "Traditional hair oils and herbal shampoos"
+      "description": "Stronger & Healthier hair oils, herbal shampoos and ammonia-free dye"
     },
     {
       "id": 3,
       "name": "Herbal Soaps",
       "slug": "herbal-soaps",
-      "description": "Handcrafted cold-processed ayurvedic soaps"
+      "description": "Pure & Safe handcrafted cold-processed ayurvedic and goat milk soaps"
     },
     {
       "id": 4,
       "name": "Skin Care",
       "slug": "skin-care",
-      "description": "Sunscreen, brightening creams & body lotions"
+      "description": "Radiant & Fresh sun defense, brightening creams and rose mists"
     },
     {
       "id": 5,
       "name": "Feminine Hygiene",
       "slug": "feminine-hygiene",
-      "description": "100% Cotton organic herbal sanitary pads"
+      "description": "Care & Comfort 100% organic cotton herbal sanitary pads"
     }
   ],
   "products": [
     {
+      "id": 1,
       "name": "Kumkumadi Night Serum",
-      "tamilName": "குங்குமாதி நைட் சீரம்",
+      "tamilName": "குங்குமாதி இரவு சீரம்",
       "slug": "kumkumadi-night-serum",
       "category": "Face Care",
-      "categorySlug": "skin-and-face",
+      "categorySlug": "face-care",
       "price": 499,
       "salePrice": null,
       "badge": "Signature Care",
@@ -54,29 +55,29 @@
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/kumkumadi-night-serum.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Authentic herbal formulation & saffron blend to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 30 ml)]",
-      "descriptionPlaceholder": "Traditional Kumkumadi night concentrate for skin glow and radiance.",
+      "mainImage": "images/products/kumkumadi-night-serum.jpg",
+      "pricePlaceholder": "₹499",
+      "ingredientsPlaceholder": "Authentic saffron (Kesar), red sandalwood, manjistha, and cold-pressed sesame oil.",
+      "sizePlaceholder": "30 ml",
+      "descriptionPlaceholder": "Traditional Kumkumadi night concentrate for skin glow, radiance, and evening skin rejuvenation.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Night complexion radiance]",
-        "[Benefit 2 - Blemish reduction]",
-        "[Benefit 3 - Natural skin nourishment]"
+        "Night complexion radiance and natural illumination",
+        "Helps reduce blemishes and fine lines",
+        "Deep herbal skin nourishment"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 1,
+      "usagePlaceholder": "Apply 3-4 drops onto cleansed face and neck before sleeping. Gently massage in upward circular motions.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.691Z"
     },
     {
+      "id": 2,
       "name": "Avarampoo Face Wash",
-      "tamilName": "ஆவாரம்பூ ஃபேஸ் வாஷ்",
+      "tamilName": "ஆவாரம்பூ முகக் கழுவி",
       "slug": "avarampoo-face-wash",
       "category": "Face Care",
-      "categorySlug": "skin-and-face",
+      "categorySlug": "face-care",
       "price": 249,
       "salePrice": null,
       "badge": "Herbal Cleanse",
@@ -86,24 +87,24 @@
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/avarampoo-face-wash.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Avarampoo (Senna auriculata) extract details to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 100 ml)]",
-      "descriptionPlaceholder": "Gentle golden Avarampoo petal facial cleanser for refreshing daily skin hygiene.",
+      "mainImage": "images/products/avarampoo-face-wash.jpg",
+      "pricePlaceholder": "₹249",
+      "ingredientsPlaceholder": "Avarampoo (Senna auriculata) golden petals, wild turmeric, and gentle aloe vera base.",
+      "sizePlaceholder": "100 ml",
+      "descriptionPlaceholder": "Gentle golden Avarampoo petal facial cleanser for refreshing daily skin hygiene without drying.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Deep pore cleansing]",
-        "[Benefit 2 - Natural oil balance]",
-        "[Benefit 3 - Tan reduction]"
+        "Deep pore cleansing and dirt removal",
+        "Balances natural facial oils",
+        "Removes daily tan and revives dull complexion"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 2,
+      "usagePlaceholder": "Take a coin-sized amount, lather gently with water, massage over face and rinse thoroughly.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 3,
       "name": "Semparuthi Shampoo",
       "tamilName": "செம்பருத்தி ஷாம்பு",
       "slug": "semparuthi-shampoo",
@@ -118,62 +119,62 @@
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/semparuthi-shampoo.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Hibiscus petal and herbal extracts to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 200 ml)]",
-      "descriptionPlaceholder": "Traditional red hibiscus shampoo for soft, manageable, and revitalized hair strands.",
+      "mainImage": "images/products/semparuthi-shampoo.jpg",
+      "pricePlaceholder": "₹299",
+      "ingredientsPlaceholder": "Fresh red hibiscus (Semparuthi) extract, shikakai, fenugreek, and coconut-derived cleanser.",
+      "sizePlaceholder": "200 ml",
+      "descriptionPlaceholder": "Traditional red hibiscus shampoo for soft, manageable, and naturally lustrous hair strands.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Hair softening & conditioning]",
-        "[Benefit 2 - Root nourishment]",
-        "[Benefit 3 - Gentle scalp cleanse]"
+        "Promotes silky softness & natural conditioning",
+        "Nourishes hair roots and prevents premature graying",
+        "Gentle sulfate-free scalp cleansing"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 3,
+      "usagePlaceholder": "Massage into wet hair and scalp, work into a rich herbal lather, and rinse thoroughly with lukewarm water.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 4,
       "name": "Goat Milk Soap",
-      "tamilName": "ஆட்டுப்பால் சோப்",
+      "tamilName": "ஆட்டுப் பால் சோப்",
       "slug": "goat-milk-soap",
       "category": "Herbal Soaps",
-      "categorySlug": "traditional-soaps",
-      "price": 180,
+      "categorySlug": "herbal-soaps",
+      "price": 199,
       "salePrice": null,
       "badge": "Handcrafted",
       "featured": true,
       "sku": "MP-GMS-004",
-      "stock": 75,
+      "stock": 70,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/goat-milk-soap.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Pure goat milk & cold-pressed oils ratio to be updated by owner]",
-      "sizePlaceholder": "[Weight to be updated by owner (e.g. 100 g)]",
-      "descriptionPlaceholder": "Rich moisturizing handmade soap crafted with creamy goat milk.",
+      "mainImage": "images/products/goat-milk-soap.jpg",
+      "pricePlaceholder": "₹199",
+      "ingredientsPlaceholder": "Farm-fresh goat milk, cold-pressed virgin coconut oil, olive oil, and sweet almond butter.",
+      "sizePlaceholder": "100 g",
+      "descriptionPlaceholder": "Rich moisturizing handmade soap crafted with creamy pure goat milk for velvety skin.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Intensive moisturization]",
-        "[Benefit 2 - Gentle for sensitive skin]",
-        "[Benefit 3 - Velvety soft finish]"
+        "Intensive hydration for dry or delicate skin",
+        "Gentle and soothing for sensitive skin conditions",
+        "Softens skin texture with lactic acid goodness"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 4,
+      "usagePlaceholder": "Lather between wet palms or with a loofah and gently apply to body. Rinse with clean water.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 5,
       "name": "Regular Hair Oil",
-      "tamilName": "ரெகுலர் ஹேர் ஆயில்",
+      "tamilName": "சாதாரண முடி எண்ணெய்",
       "slug": "regular-hair-oil",
       "category": "Hair Care",
       "categorySlug": "hair-care",
-      "price": 350,
+      "price": 299,
       "salePrice": null,
       "badge": "Traditional Recipe",
       "featured": true,
@@ -182,58 +183,58 @@
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/regular-hair-oil.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Traditional botanical herb infusion to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 200 ml)]",
-      "descriptionPlaceholder": "Daily nourishing herbal oil for healthy scalp and strong hair vitality.",
+      "mainImage": "images/products/regular-hair-oil.jpg",
+      "pricePlaceholder": "₹299",
+      "ingredientsPlaceholder": "Cold-pressed coconut oil boiled with bringha (karisalanganni), curry leaves, amla, and brahmi.",
+      "sizePlaceholder": "200 ml",
+      "descriptionPlaceholder": "Daily nourishing herbal oil for healthy scalp, cooling comfort, and strong hair vitality.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Scalp cooling therapy]",
-        "[Benefit 2 - Strengthens hair roots]",
-        "[Benefit 3 - Reduces daily hair fall]"
+        "Cools the head and relieves tension",
+        "Strengthens hair roots and prevents breakage",
+        "Nurtures natural black shine and vitality"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 5,
+      "usagePlaceholder": "Warm slightly and massage into scalp with fingertips. Leave overnight or for 1 hour before wash.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 6,
       "name": "Rabbit Hair Oil",
-      "tamilName": "ராபிட் ஹேர் ஆயில்",
+      "tamilName": "முயல் முடி எண்ணெய்",
       "slug": "rabbit-hair-oil",
       "category": "Hair Care",
       "categorySlug": "hair-care",
-      "price": 420,
+      "price": 349,
       "salePrice": null,
       "badge": "Heritage Formula",
       "featured": true,
-      "sku": "MP-RBHO-006",
+      "sku": "MP-RBO-006",
       "stock": 40,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/rabbit-hair-oil.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Specialized traditional herbal extracts to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 200 ml)]",
-      "descriptionPlaceholder": "Specialized heritage hair oil formulated for intensive hair revival and thickness.",
+      "mainImage": "images/products/rabbit-hair-oil.jpg",
+      "pricePlaceholder": "₹349",
+      "ingredientsPlaceholder": "Specialized traditional herbal infusion crafted with rare botanical roots and sesame-coconut oils.",
+      "sizePlaceholder": "200 ml",
+      "descriptionPlaceholder": "Specialized heritage hair oil formulated for intensive hair revival, volume, and density.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Root-deep stimulation]",
-        "[Benefit 2 - Follicle strengthening]",
-        "[Benefit 3 - Traditional intensive hair care]"
+        "Root-deep follicle stimulation",
+        "Helps fill patches and thinning areas",
+        "Traditional intensive Ayurvedic growth therapy"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 6,
+      "usagePlaceholder": "Apply directly to the roots and thinning areas 3-4 times a week. Massage for 10 minutes.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 7,
       "name": "Dandruff Shampoo",
-      "tamilName": "பொடுகு எதிர்ப்பு ஷாம்பு",
+      "tamilName": "தலைமுடி பொடுகு ஷாம்பு",
       "slug": "dandruff-shampoo",
       "category": "Hair Care",
       "categorySlug": "hair-care",
@@ -242,162 +243,162 @@
       "badge": "Scalp Therapy",
       "featured": false,
       "sku": "MP-DFS-007",
-      "stock": 35,
+      "stock": 55,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/dandruff-shampoo.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Neem, tea tree and botanical anti-dandruff herbs to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 200 ml)]",
+      "mainImage": "images/products/dandruff-shampoo.jpg",
+      "pricePlaceholder": "₹299",
+      "ingredientsPlaceholder": "Neem leaf extracts, tea tree oil, fenugreek, camphor and soapnut cleansing extract.",
+      "sizePlaceholder": "200 ml",
       "descriptionPlaceholder": "Targeted scalp cleanser to keep roots clear, cool, and free from persistent flakes.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Eliminates stubborn flakes]",
-        "[Benefit 2 - Calms scalp itching]",
-        "[Benefit 3 - Purifies scalp pores]"
+        "Eliminates stubborn flakes and dandruff fungus",
+        "Calms scalp itching and redness",
+        "Purifies scalp pores without drying hair"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 7,
+      "usagePlaceholder": "Apply to damp scalp, leave for 2-3 minutes to allow herbal actives to work, then rinse cleanly.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 8,
       "name": "Wine Melon Face Wash",
-      "tamilName": "வைன் மெலன் ஃபேஸ் வாஷ்",
+      "tamilName": "வென் மெலன் முகக் கழுவி",
       "slug": "wine-melon-face-wash",
       "category": "Face Care",
-      "categorySlug": "skin-and-face",
-      "price": 259,
+      "categorySlug": "face-care",
+      "price": 249,
       "salePrice": null,
       "badge": "Antioxidant Care",
       "featured": false,
-      "sku": "MP-WMFW-008",
-      "stock": 30,
-      "isAvailable": true,
-      "status": "Published",
-      "images": [
-        "images/manthalir-logo.jpeg"
-      ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Wine grape and watermelon extract details to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 100 ml)]",
-      "descriptionPlaceholder": "Dewy antioxidant facial wash combining cooling melon with nourishing grape extracts.",
-      "benefitsPlaceholder": [
-        "[Benefit 1 - Refreshing antioxidant shield]",
-        "[Benefit 2 - Hydrates thirsty skin]",
-        "[Benefit 3 - Clear glowing complexion]"
-      ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 8,
-      "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
-    },
-    {
-      "name": "Sunscreen Lotion",
-      "tamilName": "சன்ஸ்கிரீன் லோஷன்",
-      "slug": "sunscreen-lotion",
-      "category": "Skin Care",
-      "categorySlug": "skin-and-face",
-      "price": 349,
-      "salePrice": null,
-      "badge": "Daily Defense",
-      "featured": true,
-      "sku": "MP-SSL-009",
+      "sku": "MP-WMF-008",
       "stock": 50,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/wine-melon-face-wash.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Mineral UV protection and botanical shield herbs to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 100 ml)]",
-      "descriptionPlaceholder": "Lightweight herbal sun defense lotion offering broad-spectrum protection with non-sticky feel.",
+      "mainImage": "images/products/wine-melon-face-wash.jpg",
+      "pricePlaceholder": "₹249",
+      "ingredientsPlaceholder": "Red wine grape polyphenols, juicy watermelon juice extracts, and botanical humectants.",
+      "sizePlaceholder": "100 ml",
+      "descriptionPlaceholder": "Dewy antioxidant facial wash combining cooling watermelon with nourishing grape antioxidants.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Sun damage protection]",
-        "[Benefit 2 - Non-greasy finish]",
-        "[Benefit 3 - Prevents sun-induced dark spots]"
+        "Refreshing antioxidant shield against pollution",
+        "Deeply hydrates dry and tired skin",
+        "Leaves face radiant, supple, and fresh"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 9,
+      "usagePlaceholder": "Use morning and evening. Gently lather and rinse with cold water.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 9,
+      "name": "Sunscreen Lotion",
+      "tamilName": "சன்ஸ்கிரீன் லோஷன்",
+      "slug": "sunscreen-lotion",
+      "category": "Skin Care",
+      "categorySlug": "skin-care",
+      "price": 349,
+      "salePrice": null,
+      "badge": "Daily Defense",
+      "featured": false,
+      "sku": "MP-SSL-009",
+      "stock": 60,
+      "isAvailable": true,
+      "status": "Published",
+      "images": [
+        "images/products/sunscreen-lotion.jpg"
+      ],
+      "mainImage": "images/products/sunscreen-lotion.jpg",
+      "pricePlaceholder": "₹349",
+      "ingredientsPlaceholder": "Zinc oxide mineral filter, raspberry seed oil, carrot seed oil, and aloe soothing gel.",
+      "sizePlaceholder": "100 ml",
+      "descriptionPlaceholder": "Lightweight herbal sun defense lotion offering broad-spectrum SPF 50+ protection without stickiness.",
+      "benefitsPlaceholder": [
+        "Shields against UVA & UVB sun damage",
+        "Non-greasy, zero white-cast formulation",
+        "Prevents sun-induced dark spots and hyperpigmentation"
+      ],
+      "usagePlaceholder": "Apply generously 15 minutes before sun exposure. Reapply every 3-4 hours outdoors.",
+      "createdAt": "2026-10-10T11:34:58.441Z",
+      "updatedAt": "2026-10-12T10:57:15.692Z"
+    },
+    {
+      "id": 10,
       "name": "Niacinamide Night Serum",
-      "tamilName": "நியாசினமைடு நைட் சீரம்",
+      "tamilName": "நியாசினமைடு இரவு சீரம்",
       "slug": "niacinamide-night-serum",
       "category": "Face Care",
-      "categorySlug": "skin-and-face",
+      "categorySlug": "face-care",
       "price": 449,
       "salePrice": null,
       "badge": "Advanced Care",
       "featured": false,
       "sku": "MP-NNS-010",
-      "stock": 25,
+      "stock": 45,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/niacinamide-night-serum.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Vitamin B3 and soothing herbal actives to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 30 ml)]",
-      "descriptionPlaceholder": "Pore refining and skin texture clarifying overnight herbal concentrate.",
+      "mainImage": "images/products/niacinamide-night-serum.jpg",
+      "pricePlaceholder": "₹449",
+      "ingredientsPlaceholder": "5% Niacinamide (Vitamin B3), licorice root extract, gotu kola, and hyaluronic herbal base.",
+      "sizePlaceholder": "30 ml",
+      "descriptionPlaceholder": "Pore refining and skin texture clarifying overnight herbal concentrate for smooth even tone.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Refines skin pores]",
-        "[Benefit 2 - Smoothens uneven tone]",
-        "[Benefit 3 - Night barrier repair]"
+        "Refines enlarged pores and minimizes oiliness",
+        "Evens out uneven skin tone and acne marks",
+        "Strengthens the skin moisture barrier overnight"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 10,
+      "usagePlaceholder": "Apply 3 drops at bedtime after toner. Follow with moisturizer if needed.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 11,
       "name": "Rose Toner",
       "tamilName": "ரோஸ் டோனர்",
       "slug": "rose-toner",
-      "category": "Face Care",
-      "categorySlug": "skin-and-face",
-      "price": 199,
+      "category": "Skin Care",
+      "categorySlug": "skin-care",
+      "price": 220,
       "salePrice": null,
       "badge": "Steam Distilled",
       "featured": false,
-      "sku": "MP-RT-011",
-      "stock": 60,
+      "sku": "MP-RST-011",
+      "stock": 75,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/rose-toner.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Pure steam-distilled rose water to be updated by owner]",
-      "sizePlaceholder": "[Volume to be updated by owner (e.g. 100 ml)]",
-      "descriptionPlaceholder": "Pure floral mist to tone, balance pH, and hydrate the skin with natural rose fragrance.",
+      "mainImage": "images/products/rose-toner.jpg",
+      "pricePlaceholder": "₹220",
+      "ingredientsPlaceholder": "100% Steam-distilled Kannauj damask rose petals (Gulab jal) with pure floral water.",
+      "sizePlaceholder": "100 ml",
+      "descriptionPlaceholder": "Pure floral mist to tone, balance natural pH, and hydrate skin with intoxicating fresh rose fragrance.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Balances natural pH]",
-        "[Benefit 2 - Instant hydration mist]",
-        "[Benefit 3 - Tightens open facial pores]"
+        "Restores ideal skin pH after face wash",
+        "Instant burst of botanical hydration",
+        "Tightens pores and cools facial heat"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 11,
+      "usagePlaceholder": "Spray mist directly on face or apply with a cotton pad before applying serum.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 12,
       "name": "Herbal Sanitary Napkins",
-      "tamilName": "மூலிகை சானிட்டரி நாப்கின்ஸ்",
+      "tamilName": "மூலிகை சானிட்டரி நாப்கின்கள்",
       "slug": "herbal-sanitary-napkins",
       "category": "Feminine Hygiene",
-      "categorySlug": "wellness-and-hygiene",
-      "price": 160,
+      "categorySlug": "feminine-hygiene",
+      "price": 199,
       "salePrice": null,
       "badge": "Natural Comfort",
       "featured": true,
@@ -406,126 +407,126 @@
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/herbal-sanitary-napkins.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Organic cotton top-sheet and herbal hygiene core to be updated by owner]",
-      "sizePlaceholder": "[Pack size to be updated by owner (e.g. Pack of 10 XL)]",
-      "descriptionPlaceholder": "Rash-free, breathable cotton pads infused with protective herbal strips for total comfort.",
+      "mainImage": "images/products/herbal-sanitary-napkins.jpg",
+      "pricePlaceholder": "₹199",
+      "ingredientsPlaceholder": "100% Organic cotton surface, breathable wood-pulp absorbent core, and antimicrobial herbal strip.",
+      "sizePlaceholder": "Pack of 10 XL Pads",
+      "descriptionPlaceholder": "Rash-free, breathable cotton sanitary napkins infused with protective herbal strips for total comfort.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - 100% Rash-free cotton comfort]",
-        "[Benefit 2 - Antibacterial herbal strip]",
-        "[Benefit 3 - Breathable & high absorption]"
+        "100% Rash-free certified soft cotton comfort",
+        "Antibacterial herbal core for odor control & hygiene",
+        "Ultra-thin with superior high-absorption wings"
       ],
-      "usagePlaceholder": "[Directions for usage to be updated by owner]",
-      "id": 12,
+      "usagePlaceholder": "Peel back adhesive strip and place firmly in undergarment. Change every 4-6 hours.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 13,
       "name": "Brightening Cream",
-      "tamilName": "பிரைட்னிங் கிரீம்",
+      "tamilName": "பிரைட்டனிங் கிரீம்",
       "slug": "brightening-cream",
       "category": "Skin Care",
-      "categorySlug": "skin-and-face",
-      "price": 380,
+      "categorySlug": "skin-care",
+      "price": 399,
       "salePrice": null,
       "badge": "Radiant Glow",
       "featured": false,
-      "sku": "MP-BC-013",
-      "stock": 40,
+      "sku": "MP-BRC-013",
+      "stock": 50,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/brightening-cream.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Kasturi turmeric, sandalwood & herbal butter to be updated by owner]",
-      "sizePlaceholder": "[Weight to be updated by owner (e.g. 50 g)]",
+      "mainImage": "images/products/brightening-cream.jpg",
+      "pricePlaceholder": "₹399",
+      "ingredientsPlaceholder": "Kasturi manjal (wild turmeric), sandalwood extract, saffron, kokum butter, and almond oil.",
+      "sizePlaceholder": "50 g",
       "descriptionPlaceholder": "Traditional complexion rejuvenating cream to nurture even skin tone and natural luminosity.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Promotes youthful radiance]",
-        "[Benefit 2 - Deep nourishment without stickiness]",
-        "[Benefit 3 - Softens dry skin]"
+        "Promotes natural glowing skin without harsh chemicals",
+        "Deep nourishing hydration without grease",
+        "Softens roughness and restores skin elasticity"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 13,
+      "usagePlaceholder": "Take a pea-sized amount, dot all over face, and massage gently until absorbed.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 14,
       "name": "Sandalwood Soap",
       "tamilName": "சந்தன சோப்",
       "slug": "sandalwood-soap",
       "category": "Herbal Soaps",
-      "categorySlug": "traditional-soaps",
-      "price": 160,
+      "categorySlug": "herbal-soaps",
+      "price": 180,
       "salePrice": null,
       "badge": "Classic Heritage",
       "featured": true,
       "sku": "MP-SWS-014",
-      "stock": 70,
+      "stock": 65,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/sandalwood-soap.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Sandalwood extract & essential oils formulation to be updated by owner]",
-      "sizePlaceholder": "[Weight to be updated by owner (e.g. 100 g)]",
+      "mainImage": "images/products/sandalwood-soap.jpg",
+      "pricePlaceholder": "₹180",
+      "ingredientsPlaceholder": "Pure Mysore sandalwood oil, sandalwood powder, cold-pressed coconut oil, and castor oil.",
+      "sizePlaceholder": "100 g",
       "descriptionPlaceholder": "Luxurious handmade soap scented with authentic soothing sandalwood for divine freshness.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Soothes body heat]",
-        "[Benefit 2 - Divine calming aroma]",
-        "[Benefit 3 - Gentle skin cleansing]"
+        "Soothes body heat and calms skin irritations",
+        "Divine traditional sandalwood fragrance that lasts",
+        "Gentle moisturizing herbal bath experience"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 14,
+      "usagePlaceholder": "Work into a creamy lather over body during bath and rinse with water.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 15,
       "name": "Kuppaimeni Soap",
       "tamilName": "குப்பைமேனி சோப்",
       "slug": "kuppaimeni-soap",
       "category": "Herbal Soaps",
-      "categorySlug": "traditional-soaps",
-      "price": 150,
+      "categorySlug": "herbal-soaps",
+      "price": 160,
       "salePrice": null,
       "badge": "Siddha Remedy",
       "featured": true,
       "sku": "MP-KMS-015",
-      "stock": 90,
+      "stock": 70,
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/kuppaimeni-soap.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Fresh Kuppaimeni (Acalypha Indica) & neem extract to be updated by owner]",
-      "sizePlaceholder": "[Weight to be updated by owner (e.g. 100 g)]",
-      "descriptionPlaceholder": "Time-honored Siddha herbal soap formulated for acne relief, skin purity, and clarity.",
+      "mainImage": "images/products/kuppaimeni-soap.jpg",
+      "pricePlaceholder": "₹160",
+      "ingredientsPlaceholder": "Fresh Kuppaimeni (Acalypha indica) whole leaf extract, neem oil, and turmeric.",
+      "sizePlaceholder": "100 g",
+      "descriptionPlaceholder": "Time-honored Siddha herbal soap formulated for acne relief, skin clarity, and purifying hygiene.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Helps calm acne and skin bumps]",
-        "[Benefit 2 - Relieves skin itchiness and redness]",
-        "[Benefit 3 - Pure Siddha herbal legacy]"
+        "Helps calm skin breakouts, acne, and bumps",
+        "Relieves itchiness, rashes, and fungal irritations",
+        "Centuries-old Siddha medicinal recipe"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 15,
+      "usagePlaceholder": "Lather onto affected areas and leave for 1 minute before rinsing.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
+      "id": 16,
       "name": "Skin Shining Soap",
       "tamilName": "ஸ்கின் ஷைனிங் சோப்",
       "slug": "skin-shining-soap",
       "category": "Herbal Soaps",
-      "categorySlug": "traditional-soaps",
-      "price": 175,
+      "categorySlug": "herbal-soaps",
+      "price": 170,
       "salePrice": null,
       "badge": "Golden Glow",
       "featured": false,
@@ -534,134 +535,53 @@
       "isAvailable": true,
       "status": "Published",
       "images": [
-        "images/manthalir-logo.jpeg"
+        "images/products/skin-shining-soap.jpg"
       ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "pricePlaceholder": "[Price to be updated by owner]",
-      "ingredientsPlaceholder": "[Turmeric, saffron & brightening botanicals to be updated by owner]",
-      "sizePlaceholder": "[Weight to be updated by owner (e.g. 100 g)]",
+      "mainImage": "images/products/skin-shining-soap.jpg",
+      "pricePlaceholder": "₹170",
+      "ingredientsPlaceholder": "Saffron strands, turmeric, milk cream, and moisturizing cold-pressed seed oils.",
+      "sizePlaceholder": "100 g",
       "descriptionPlaceholder": "Handcrafted glow booster soap packed with traditional brightening herbs for post-bath radiance.",
       "benefitsPlaceholder": [
-        "[Benefit 1 - Visible post-bath glow]",
-        "[Benefit 2 - Gentle de-tanning]",
-        "[Benefit 3 - Moisturizing herbal wash]"
+        "Visible post-bath luminous glow",
+        "Gently detans and restores natural complexion",
+        "Deeply hydrating herbal bath wash"
       ],
-      "usagePlaceholder": "[Directions for application to be updated by owner]",
-      "id": 16,
+      "usagePlaceholder": "Lather over face and body daily for radiant skin.",
       "createdAt": "2026-10-10T11:34:58.441Z",
-      "updatedAt": "2026-10-10T11:34:58.441Z"
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     },
     {
       "id": 17,
-      "name": "Moringa & Vetiver Hair Mask",
-      "tamilName": "முருங்கை வெட்டிவேர் ஹேர் மாஸ்க்",
-      "slug": "moringa-vetiver-hair-mask",
+      "name": "Herbal Hair Dye",
+      "tamilName": "மூலிகை ஹேர் டை",
+      "slug": "herbal-hair-dye",
       "category": "Hair Care",
       "categorySlug": "hair-care",
-      "price": 350,
+      "price": 349,
       "salePrice": null,
-      "pricePlaceholder": "₹350",
-      "ingredientsPlaceholder": "[Ingredients to be updated by owner]",
-      "sizePlaceholder": "[Size to be updated by owner]",
-      "descriptionPlaceholder": "Traditional organic hair mask for deep root nourishment.",
-      "benefitsPlaceholder": [],
-      "usagePlaceholder": "",
-      "images": [
-        "images/manthalir-logo.jpeg"
-      ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "sku": "MP-017",
-      "stock": 25,
-      "isAvailable": true,
-      "status": "Published",
-      "featured": false,
-      "badge": "",
-      "createdAt": "2026-10-10T11:35:57.082Z",
-      "updatedAt": "2026-10-10T11:35:57.082Z"
-    },
-    {
-      "id": 18,
-      "name": "Moringa & Vetiver Hair Mask",
-      "tamilName": "முருங்கை வெட்டிவேர் ஹேர் மாஸ்க்",
-      "slug": "moringa-vetiver-hair-mask",
-      "category": "Hair Care",
-      "categorySlug": "hair-care",
-      "price": 350,
-      "salePrice": null,
-      "pricePlaceholder": "₹350",
-      "ingredientsPlaceholder": "[Ingredients to be updated by owner]",
-      "sizePlaceholder": "[Size to be updated by owner]",
-      "descriptionPlaceholder": "Traditional organic hair mask for deep root nourishment.",
-      "benefitsPlaceholder": [],
-      "usagePlaceholder": "",
-      "images": [
-        "images/manthalir-logo.jpeg"
-      ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "sku": "MP-018",
-      "stock": 25,
-      "isAvailable": true,
-      "status": "Published",
-      "featured": false,
-      "badge": "",
-      "createdAt": "2026-10-10T11:37:40.958Z",
-      "updatedAt": "2026-10-10T11:37:40.958Z"
-    },
-    {
-      "id": 19,
-      "name": "Moringa & Vetiver Hair Mask",
-      "tamilName": "முருங்கை வெட்டிவேர் ஹேர் மாஸ்க்",
-      "slug": "moringa-vetiver-hair-mask",
-      "category": "Hair Care",
-      "categorySlug": "hair-care",
-      "price": 350,
-      "salePrice": null,
-      "pricePlaceholder": "₹350",
-      "ingredientsPlaceholder": "[Ingredients to be updated by owner]",
-      "sizePlaceholder": "[Size to be updated by owner]",
-      "descriptionPlaceholder": "Traditional organic hair mask for deep root nourishment.",
-      "benefitsPlaceholder": [],
-      "usagePlaceholder": "",
-      "images": [
-        "images/manthalir-logo.jpeg"
-      ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "sku": "MP-019",
-      "stock": 25,
-      "isAvailable": true,
-      "status": "Published",
-      "featured": false,
-      "badge": "",
-      "createdAt": "2026-10-10T11:38:32.936Z",
-      "updatedAt": "2026-10-10T11:38:32.936Z"
-    },
-    {
-      "id": 20,
-      "name": "Herbal Rose Water Toner",
-      "tamilName": "பன்னீர் ரோஸ் வாட்டர் டோனர்",
-      "slug": "herbal-rose-water-toner",
-      "category": "Face Care",
-      "categorySlug": "face-care",
-      "price": 280,
-      "salePrice": 240,
-      "pricePlaceholder": "₹280",
-      "ingredientsPlaceholder": "[Ingredients to be updated by owner]",
-      "sizePlaceholder": "[Size to be updated by owner]",
-      "descriptionPlaceholder": "Distilled country rose water for natural skin cooling and hydration.",
-      "benefitsPlaceholder": [],
-      "usagePlaceholder": "",
-      "images": [
-        "images/manthalir-logo.jpeg"
-      ],
-      "mainImage": "images/manthalir-logo.jpeg",
-      "sku": "MP-HRW-099",
-      "stock": 35,
-      "isAvailable": true,
-      "status": "Published",
+      "badge": "100% Ammonia Free",
       "featured": true,
-      "badge": "",
-      "createdAt": "2026-10-10T11:49:34.279Z",
-      "updatedAt": "2026-10-10T11:49:34.279Z"
+      "sku": "MP-HHD-017",
+      "stock": 50,
+      "isAvailable": true,
+      "status": "Published",
+      "images": [
+        "images/products/herbal-hair-dye.jpg"
+      ],
+      "mainImage": "images/products/herbal-hair-dye.jpg",
+      "pricePlaceholder": "₹349",
+      "ingredientsPlaceholder": "Natural Henna (Maruthani), Indigo (Auri), Amla, Bringharaj, and Brahmi botanical powders.",
+      "sizePlaceholder": "100 g Box",
+      "descriptionPlaceholder": "100% Natural ammonia-free herbal hair dye providing long-lasting natural black color and rich conditioning.",
+      "benefitsPlaceholder": [
+        "100% Natural, zero ammonia, zero PPD, zero harsh chemicals",
+        "Rich long-lasting natural black coverage for gray hair",
+        "Strengthens hair texture while coloring"
+      ],
+      "usagePlaceholder": "Mix with warm water to a paste, apply thoroughly to clean dry hair, leave for 60-90 minutes, and rinse with water.",
+      "createdAt": "2026-10-10T11:35:57.082Z",
+      "updatedAt": "2026-10-12T10:57:15.692Z"
     }
   ],
   "orders": [],

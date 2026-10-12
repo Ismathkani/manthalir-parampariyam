@@ -14,7 +14,7 @@ import apiRouter from './server/api.js';
 const browserDistFolder = join(import.meta.dirname, '../browser');
 const uploadsFolder = join(process.cwd(), 'public', 'uploads');
 
-const app = express();
+export const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 // Body and Cookie Parsers

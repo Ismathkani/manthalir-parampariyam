@@ -31,7 +31,7 @@ export function getClientIp(req: Request): string {
   return req.ip || req.socket.remoteAddress || 'unknown';
 }
 
-export function handleLogin(req: Request, res: Response): void {
+export async function handleLogin(req: Request, res: Response): Promise<void> {
   const ip = getClientIp(req);
   const now = Date.now();
 
@@ -60,7 +60,7 @@ export function handleLogin(req: Request, res: Response): void {
 
   // Timing safe or safe comparison
   const usernameMatch = username.trim() === admin.username;
-  const passwordMatch = usernameMatch ? bcrypt.compareSync(password, admin.passwordHash) : false;
+  const passwordMatch = usernameMatch ? await bcrypt.compare(password, admin.passwordHash) : false;
 
   if (!usernameMatch || !passwordMatch) {
     // Increment failed attempt counter

@@ -7,316 +7,488 @@ import { Product, Category } from '../models/product.model';
 })
 export class ProductService {
   private http = inject(HttpClient);
-  // All 16 products of Manthalir Parampariyam
-  // Note: Placeholders are explicitly indicated for prices and ingredients until owner provides final values.
-  private readonly productsData: Product[] = [
+
+  // All 17 authentic products of Manthalir Parampariyam
+  private readonly defaultProducts: Product[] = [
     {
       id: 1,
       name: 'Kumkumadi Night Serum',
-      tamilName: 'குங்குமாதி நைட் சீரம்',
-      category: 'Skin & Face',
-      categorySlug: 'skin-and-face',
+      tamilName: 'குங்குமாதி இரவு சீரம்',
+      slug: 'kumkumadi-night-serum',
+      category: 'Face Care',
+      categorySlug: 'face-care',
+      price: 499,
+      salePrice: null,
       badge: 'Signature Care',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Authentic herbal formulation & saffron blend to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 30 ml)]',
-      descriptionPlaceholder: 'Traditional Kumkumadi night concentrate for skin glow and radiance. (Official description to be updated by owner)',
+      sku: 'MP-KNS-001',
+      stock: 50,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/kumkumadi-night-serum.jpg'],
+      mainImage: 'images/products/kumkumadi-night-serum.jpg',
+      pricePlaceholder: '₹499',
+      ingredientsPlaceholder: 'Authentic saffron (Kesar), red sandalwood, manjistha, and cold-pressed sesame oil.',
+      sizePlaceholder: '30 ml',
+      descriptionPlaceholder: 'Traditional Kumkumadi night concentrate for skin glow, radiance, and evening skin rejuvenation.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Night complexion radiance]',
-        '[Benefit 2 to be updated by owner - e.g. Blemish reduction]',
-        '[Benefit 3 to be updated by owner - e.g. Natural skin nourishment]'
+        'Night complexion radiance and natural illumination',
+        'Helps reduce blemishes and fine lines',
+        'Deep herbal skin nourishment'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Apply 3-4 drops onto cleansed face and neck before sleeping. Gently massage in upward circular motions.'
     },
     {
       id: 2,
       name: 'Avarampoo Face Wash',
-      tamilName: 'ஆவாரம்பூ ஃபேஸ் வாஷ்',
-      category: 'Skin & Face',
-      categorySlug: 'skin-and-face',
+      tamilName: 'ஆவாரம்பூ முகக் கழுவி',
+      slug: 'avarampoo-face-wash',
+      category: 'Face Care',
+      categorySlug: 'face-care',
+      price: 249,
+      salePrice: null,
       badge: 'Herbal Cleanse',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Avarampoo (Senna auriculata) extract details to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 100 ml)]',
-      descriptionPlaceholder: 'Gentle golden Avarampoo petal facial cleanser for refreshing daily skin hygiene. (Official description to be updated by owner)',
+      sku: 'MP-AFW-002',
+      stock: 45,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/avarampoo-face-wash.jpg'],
+      mainImage: 'images/products/avarampoo-face-wash.jpg',
+      pricePlaceholder: '₹249',
+      ingredientsPlaceholder: 'Avarampoo (Senna auriculata) golden petals, wild turmeric, and gentle aloe vera base.',
+      sizePlaceholder: '100 ml',
+      descriptionPlaceholder: 'Gentle golden Avarampoo petal facial cleanser for refreshing daily skin hygiene without drying.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Deep pore cleansing]',
-        '[Benefit 2 to be updated by owner - e.g. Natural oil balance]',
-        '[Benefit 3 to be updated by owner - e.g. Tan reduction]'
+        'Deep pore cleansing and dirt removal',
+        'Balances natural facial oils',
+        'Removes daily tan and revives dull complexion'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Take a coin-sized amount, lather gently with water, massage over face and rinse thoroughly.'
     },
     {
       id: 3,
       name: 'Semparuthi Shampoo',
       tamilName: 'செம்பருத்தி ஷாம்பு',
+      slug: 'semparuthi-shampoo',
       category: 'Hair Care',
       categorySlug: 'hair-care',
+      price: 299,
+      salePrice: null,
       badge: 'Pure Herbal',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Hibiscus petal and herbal extracts to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 200 ml)]',
-      descriptionPlaceholder: 'Traditional red hibiscus shampoo for soft, manageable, and revitalized hair strands. (Official description to be updated by owner)',
+      sku: 'MP-SPS-003',
+      stock: 60,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/semparuthi-shampoo.jpg'],
+      mainImage: 'images/products/semparuthi-shampoo.jpg',
+      pricePlaceholder: '₹299',
+      ingredientsPlaceholder: 'Fresh red hibiscus (Semparuthi) extract, shikakai, fenugreek, and coconut-derived cleanser.',
+      sizePlaceholder: '200 ml',
+      descriptionPlaceholder: 'Traditional red hibiscus shampoo for soft, manageable, and naturally lustrous hair strands.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Hair softening & conditioning]',
-        '[Benefit 2 to be updated by owner - e.g. Root nourishment]',
-        '[Benefit 3 to be updated by owner - e.g. Gentle scalp cleanse]'
+        'Promotes silky softness & natural conditioning',
+        'Nourishes hair roots and prevents premature graying',
+        'Gentle sulfate-free scalp cleansing'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Massage into wet hair and scalp, work into a rich herbal lather, and rinse thoroughly with lukewarm water.'
     },
     {
       id: 4,
       name: 'Goat Milk Soap',
-      tamilName: 'ஆட்டுப்பால் சோப்',
-      category: 'Traditional Soaps',
-      categorySlug: 'traditional-soaps',
+      tamilName: 'ஆட்டுப் பால் சோப்',
+      slug: 'goat-milk-soap',
+      category: 'Herbal Soaps',
+      categorySlug: 'herbal-soaps',
+      price: 199,
+      salePrice: null,
       badge: 'Handcrafted',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Pure goat milk & cold-pressed oils ratio to be updated by owner]',
-      sizePlaceholder: '[Weight to be updated by owner (e.g. 100 g)]',
-      descriptionPlaceholder: 'Rich moisturizing handmade soap crafted with creamy goat milk. (Official description to be updated by owner)',
+      sku: 'MP-GMS-004',
+      stock: 70,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/goat-milk-soap.jpg'],
+      mainImage: 'images/products/goat-milk-soap.jpg',
+      pricePlaceholder: '₹199',
+      ingredientsPlaceholder: 'Farm-fresh goat milk, cold-pressed virgin coconut oil, olive oil, and sweet almond butter.',
+      sizePlaceholder: '100 g',
+      descriptionPlaceholder: 'Rich moisturizing handmade soap crafted with creamy pure goat milk for velvety skin.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Intensive moisturization]',
-        '[Benefit 2 to be updated by owner - e.g. Gentle for sensitive skin]',
-        '[Benefit 3 to be updated by owner - e.g. Velvety soft finish]'
+        'Intensive hydration for dry or delicate skin',
+        'Gentle and soothing for sensitive skin conditions',
+        'Softens skin texture with lactic acid goodness'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Lather between wet palms or with a loofah and gently apply to body. Rinse with clean water.'
     },
     {
       id: 5,
       name: 'Regular Hair Oil',
-      tamilName: 'ரெகுலர் ஹேர் ஆயில்',
+      tamilName: 'சாதாரண முடி எண்ணெய்',
+      slug: 'regular-hair-oil',
       category: 'Hair Care',
       categorySlug: 'hair-care',
+      price: 299,
+      salePrice: null,
       badge: 'Traditional Recipe',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Traditional botanical herb infusion to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 200 ml)]',
-      descriptionPlaceholder: 'Daily nourishing herbal oil for healthy scalp and strong hair vitality. (Official description to be updated by owner)',
+      sku: 'MP-RHO-005',
+      stock: 80,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/regular-hair-oil.jpg'],
+      mainImage: 'images/products/regular-hair-oil.jpg',
+      pricePlaceholder: '₹299',
+      ingredientsPlaceholder: 'Cold-pressed coconut oil boiled with bringha (karisalanganni), curry leaves, amla, and brahmi.',
+      sizePlaceholder: '200 ml',
+      descriptionPlaceholder: 'Daily nourishing herbal oil for healthy scalp, cooling comfort, and strong hair vitality.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Scalp cooling therapy]',
-        '[Benefit 2 to be updated by owner - e.g. Strengthens hair roots]',
-        '[Benefit 3 to be updated by owner - e.g. Reduces daily hair fall]'
+        'Cools the head and relieves tension',
+        'Strengthens hair roots and prevents breakage',
+        'Nurtures natural black shine and vitality'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Warm slightly and massage into scalp with fingertips. Leave overnight or for 1 hour before wash.'
     },
     {
       id: 6,
       name: 'Rabbit Hair Oil',
-      tamilName: 'ராபிட் ஹேர் ஆயில்',
+      tamilName: 'முயல் முடி எண்ணெய்',
+      slug: 'rabbit-hair-oil',
       category: 'Hair Care',
       categorySlug: 'hair-care',
+      price: 349,
+      salePrice: null,
       badge: 'Heritage Formula',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Specialized traditional herbal extracts to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 200 ml)]',
-      descriptionPlaceholder: 'Specialized heritage hair oil formulated for intensive hair revival and thickness. (Official description to be updated by owner)',
+      sku: 'MP-RBO-006',
+      stock: 40,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/rabbit-hair-oil.jpg'],
+      mainImage: 'images/products/rabbit-hair-oil.jpg',
+      pricePlaceholder: '₹349',
+      ingredientsPlaceholder: 'Specialized traditional herbal infusion crafted with rare botanical roots and sesame-coconut oils.',
+      sizePlaceholder: '200 ml',
+      descriptionPlaceholder: 'Specialized heritage hair oil formulated for intensive hair revival, volume, and density.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Root-deep stimulation]',
-        '[Benefit 2 to be updated by owner - e.g. Follicle strengthening]',
-        '[Benefit 3 to be updated by owner - e.g. Traditional intensive hair care]'
+        'Root-deep follicle stimulation',
+        'Helps fill patches and thinning areas',
+        'Traditional intensive Ayurvedic growth therapy'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Apply directly to the roots and thinning areas 3-4 times a week. Massage for 10 minutes.'
     },
     {
       id: 7,
       name: 'Dandruff Shampoo',
-      tamilName: 'பொடுகு எதிர்ப்பு ஷாம்பு',
+      tamilName: 'தலைமுடி பொடுகு ஷாம்பு',
+      slug: 'dandruff-shampoo',
       category: 'Hair Care',
       categorySlug: 'hair-care',
+      price: 299,
+      salePrice: null,
       badge: 'Scalp Therapy',
       featured: false,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Neem, tea tree and botanical anti-dandruff herbs to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 200 ml)]',
-      descriptionPlaceholder: 'Targeted scalp cleanser to keep roots clear, cool, and free from persistent flakes. (Official description to be updated by owner)',
+      sku: 'MP-DFS-007',
+      stock: 55,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/dandruff-shampoo.jpg'],
+      mainImage: 'images/products/dandruff-shampoo.jpg',
+      pricePlaceholder: '₹299',
+      ingredientsPlaceholder: 'Neem leaf extracts, tea tree oil, fenugreek, camphor and soapnut cleansing extract.',
+      sizePlaceholder: '200 ml',
+      descriptionPlaceholder: 'Targeted scalp cleanser to keep roots clear, cool, and free from persistent flakes.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Eliminates stubborn flakes]',
-        '[Benefit 2 to be updated by owner - e.g. Calms scalp itching]',
-        '[Benefit 3 to be updated by owner - e.g. Purifies scalp pores]'
+        'Eliminates stubborn flakes and dandruff fungus',
+        'Calms scalp itching and redness',
+        'Purifies scalp pores without drying hair'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Apply to damp scalp, leave for 2-3 minutes to allow herbal actives to work, then rinse cleanly.'
     },
     {
       id: 8,
       name: 'Wine Melon Face Wash',
-      tamilName: 'வைன் மெலன் ஃபேஸ் வாஷ்',
-      category: 'Skin & Face',
-      categorySlug: 'skin-and-face',
+      tamilName: 'வென் மெலன் முகக் கழுவி',
+      slug: 'wine-melon-face-wash',
+      category: 'Face Care',
+      categorySlug: 'face-care',
+      price: 249,
+      salePrice: null,
       badge: 'Antioxidant Care',
       featured: false,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Wine grape and watermelon extract details to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 100 ml)]',
-      descriptionPlaceholder: 'Dewy antioxidant facial wash combining cooling melon with nourishing grape extracts. (Official description to be updated by owner)',
+      sku: 'MP-WMF-008',
+      stock: 50,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/wine-melon-face-wash.jpg'],
+      mainImage: 'images/products/wine-melon-face-wash.jpg',
+      pricePlaceholder: '₹249',
+      ingredientsPlaceholder: 'Red wine grape polyphenols, juicy watermelon juice extracts, and botanical humectants.',
+      sizePlaceholder: '100 ml',
+      descriptionPlaceholder: 'Dewy antioxidant facial wash combining cooling watermelon with nourishing grape antioxidants.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Refreshing antioxidant shield]',
-        '[Benefit 2 to be updated by owner - e.g. Hydrates thirsty skin]',
-        '[Benefit 3 to be updated by owner - e.g. Clear glowing complexion]'
+        'Refreshing antioxidant shield against pollution',
+        'Deeply hydrates dry and tired skin',
+        'Leaves face radiant, supple, and fresh'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Use morning and evening. Gently lather and rinse with cold water.'
     },
     {
       id: 9,
       name: 'Sunscreen Lotion',
       tamilName: 'சன்ஸ்கிரீன் லோஷன்',
-      category: 'Skin & Face',
-      categorySlug: 'skin-and-face',
+      slug: 'sunscreen-lotion',
+      category: 'Skin Care',
+      categorySlug: 'skin-care',
+      price: 349,
+      salePrice: null,
       badge: 'Daily Defense',
-      featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Mineral UV protection and botanical shield herbs to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 100 ml)]',
-      descriptionPlaceholder: 'Lightweight herbal sun defense lotion offering broad-spectrum protection with non-sticky feel. (Official description to be updated by owner)',
+      featured: false,
+      sku: 'MP-SSL-009',
+      stock: 60,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/sunscreen-lotion.jpg'],
+      mainImage: 'images/products/sunscreen-lotion.jpg',
+      pricePlaceholder: '₹349',
+      ingredientsPlaceholder: 'Zinc oxide mineral filter, raspberry seed oil, carrot seed oil, and aloe soothing gel.',
+      sizePlaceholder: '100 ml',
+      descriptionPlaceholder: 'Lightweight herbal sun defense lotion offering broad-spectrum SPF 50+ protection without stickiness.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Sun damage protection]',
-        '[Benefit 2 to be updated by owner - e.g. Non-greasy finish]',
-        '[Benefit 3 to be updated by owner - e.g. Prevents sun-induced dark spots]'
+        'Shields against UVA & UVB sun damage',
+        'Non-greasy, zero white-cast formulation',
+        'Prevents sun-induced dark spots and hyperpigmentation'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Apply generously 15 minutes before sun exposure. Reapply every 3-4 hours outdoors.'
     },
     {
       id: 10,
       name: 'Niacinamide Night Serum',
-      tamilName: 'நியாசினமைடு நைட் சீரம்',
-      category: 'Skin & Face',
-      categorySlug: 'skin-and-face',
+      tamilName: 'நியாசினமைடு இரவு சீரம்',
+      slug: 'niacinamide-night-serum',
+      category: 'Face Care',
+      categorySlug: 'face-care',
+      price: 449,
+      salePrice: null,
       badge: 'Advanced Care',
       featured: false,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Vitamin B3 and soothing herbal actives to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 30 ml)]',
-      descriptionPlaceholder: 'Pore refining and skin texture clarifying overnight herbal concentrate. (Official description to be updated by owner)',
+      sku: 'MP-NNS-010',
+      stock: 45,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/niacinamide-night-serum.jpg'],
+      mainImage: 'images/products/niacinamide-night-serum.jpg',
+      pricePlaceholder: '₹449',
+      ingredientsPlaceholder: '5% Niacinamide (Vitamin B3), licorice root extract, gotu kola, and hyaluronic herbal base.',
+      sizePlaceholder: '30 ml',
+      descriptionPlaceholder: 'Pore refining and skin texture clarifying overnight herbal concentrate for smooth even tone.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Refines skin pores]',
-        '[Benefit 2 to be updated by owner - e.g. Smoothens uneven tone]',
-        '[Benefit 3 to be updated by owner - e.g. Night barrier repair]'
+        'Refines enlarged pores and minimizes oiliness',
+        'Evens out uneven skin tone and acne marks',
+        'Strengthens the skin moisture barrier overnight'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Apply 3 drops at bedtime after toner. Follow with moisturizer if needed.'
     },
     {
       id: 11,
       name: 'Rose Toner',
       tamilName: 'ரோஸ் டோனர்',
-      category: 'Skin & Face',
-      categorySlug: 'skin-and-face',
+      slug: 'rose-toner',
+      category: 'Skin Care',
+      categorySlug: 'skin-care',
+      price: 220,
+      salePrice: null,
       badge: 'Steam Distilled',
       featured: false,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Pure steam-distilled rose water to be updated by owner]',
-      sizePlaceholder: '[Volume to be updated by owner (e.g. 100 ml)]',
-      descriptionPlaceholder: 'Pure floral mist to tone, balance pH, and hydrate the skin with natural rose fragrance. (Official description to be updated by owner)',
+      sku: 'MP-RST-011',
+      stock: 75,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/rose-toner.jpg'],
+      mainImage: 'images/products/rose-toner.jpg',
+      pricePlaceholder: '₹220',
+      ingredientsPlaceholder: '100% Steam-distilled Kannauj damask rose petals (Gulab jal) with pure floral water.',
+      sizePlaceholder: '100 ml',
+      descriptionPlaceholder: 'Pure floral mist to tone, balance natural pH, and hydrate skin with intoxicating fresh rose fragrance.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Balances natural pH]',
-        '[Benefit 2 to be updated by owner - e.g. Instant hydration mist]',
-        '[Benefit 3 to be updated by owner - e.g. Tightens open facial pores]'
+        'Restores ideal skin pH after face wash',
+        'Instant burst of botanical hydration',
+        'Tightens pores and cools facial heat'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Spray mist directly on face or apply with a cotton pad before applying serum.'
     },
     {
       id: 12,
       name: 'Herbal Sanitary Napkins',
-      tamilName: 'மூலிகை சானிட்டரி நாப்கின்ஸ்',
-      category: 'Wellness & Hygiene',
-      categorySlug: 'wellness-and-hygiene',
+      tamilName: 'மூலிகை சானிட்டரி நாப்கின்கள்',
+      slug: 'herbal-sanitary-napkins',
+      category: 'Feminine Hygiene',
+      categorySlug: 'feminine-hygiene',
+      price: 199,
+      salePrice: null,
       badge: 'Natural Comfort',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Organic cotton top-sheet and herbal hygiene core to be updated by owner]',
-      sizePlaceholder: '[Pack size to be updated by owner (e.g. Pack of 10 XL)]',
-      descriptionPlaceholder: 'Rash-free, breathable cotton pads infused with protective herbal strips for total comfort. (Official description to be updated by owner)',
+      sku: 'MP-HSN-012',
+      stock: 100,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/herbal-sanitary-napkins.jpg'],
+      mainImage: 'images/products/herbal-sanitary-napkins.jpg',
+      pricePlaceholder: '₹199',
+      ingredientsPlaceholder: '100% Organic cotton surface, breathable wood-pulp absorbent core, and antimicrobial herbal strip.',
+      sizePlaceholder: 'Pack of 10 XL Pads',
+      descriptionPlaceholder: 'Rash-free, breathable cotton sanitary napkins infused with protective herbal strips for total comfort.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. 100% Rash-free cotton comfort]',
-        '[Benefit 2 to be updated by owner - e.g. Antibacterial herbal strip]',
-        '[Benefit 3 to be updated by owner - e.g. Breathable & high absorption]'
+        '100% Rash-free certified soft cotton comfort',
+        'Antibacterial herbal core for odor control & hygiene',
+        'Ultra-thin with superior high-absorption wings'
       ],
-      usagePlaceholder: '[Directions for usage to be updated by owner]'
+      usagePlaceholder: 'Peel back adhesive strip and place firmly in undergarment. Change every 4-6 hours.'
     },
     {
       id: 13,
       name: 'Brightening Cream',
-      tamilName: 'பிரைட்னிங் கிரீம்',
-      category: 'Skin & Face',
-      categorySlug: 'skin-and-face',
+      tamilName: 'பிரைட்டனிங் கிரீம்',
+      slug: 'brightening-cream',
+      category: 'Skin Care',
+      categorySlug: 'skin-care',
+      price: 399,
+      salePrice: null,
       badge: 'Radiant Glow',
       featured: false,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Kasturi turmeric, sandalwood & herbal butter to be updated by owner]',
-      sizePlaceholder: '[Weight to be updated by owner (e.g. 50 g)]',
-      descriptionPlaceholder: 'Traditional complexion rejuvenating cream to nurture even skin tone and natural luminosity. (Official description to be updated by owner)',
+      sku: 'MP-BRC-013',
+      stock: 50,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/brightening-cream.jpg'],
+      mainImage: 'images/products/brightening-cream.jpg',
+      pricePlaceholder: '₹399',
+      ingredientsPlaceholder: 'Kasturi manjal (wild turmeric), sandalwood extract, saffron, kokum butter, and almond oil.',
+      sizePlaceholder: '50 g',
+      descriptionPlaceholder: 'Traditional complexion rejuvenating cream to nurture even skin tone and natural luminosity.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Promotes youthful radiance]',
-        '[Benefit 2 to be updated by owner - e.g. Deep nourishment without stickiness]',
-        '[Benefit 3 to be updated by owner - e.g. Softens dry skin]'
+        'Promotes natural glowing skin without harsh chemicals',
+        'Deep nourishing hydration without grease',
+        'Softens roughness and restores skin elasticity'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Take a pea-sized amount, dot all over face, and massage gently until absorbed.'
     },
     {
       id: 14,
       name: 'Sandalwood Soap',
       tamilName: 'சந்தன சோப்',
-      category: 'Traditional Soaps',
-      categorySlug: 'traditional-soaps',
+      slug: 'sandalwood-soap',
+      category: 'Herbal Soaps',
+      categorySlug: 'herbal-soaps',
+      price: 180,
+      salePrice: null,
       badge: 'Classic Heritage',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Sandalwood extract & essential oils formulation to be updated by owner]',
-      sizePlaceholder: '[Weight to be updated by owner (e.g. 100 g)]',
-      descriptionPlaceholder: 'Luxurious handmade soap scented with authentic soothing sandalwood for divine freshness. (Official description to be updated by owner)',
+      sku: 'MP-SWS-014',
+      stock: 65,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/sandalwood-soap.jpg'],
+      mainImage: 'images/products/sandalwood-soap.jpg',
+      pricePlaceholder: '₹180',
+      ingredientsPlaceholder: 'Pure Mysore sandalwood oil, sandalwood powder, cold-pressed coconut oil, and castor oil.',
+      sizePlaceholder: '100 g',
+      descriptionPlaceholder: 'Luxurious handmade soap scented with authentic soothing sandalwood for divine freshness.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Soothes body heat]',
-        '[Benefit 2 to be updated by owner - e.g. Divine calming aroma]',
-        '[Benefit 3 to be updated by owner - e.g. Gentle skin cleansing]'
+        'Soothes body heat and calms skin irritations',
+        'Divine traditional sandalwood fragrance that lasts',
+        'Gentle moisturizing herbal bath experience'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Work into a creamy lather over body during bath and rinse with water.'
     },
     {
       id: 15,
       name: 'Kuppaimeni Soap',
       tamilName: 'குப்பைமேனி சோப்',
-      category: 'Traditional Soaps',
-      categorySlug: 'traditional-soaps',
+      slug: 'kuppaimeni-soap',
+      category: 'Herbal Soaps',
+      categorySlug: 'herbal-soaps',
+      price: 160,
+      salePrice: null,
       badge: 'Siddha Remedy',
       featured: true,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Fresh Kuppaimeni (Acalypha Indica) & neem extract to be updated by owner]',
-      sizePlaceholder: '[Weight to be updated by owner (e.g. 100 g)]',
-      descriptionPlaceholder: 'Time-honored Siddha herbal soap formulated for acne relief, skin purity, and clarity. (Official description to be updated by owner)',
+      sku: 'MP-KMS-015',
+      stock: 70,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/kuppaimeni-soap.jpg'],
+      mainImage: 'images/products/kuppaimeni-soap.jpg',
+      pricePlaceholder: '₹160',
+      ingredientsPlaceholder: 'Fresh Kuppaimeni (Acalypha indica) whole leaf extract, neem oil, and turmeric.',
+      sizePlaceholder: '100 g',
+      descriptionPlaceholder: 'Time-honored Siddha herbal soap formulated for acne relief, skin clarity, and purifying hygiene.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Helps calm acne and skin bumps]',
-        '[Benefit 2 to be updated by owner - e.g. Relieves skin itchiness and redness]',
-        '[Benefit 3 to be updated by owner - e.g. Pure Siddha herbal legacy]'
+        'Helps calm skin breakouts, acne, and bumps',
+        'Relieves itchiness, rashes, and fungal irritations',
+        'Centuries-old Siddha medicinal recipe'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Lather onto affected areas and leave for 1 minute before rinsing.'
     },
     {
       id: 16,
       name: 'Skin Shining Soap',
       tamilName: 'ஸ்கின் ஷைனிங் சோப்',
-      category: 'Traditional Soaps',
-      categorySlug: 'traditional-soaps',
+      slug: 'skin-shining-soap',
+      category: 'Herbal Soaps',
+      categorySlug: 'herbal-soaps',
+      price: 170,
+      salePrice: null,
       badge: 'Golden Glow',
       featured: false,
-      pricePlaceholder: '[Price to be updated by owner]',
-      ingredientsPlaceholder: '[Turmeric, saffron & brightening botanicals to be updated by owner]',
-      sizePlaceholder: '[Weight to be updated by owner (e.g. 100 g)]',
-      descriptionPlaceholder: 'Handcrafted glow booster soap packed with traditional brightening herbs for post-bath radiance. (Official description to be updated by owner)',
+      sku: 'MP-SSS-016',
+      stock: 65,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/skin-shining-soap.jpg'],
+      mainImage: 'images/products/skin-shining-soap.jpg',
+      pricePlaceholder: '₹170',
+      ingredientsPlaceholder: 'Saffron strands, turmeric, milk cream, and moisturizing cold-pressed seed oils.',
+      sizePlaceholder: '100 g',
+      descriptionPlaceholder: 'Handcrafted glow booster soap packed with traditional brightening herbs for post-bath radiance.',
       benefitsPlaceholder: [
-        '[Benefit 1 to be updated by owner - e.g. Visible post-bath glow]',
-        '[Benefit 2 to be updated by owner - e.g. Gentle de-tanning]',
-        '[Benefit 3 to be updated by owner - e.g. Moisturizing herbal wash]'
+        'Visible post-bath luminous glow',
+        'Gently detans and restores natural complexion',
+        'Deeply hydrating herbal bath wash'
       ],
-      usagePlaceholder: '[Directions for application to be updated by owner]'
+      usagePlaceholder: 'Lather over face and body daily for radiant skin.'
+    },
+    {
+      id: 17,
+      name: 'Herbal Hair Dye',
+      tamilName: 'மூலிகை ஹேர் டை',
+      slug: 'herbal-hair-dye',
+      category: 'Hair Care',
+      categorySlug: 'hair-care',
+      price: 349,
+      salePrice: null,
+      badge: '100% Ammonia Free',
+      featured: true,
+      sku: 'MP-HHD-017',
+      stock: 50,
+      isAvailable: true,
+      status: 'Published',
+      images: ['images/products/herbal-hair-dye.jpg'],
+      mainImage: 'images/products/herbal-hair-dye.jpg',
+      pricePlaceholder: '₹349',
+      ingredientsPlaceholder: 'Natural Henna (Maruthani), Indigo (Auri), Amla, Bringharaj, and Brahmi botanical powders.',
+      sizePlaceholder: '100 g Box',
+      descriptionPlaceholder: '100% Natural ammonia-free herbal hair dye providing long-lasting natural black color and rich conditioning.',
+      benefitsPlaceholder: [
+        '100% Natural, zero ammonia, zero PPD, zero harsh chemicals',
+        'Rich long-lasting natural black coverage for gray hair',
+        'Strengthens hair texture while coloring'
+      ],
+      usagePlaceholder: 'Mix with warm water to a paste, apply thoroughly to clean dry hair, leave for 60-90 minutes, and rinse with water.'
     }
   ];
 
-  readonly products = signal<Product[]>(this.productsData);
+  readonly products = signal<Product[]>(this.defaultProducts);
 
   constructor() {
     this.loadProducts();
@@ -329,9 +501,8 @@ export class ProductService {
           this.products.set(res.data);
         }
       },
-      error: (err) => {
-        // Fallback gracefully to default in-memory 16 products
-        console.warn('Could not load products from API, using default products', err);
+      error: () => {
+        // Fallback gracefully to default in-memory 17 products
       }
     });
   }
@@ -349,48 +520,57 @@ export class ProductService {
   }
 
   getCategories(): Category[] {
-    const cats: Record<string, Category> = {
+    const definedCategories: Record<string, Category> = {
+      'face-care': {
+        id: 1,
+        name: 'Face Care',
+        slug: 'face-care',
+        subtitle: 'Gentle & Natural',
+        description: 'Serums, cleansers and botanical facial concentrates',
+        count: 0
+      },
       'hair-care': {
+        id: 2,
         name: 'Hair Care',
         slug: 'hair-care',
-        description: 'Traditional hair oils, hibiscus shampoos and scalp care',
+        subtitle: 'Stronger & Healthier',
+        description: 'Traditional oils, hibiscus shampoos and herbal hair dye',
         count: 0
       },
-      'skin-and-face': {
-        name: 'Skin & Face',
-        slug: 'skin-and-face',
-        description: 'Herbal serums, face washes, toners, creams and sun protection',
+      'herbal-soaps': {
+        id: 3,
+        name: 'Herbal Soaps',
+        slug: 'herbal-soaps',
+        subtitle: 'Pure & Safe',
+        description: 'Handcrafted goat milk, sandalwood & kuppaimeni soaps',
         count: 0
       },
-      'traditional-soaps': {
-        name: 'Traditional Soaps',
-        slug: 'traditional-soaps',
-        description: 'Handcrafted cold-processed goat milk, kuppaimeni & sandalwood soaps',
+      'skin-care': {
+        id: 4,
+        name: 'Skin Care',
+        slug: 'skin-care',
+        subtitle: 'Radiant & Fresh',
+        description: 'Sun defense, brightening creams and pure rose toner',
         count: 0
       },
-      'wellness-and-hygiene': {
-        name: 'Wellness & Hygiene',
-        slug: 'wellness-and-hygiene',
-        description: '100% Cotton herbal sanitary napkins and holistic personal care',
+      'feminine-hygiene': {
+        id: 5,
+        name: 'Feminine Hygiene',
+        slug: 'feminine-hygiene',
+        subtitle: 'Care & Comfort',
+        description: '100% Organic cotton herbal sanitary napkins',
         count: 0
       }
     };
 
     const currentProds = this.products();
     for (const prod of currentProds) {
-      if (cats[prod.categorySlug]) {
-        cats[prod.categorySlug].count = (cats[prod.categorySlug].count || 0) + 1;
-      } else if (prod.categorySlug) {
-        cats[prod.categorySlug] = {
-          name: prod.category,
-          slug: prod.categorySlug,
-          description: `Authentic ${prod.category} heritage products`,
-          count: 1
-        };
+      if (definedCategories[prod.categorySlug]) {
+        definedCategories[prod.categorySlug].count = (definedCategories[prod.categorySlug].count || 0) + 1;
       }
     }
 
-    return Object.values(cats);
+    return Object.values(definedCategories);
   }
 
   filterProducts(categorySlug?: string, searchQuery?: string): Product[] {

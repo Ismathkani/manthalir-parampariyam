@@ -152,7 +152,6 @@ export class AdminDashboardComponent implements OnInit {
         if (res.success) {
           this.products = res.data;
           this.applyProductFilter();
-          this.loadStats();
         }
       }
     });

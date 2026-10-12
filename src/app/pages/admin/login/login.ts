@@ -54,10 +54,7 @@ export class AdminLoginComponent {
       next: (res) => {
         this.isLoading = false;
         if (res.success) {
-          this.successMessage = 'Authentication successful. Redirecting to Admin Dashboard...';
-          setTimeout(() => {
-            this.router.navigate(['/admin/dashboard']);
-          }, 400);
+          this.router.navigate(['/admin/dashboard']);
         } else {
           this.errorMessage = res.error || 'Authentication failed. Please check your credentials.';
         }
