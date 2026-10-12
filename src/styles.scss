@@ -188,6 +188,29 @@ img {
   }
 }
 
+// Icon Sizing Utilities
+.icon-sm {
+  width: 1.25rem;
+  height: 1.25rem;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  max-width: 1.25rem;
+  max-height: 1.25rem;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon-md {
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 // Badge styles
 .badge {
   display: inline-block;

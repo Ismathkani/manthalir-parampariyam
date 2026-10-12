@@ -300,8 +300,18 @@
 
     .w-full {
       width: 100%;
-      padding: 0.95rem;
-      font-size: 1rem;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+
+      .icon-sm {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
     }
 
     .direct-contact-note {
