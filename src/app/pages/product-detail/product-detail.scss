@@ -43,6 +43,12 @@
     gap: 2rem;
     padding: 1.5rem;
   }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    gap: 1.5rem;
+    border-radius: 1rem;
+  }
 }
 
 .visual-col {
@@ -57,10 +63,20 @@
     position: relative;
     text-align: center;
 
+    @media (max-width: 600px) {
+      padding: 1.5rem 1rem;
+      border-radius: 1rem;
+    }
+
     .detail-badge {
       position: absolute;
       top: 1rem;
       left: 1rem;
+
+      @media (max-width: 480px) {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.5rem;
+      }
     }
 
     .main-image-container {
@@ -71,11 +87,20 @@
       justify-content: center;
       margin-bottom: 1.5rem;
 
+      @media (max-width: 600px) {
+        height: 250px;
+        margin-bottom: 1rem;
+      }
+
       .detail-product-img {
         max-height: 340px;
         max-width: 100%;
         object-fit: contain;
         filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+
+        @media (max-width: 600px) {
+          max-height: 220px;
+        }
       }
     }
 
@@ -205,6 +230,30 @@
     gap: 1rem;
     margin-bottom: 1.75rem;
     flex-wrap: wrap;
+
+    @media (max-width: 600px) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+
+      .quantity-controller {
+        grid-column: 1;
+      }
+
+      .add-cart-btn {
+        grid-column: 2;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        width: 100%;
+      }
+
+      .wishlist-btn {
+        grid-column: 1 / -1;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        text-align: center;
+      }
+    }
 
     .quantity-controller {
       display: inline-flex;
@@ -341,6 +390,11 @@
     gap: 1.5rem;
 
     @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 330px) {
       grid-template-columns: 1fr;
     }
 
@@ -354,6 +408,41 @@
       align-items: center;
       text-align: center;
       transition: all 0.25s ease;
+
+      @media (max-width: 600px) {
+        padding: 0.75rem 0.65rem;
+
+        .rel-thumb-wrap {
+          height: 110px;
+          margin-bottom: 0.5rem;
+
+          .rel-img {
+            max-height: 90px;
+          }
+        }
+
+        .rel-title {
+          font-size: 0.88rem;
+          min-height: 2.2rem;
+          margin-bottom: 0.15rem;
+        }
+
+        .rel-tamil {
+          font-size: 0.72rem;
+          margin-bottom: 0.35rem;
+        }
+
+        .rel-price {
+          font-size: 0.95rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .btn-sm {
+          padding: 0.45rem 0.5rem;
+          font-size: 0.78rem;
+          width: 100%;
+        }
+      }
 
       &:hover {
         transform: translateY(-4px);

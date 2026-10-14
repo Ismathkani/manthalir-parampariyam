@@ -7,6 +7,11 @@
   .footer-main {
     padding-top: 4rem;
     padding-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      padding-top: 2.5rem;
+      padding-bottom: 1.5rem;
+    }
   }
 
   .footer-top-grid {
@@ -22,10 +27,19 @@
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr 1fr;
-      gap: 1.75rem;
+      gap: 1.75rem 1rem;
+      margin-bottom: 2rem;
+
+      .brand-col {
+        grid-column: 1 / -1;
+      }
+
+      .contact-col {
+        grid-column: 1 / -1;
+      }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 340px) {
       grid-template-columns: 1fr;
     }
   }

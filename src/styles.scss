@@ -91,7 +91,20 @@ img {
   padding: 0 2rem;
 
   @media (max-width: 768px) {
-    padding: 0 1.25rem;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 420px) {
+    padding: 0 0.75rem;
+  }
+}
+
+// Mobile utility for touch horizontal scroll
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -106,7 +119,9 @@ img {
   font-weight: 600;
   border-radius: 9999px;
   letter-spacing: 0.01em;
+  white-space: nowrap;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
 
   // Reference primary button: dark forest green pill
   &-primary {

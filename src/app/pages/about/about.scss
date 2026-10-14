@@ -82,6 +82,15 @@
       flex-wrap: wrap;
       gap: 1rem;
       margin-top: 2rem;
+
+      @media (max-width: 600px) {
+        flex-direction: column;
+        width: 100%;
+
+        .btn {
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -99,6 +108,10 @@
       width: 100%;
       box-shadow: 0 16px 36px rgba(2, 56, 32, 0.08);
 
+      @media (max-width: 600px) {
+        padding: 1.75rem 1.25rem;
+      }
+
       .about-logo {
         width: 160px;
         height: 160px;
@@ -106,12 +119,22 @@
         object-fit: cover;
         margin: 0 auto 1.5rem auto;
         border: 3px solid $color-gold;
+
+        @media (max-width: 600px) {
+          width: 120px;
+          height: 120px;
+          margin-bottom: 1rem;
+        }
       }
 
       .card-title {
         font-size: 1.4rem;
         color: $color-dark-green;
         margin-bottom: 0.35rem;
+
+        @media (max-width: 600px) {
+          font-size: 1.2rem;
+        }
       }
 
       .card-subtitle {
@@ -137,6 +160,10 @@
   padding: 5rem 0;
   background-color: $color-cream-light;
 
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+
   .pillars-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -147,6 +174,11 @@
     }
 
     @media (max-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 340px) {
       grid-template-columns: 1fr;
     }
   }
@@ -157,6 +189,11 @@
     border-radius: 1.25rem;
     padding: 2rem;
     transition: all 0.3s ease;
+
+    @media (max-width: 600px) {
+      padding: 1.25rem 0.85rem;
+      border-radius: 0.85rem;
+    }
 
     &:hover {
       transform: translateY(-4px);

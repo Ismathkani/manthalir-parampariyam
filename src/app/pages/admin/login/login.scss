@@ -81,11 +81,19 @@
   border-radius: 16px;
   padding: 2.25rem 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 30px rgba(216, 166, 46, 0.1);
+
+  @media (max-width: 480px) {
+    padding: 1.75rem 1.25rem;
+  }
 }
 
 .card-header {
   text-align: center;
   margin-bottom: 1.75rem;
+
+  @media (max-width: 480px) {
+    margin-bottom: 1.25rem;
+  }
 
   .logo-circle {
     width: 84px;
@@ -95,6 +103,12 @@
     padding: 3px;
     background: linear-gradient(135deg, #d8a62e, #064b2f, #d8a62e);
     box-shadow: 0 4px 15px rgba(216, 166, 46, 0.3);
+
+    @media (max-width: 480px) {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 0.75rem;
+    }
 
     .brand-logo {
       width: 100%;
