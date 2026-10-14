@@ -1,7 +1,7 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, tap, catchError, of, map } from 'rxjs';
+import { Observable, tap, catchError, of, map, timeout } from 'rxjs';
 
 export interface AdminUser {
   username: string;
@@ -64,6 +64,7 @@ export class AuthService {
       credentials,
       { withCredentials: true }
     ).pipe(
+      timeout(10000),
       tap(res => {
         if (res.success && res.user) {
           this.currentUser.set(res.user);

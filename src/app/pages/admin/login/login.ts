@@ -76,9 +76,15 @@ export class AdminLoginComponent implements OnInit {
         if (err.status === 429) {
           this.errorMessage = err.error?.error || 'Too many failed login attempts. Please wait 15 minutes before trying again.';
         } else if (err.status === 401) {
-          this.errorMessage = err.error?.error || 'Invalid administrator username or password.';
+          if (err.error?.message && err.error.message.includes('Vercel Authentication')) {
+            this.errorMessage = 'Vercel Deployment Protection is active. Please turn off "Vercel Authentication" in your Vercel Project Settings.';
+          } else {
+            this.errorMessage = err.error?.error || 'Invalid administrator username or password.';
+          }
+        } else if (err.name === 'TimeoutError') {
+          this.errorMessage = 'Login request timed out. Please verify your connection or Vercel Deployment Protection settings.';
         } else {
-          this.errorMessage = err.error?.error || 'An unexpected connection error occurred. Please try again.';
+          this.errorMessage = err.error?.error || err.error?.message || 'An unexpected connection error occurred. Please try again.';
         }
       }
     });
