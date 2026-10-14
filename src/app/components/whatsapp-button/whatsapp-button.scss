@@ -5,6 +5,15 @@
   bottom: 2rem;
   right: 2rem;
   z-index: 999;
+  transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.has-floating-cart {
+    bottom: 5.75rem;
+
+    @media (max-width: 768px) {
+      bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
 
   @media (max-width: 768px) {
     bottom: 1.25rem;

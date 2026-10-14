@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar';
 import { FooterComponent } from './components/footer/footer';
 import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-button';
+import { FloatingCartBarComponent } from './components/floating-cart-bar/floating-cart-bar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, WhatsappButtonComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, WhatsappButtonComponent, FloatingCartBarComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

@@ -8,6 +8,11 @@ import { CartItem } from '../models/cart.model';
 export class CartService {
   private readonly items = signal<CartItem[]>([]);
 
+  readonly lastAddedProduct = signal<Product | null>(null);
+  readonly isDismissed = signal<boolean>(false);
+  readonly isJustAdded = signal<boolean>(false);
+  private justAddedTimer: ReturnType<typeof setTimeout> | null = null;
+
   readonly cartItems = this.items.asReadonly();
 
   readonly totalItems = computed(() => {
@@ -35,6 +40,22 @@ export class CartService {
     } else {
       this.items.set([...current, { product, quantity }]);
     }
+
+    // Trigger floating cart bar visibility and attention state
+    this.lastAddedProduct.set(product);
+    this.isDismissed.set(false);
+    this.isJustAdded.set(true);
+
+    if (this.justAddedTimer) {
+      clearTimeout(this.justAddedTimer);
+    }
+    this.justAddedTimer = setTimeout(() => {
+      this.isJustAdded.set(false);
+    }, 4000);
+  }
+
+  dismissFloatingBar(): void {
+    this.isDismissed.set(true);
   }
 
   removeFromCart(productId: number): void {
