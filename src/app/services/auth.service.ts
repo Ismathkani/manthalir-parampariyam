@@ -20,6 +20,17 @@ export class AuthService {
   readonly isAuthenticated = computed(() => this.currentUser() !== null);
   readonly checkingSession = signal<boolean>(true);
 
+  private isPrewarmed = false;
+
+  prewarmBackend(): void {
+    if (this.isPrewarmed) return;
+    this.isPrewarmed = true;
+    this.http.get('/api/ping').subscribe({
+      next: () => {},
+      error: () => {}
+    });
+  }
+
   constructor() {
     this.checkSession().subscribe();
   }

@@ -8,6 +8,11 @@ import { requireAdminAuth } from './auth.js';
 
 const router = Router();
 
+// Fast healthcheck & serverless prewarm endpoint
+router.get('/ping', (_req: Request, res: Response) => {
+  res.json({ ok: true, timestamp: Date.now() });
+});
+
 // Ensure upload directory exists
 const uploadDir = path.join(process.cwd(), 'public', 'uploads');
 if (!fs.existsSync(uploadDir)) {

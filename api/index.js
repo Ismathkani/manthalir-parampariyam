@@ -40020,6 +40020,9 @@ import path2 from "node:path";
 import fs2 from "node:fs";
 import crypto3 from "node:crypto";
 var router = (0, import_express.Router)();
+router.get("/ping", (_req, res) => {
+  res.json({ ok: true, timestamp: Date.now() });
+});
 var uploadDir = path2.join(process.cwd(), "public", "uploads");
 if (!fs2.existsSync(uploadDir)) {
   fs2.mkdirSync(uploadDir, { recursive: true });
@@ -40332,6 +40335,8 @@ var app = (0, import_express2.default)();
 app.use(import_express2.default.json({ limit: "10mb" }));
 app.use(import_express2.default.urlencoded({ extended: true, limit: "10mb" }));
 app.use((0, import_cookie_parser.default)());
+app.get("/api/ping", (_req, res) => res.json({ ok: true, timestamp: Date.now() }));
+app.get("/ping", (_req, res) => res.json({ ok: true, timestamp: Date.now() }));
 app.post("/api/auth/login", handleLogin);
 app.post("/auth/login", handleLogin);
 app.post("/api/auth/logout", handleLogout);

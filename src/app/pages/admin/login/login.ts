@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -11,7 +11,7 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
-export class AdminLoginComponent {
+export class AdminLoginComponent implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
 
@@ -27,6 +27,18 @@ export class AdminLoginComponent {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/admin/dashboard']);
     }
+  }
+
+  ngOnInit(): void {
+    // ⚡ Instantly wake up the backend serverless container in the background
+    this.authService.prewarmBackend();
+
+    // ⚡ Preload the dashboard chunk into browser cache so login transitions instantly
+    import('../dashboard/dashboard').catch(() => {});
+  }
+
+  onInputFocus(): void {
+    this.authService.prewarmBackend();
   }
 
   togglePasswordVisibility(): void {

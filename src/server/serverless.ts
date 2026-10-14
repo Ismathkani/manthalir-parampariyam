@@ -9,6 +9,9 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
+app.get('/api/ping', (_req, res) => res.json({ ok: true, timestamp: Date.now() }));
+app.get('/ping', (_req, res) => res.json({ ok: true, timestamp: Date.now() }));
+
 app.post('/api/auth/login', handleLogin);
 app.post('/auth/login', handleLogin);
 app.post('/api/auth/logout', handleLogout);

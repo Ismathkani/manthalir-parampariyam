@@ -64,6 +64,7 @@
               type="text"
               class="form-control"
               [(ngModel)]="username"
+              (focus)="onInputFocus()"
               placeholder="Enter admin username"
               required
               autocomplete="username"
@@ -89,6 +90,7 @@
               [type]="showPassword ? 'text' : 'password'"
               class="form-control"
               [(ngModel)]="password"
+              (focus)="onInputFocus()"
               placeholder="Enter password"
               required
               autocomplete="current-password"
