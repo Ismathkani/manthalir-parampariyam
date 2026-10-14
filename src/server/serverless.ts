@@ -5,8 +5,19 @@ import apiRouter from './api.js';
 
 const app = express();
 
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+// Safe body parsing for Vercel serverless (prevents hanging if body already parsed)
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === 'object') {
+    return next();
+  }
+  express.json({ limit: '10mb' })(req, res, next);
+});
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === 'object') {
+    return next();
+  }
+  express.urlencoded({ extended: true, limit: '10mb' })(req, res, next);
+});
 app.use(cookieParser());
 
 app.get('/api/ping', (_req, res) => res.json({ ok: true, timestamp: Date.now() }));

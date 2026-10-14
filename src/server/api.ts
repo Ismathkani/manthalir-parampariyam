@@ -13,10 +13,18 @@ router.get('/ping', (_req: Request, res: Response) => {
   res.json({ ok: true, timestamp: Date.now() });
 });
 
-// Ensure upload directory exists
-const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+// Ensure upload directory exists (safe for Vercel serverless /tmp)
+const isVercel = Boolean(process.env['VERCEL']);
+const uploadDir = isVercel
+  ? path.join('/tmp', 'uploads')
+  : path.join(process.cwd(), 'public', 'uploads');
+
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (err) {
+  console.warn('Upload directory creation skipped or read-only:', err);
 }
 
 // Multer Storage Engine with secure filename hashing

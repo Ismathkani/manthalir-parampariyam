@@ -40023,9 +40023,14 @@ var router = (0, import_express.Router)();
 router.get("/ping", (_req, res) => {
   res.json({ ok: true, timestamp: Date.now() });
 });
-var uploadDir = path2.join(process.cwd(), "public", "uploads");
-if (!fs2.existsSync(uploadDir)) {
-  fs2.mkdirSync(uploadDir, { recursive: true });
+var isVercel2 = Boolean(process.env["VERCEL"]);
+var uploadDir = isVercel2 ? path2.join("/tmp", "uploads") : path2.join(process.cwd(), "public", "uploads");
+try {
+  if (!fs2.existsSync(uploadDir)) {
+    fs2.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (err) {
+  console.warn("Upload directory creation skipped or read-only:", err);
 }
 var storage = import_multer.default.diskStorage({
   destination: (_req, _file, cb) => {
@@ -40332,8 +40337,18 @@ var api_default = router;
 
 // src/server/serverless.ts
 var app = (0, import_express2.default)();
-app.use(import_express2.default.json({ limit: "10mb" }));
-app.use(import_express2.default.urlencoded({ extended: true, limit: "10mb" }));
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === "object") {
+    return next();
+  }
+  import_express2.default.json({ limit: "10mb" })(req, res, next);
+});
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === "object") {
+    return next();
+  }
+  import_express2.default.urlencoded({ extended: true, limit: "10mb" })(req, res, next);
+});
 app.use((0, import_cookie_parser.default)());
 app.get("/api/ping", (_req, res) => res.json({ ok: true, timestamp: Date.now() }));
 app.get("/ping", (_req, res) => res.json({ ok: true, timestamp: Date.now() }));
